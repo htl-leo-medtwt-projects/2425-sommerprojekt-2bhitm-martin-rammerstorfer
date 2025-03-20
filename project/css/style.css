@@ -1,0 +1,58 @@
+:root {
+  --color-bg: white;
+  --color-bg2: #999;
+  --color-text: black;
+  --color-accent1: #d6a444;
+  --color-accent2: #c1c730;
+  --color-accent3: #2b53a7;
+  --color-accent4: #a71313;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  background-image: url(../img/bg.jpg);
+}
+
+main {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+header {
+  width: 100vw;
+  background-color: var(--color-bg);
+  height: 14vh;
+  position: relative;
+}
+
+header > img {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1%;
+}
+
+header > nav {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+header > nav a {
+  text-decoration: none;
+}
+header > nav a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
