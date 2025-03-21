@@ -5,10 +5,12 @@ let charactersArr = [
   {
     id: 0,
     name: "Christopher Pike",
-    description: "",
+    description: "Starfleet officer, captain of the USS Enterprise",
     firstNames: "Christopher",
     lastName: "Pike",
-    altNames: [],
+    altNames: [
+      "Captain Pike"
+    ],
     species: [
       "Human"
     ],
@@ -49,12 +51,124 @@ let charactersArr = [
       media.DIS,
       media.SNW
     ],
-    images: []
+    images: [
+      {
+        path: "pike_0.jpg",
+        year: 2254,
+        media: media.TC,
+        actor: "Jeffrey Hunter"
+      },
+      {
+        path: "pike_1.jpg",
+        year: 2267,
+        media: media.TOS,
+        actor: "Sean Kenney"
+      },
+      {
+        path: "pike_2.jpg",
+        year: 2259,
+        media: media.SNW,
+        actor: "Anson Mount"
+      }
+    ]
+  },
+  {
+    id: 1,
+    name: "Spock",
+    description: "Science officer aboard the USS Enterprise",
+    firstNames: "S'chn T'gai",
+    lastName: "Spock",
+    altNames: [
+      "S'chn T'gai Spock",
+      "Mr. Spock"
+    ],
+    species: [
+      "Vulcan",
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Vulcan",
+    affiliation: "United Federation of Planets",
+    rank: "Captain",
+    occupation: "Federation Ambassador",
+    serialNumber: "S 179-276 SP",
+    ships: [
+      ships.ENTERPRISE,
+      ships.ENTERPRISE_A,,
+      ships.ARTEMIS,
+      ships.SURAK,
+      ships.INTREPID_II,
+      ships.MONITOR,
+      ships.DEFIANT
+    ],
+    status: "missing in action",
+    birthDate: "2230-03-26",
+    birthPlace: "Vulcan",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "divorced",
+    father: "Sarek",
+    mother: "Amanda Grayson",
+    siblings: [
+      "Sybok",
+      "Michael Burnham"
+    ],
+    partners: [
+      "T'Pring"
+    ],
+    actors: [
+      "Leonard Nimoy",
+      "Ethan Peck"
+    ],
+    media: [
+      media.TC,
+      media.TOS,
+      media.TAS,
+      media.TMP,
+      media.TWOK,
+      media.TSFS,
+      media.TVH,
+      media.TFF,
+      media.TUC,
+      media.TNG,
+      media.GEN,
+      media.ST09,
+      media.STID,
+      media.STB,
+      media.DIS,
+      media.SNW
+    ],
+    images: [
+      {
+        path: "spock_0.jpg",
+        year: 2265,
+        media: media.TOS,
+        actor: "Leonard Nimoy"
+      },
+      {
+        path: "spock_1.jpg",
+        year: 2293,
+        media: media.TUC,
+        actor: "Leonard Nimoy"
+      },
+      {
+        path: "spock_2.jpg",
+        year: 2387,
+        media: media.STID,
+        actor: "Leonard Nimoy"
+      },
+      {
+        path: "spock_3.jpg",
+        year: 2259,
+        media: media.SNW,
+        actor: "Ethan Peck"
+      }
+    ]
   },
   {
     id: 100,
     name: "James T. Kirk",
-    description: "",
+    description: "Starfleet officer, captain of the USS Enterprise",
     firstNames: "James Tiberius",
     lastName: "Kirk",
     altNames: [
@@ -109,10 +223,28 @@ let charactersArr = [
     ],
     images: [
       {
-        path: "kirk0.jpg",
+        path: "kirk_0.jpg",
         year: 2266,
         media: media.TOS,
         actor: "William Shatner"
+      },
+      {
+        path: "kirk_1.jpg",
+        year: 2371,
+        media: media.GEN,
+        actor: "William Shatner"
+      },
+      {
+        path: "kirk_2.jpg",
+        year: 2269,
+        media: media.TAS,
+        actor: "William Shatner"
+      },
+      {
+        path: "kirk_3.jpg",
+        year: 2259,
+        media: media.STID,
+        actor: "Paul Wesley"
       }
     ]
   }

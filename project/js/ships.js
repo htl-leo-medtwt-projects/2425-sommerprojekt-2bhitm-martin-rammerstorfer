@@ -170,6 +170,46 @@ let ships = {
     status: "unknown",
     crew: [],
     images: [{ path: "aryabhatta_0.jpg" }]
+  },
+  ARTEMIS: {
+    name: "USS Artemis",
+    registry: null,
+    class: null,
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "unknown",
+    crew: [],
+    images: [{ path: "artemis_0.jpg" }]
+  },
+  SURAK: {
+    name: "USS Surak",
+    registry: null,
+    class: "Oberth",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "lost",
+    crew: [],
+    images: [{ path: "surak_0.jpg" }]
+  },
+  INTREPID_II: {
+    name: "USS Intrepid II",
+    registry: null,
+    class: "Oberth",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "unknown",
+    crew: [],
+    images: [{ path: "intrepid_ii_0.jpg" }]
+  },
+  MONITOR: {
+    name: "USS Monitor",
+    registry: null,
+    class: "Defiant",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "destroyed",
+    crew: [],
+    images: [{ path: "monitor_0.jpg" }]
   }
 };
 
