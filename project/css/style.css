@@ -19,9 +19,22 @@ body {
   background-image: url(../img/bg.jpg);
 }
 
-main {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+@font-face {
+  font-family: startrek;
+  src: url(../fonts/TKCLSCR2.TTF);
+}
+
+#intro {
+  height: 90vh;
+}
+
+#intro > h1 {
+  text-align: center;
+  font-family: startrek;
+  font-size: 60px;
+  text-transform: UPPERCASE;
+  color: white;
+  text-shadow: 0 0 2px black;
 }
 
 header {
@@ -42,11 +55,15 @@ header > img {
 header > nav {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   height: 100%;
   width: 60%;
   position: absolute;
   top: 0;
   right: 0;
+  font-family: startrek;
+  text-transform: UPPERCASE;
+  color: var(--color-text);
 }
 
 header > nav a {
@@ -55,4 +72,9 @@ header > nav a {
 header > nav a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+main {
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
