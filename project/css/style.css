@@ -6,12 +6,16 @@
   --color-accent2: #c1c730;
   --color-accent3: #2b53a7;
   --color-accent4: #a71313;
+  --transition-duration: 0.3s;
+  --transition-timing: ease;
+  --width: 70vw;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
@@ -24,17 +28,9 @@ body {
   src: url(../fonts/TKCLSCR2.TTF);
 }
 
-#intro {
-  height: 90vh;
-}
-
-#intro > h1 {
-  text-align: center;
-  font-family: startrek;
-  font-size: 60px;
-  text-transform: UPPERCASE;
-  color: white;
-  text-shadow: 0 0 2px black;
+@font-face {
+  font-family: federation;
+  src: url(../fonts/Final_Frontier.ttf);
 }
 
 header {
@@ -42,14 +38,30 @@ header {
   background-color: var(--color-bg);
   height: 14vh;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header > img {
+/* header > img {
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   padding: 1%;
+} */
+
+header > #color_mode {
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color var(--transition-duration) var(--transition-timing);
+  user-select: none;
+}
+
+header > #color_mode:hover {
+  color: var(--color-accent1);
 }
 
 header > nav {
@@ -61,17 +73,57 @@ header > nav {
   position: absolute;
   top: 0;
   right: 0;
-  font-family: startrek;
-  text-transform: UPPERCASE;
-  color: var(--color-text);
 }
 
 header > nav a {
-  text-decoration: none;
+  font-family: startrek;
+  text-transform: UPPERCASE;
+  color: var(--color-text);
+  transition: color var(--transition-duration) var(--transition-timing);
 }
+
 header > nav a:hover {
-  text-decoration: underline;
   cursor: pointer;
+  color: var(--color-accent1);
+}
+
+#intro {
+  height: 90vh;
+  text-align: center;
+  width: var(--width);
+  margin: auto;
+}
+
+#intro > h1 {
+  font-family: startrek;
+  font-size: 60px;
+  text-transform: UPPERCASE;
+  color: white;
+  text-shadow: 0 0 2px black;
+}
+
+#intro > p {
+  font-family: federation;
+  color: white;
+  text-shadow: 0 0 2px black;
+}
+
+#intro a {
+  font-family: startrek;
+  text-transform: lowercase;
+  color: white;
+  text-shadow: 0 0 2px black;
+  transition: color var(--transition-duration) var(--transition-timing);
+}
+
+#intro a:hover {
+  cursor: pointer;
+  color: var(--color-accent1);
+}
+
+main {
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 main {
