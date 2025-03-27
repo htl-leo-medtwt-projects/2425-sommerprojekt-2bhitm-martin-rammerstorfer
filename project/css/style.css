@@ -6,9 +6,10 @@
   --color-accent2: #c1c730;
   --color-accent3: #2b53a7;
   --color-accent4: #a71313;
+  --image-bg: url(../img/interior.jpeg);
   --transition-duration: 0.3s;
   --transition-timing: ease;
-  --width: 70vw;
+  --width: 80vw;
 }
 
 * {
@@ -16,11 +17,17 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: black;
-  background-image: url(../img/bg.jpg);
+  background-image: var(--image-bg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+  transition: background-image var(--transition-duration) var(--transition-timing);
 }
 
 @font-face {
@@ -37,31 +44,36 @@ header {
   width: 100vw;
   background-color: var(--color-bg);
   height: 14vh;
-  position: relative;
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: background-color var(--transition-duration) var(--transition-timing);
+  border-top: 4px solid var(--color-accent3);
 }
-
-/* header > img {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1%;
-} */
 
 header > #color_mode {
   font-size: 50px;
   font-weight: bold;
   color: var(--color-text);
   cursor: pointer;
-  transition: color var(--transition-duration) var(--transition-timing);
   user-select: none;
+  scale: .7;
+  transition: scale var(--transition-duration) var(--transition-timing);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+header > #color_mode > img {
+  height: 100%;
+  padding: 1%;
 }
 
 header > #color_mode:hover {
-  color: var(--color-accent1);
+  scale: .8;
 }
 
 header > nav {
@@ -88,35 +100,44 @@ header > nav a:hover {
 }
 
 #intro {
-  height: 90vh;
+  height: 100vh;
+}
+
+#intro > #intro_container {
+  height: 100%;
   text-align: center;
   width: var(--width);
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-#intro > h1 {
+#intro > #intro_container > h1 {
   font-family: startrek;
-  font-size: 60px;
+  font-size: 70px;
   text-transform: UPPERCASE;
   color: white;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0 0 4px black;
 }
 
-#intro > p {
+#intro > #intro_container > p {
   font-family: federation;
   color: white;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0 0 4px black;
 }
 
-#intro a {
+#intro > #intro_container a {
   font-family: startrek;
   text-transform: lowercase;
   color: white;
-  text-shadow: 0 0 2px black;
+  text-shadow: 0 0 4px black;
   transition: color var(--transition-duration) var(--transition-timing);
+  font-size: 20px;
+  margin-top: 10px;
 }
 
-#intro a:hover {
+#intro > #intro_container a:hover {
   cursor: pointer;
   color: var(--color-accent1);
 }
@@ -124,9 +145,38 @@ header > nav a:hover {
 main {
   background-color: var(--color-bg);
   color: var(--color-text);
+  transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
-main {
-  background-color: var(--color-bg);
+main > #explore {
+  height: 70vh;
+  padding: 40px;
+  width: var(--width);
+  margin: auto;
+}
+
+main > #explore > h2 {
+  font-family: startrek;
+  font-size: 40px;
+  text-transform: UPPERCASE;
   color: var(--color-text);
+  margin-bottom: 10px;
+  transition: color var(--transition-duration) var(--transition-timing);
+}
+
+main > #explore > a {
+  height: 40%;
+  width: 100%;
+  margin: auto;
+}
+
+main > #explore > a > div {
+  height: 40%;
+  width: 100%;
+  margin: 0 auto 20px auto;
+  color: var(--color-text);
+  font-family: federation;
+  background-color: var(--color-accent2);
+  padding: 10px;
+  transition: color var(--transition-duration) var(--transition-timing);
 }
