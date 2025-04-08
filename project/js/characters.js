@@ -1,6 +1,7 @@
 /// <reference path="ships.js" />
+/// <reference path="media.js" />
 
-let characters = [
+let charactersArr = [
   {
     id: 0,
     name: "Christopher Pike",
@@ -41,12 +42,12 @@ let characters = [
       "Anson Mount"
     ],
     media: [
-      "TC",
-      "TOS",
-      "ST09",
-      "STID",
-      "DIS",
-      "SNW"
+      media.TC,
+      media.TOS,
+      // media.ST09,
+      // media.STID,
+      // media.DIS,
+      // media.SNW
     ],
     images: []
   },
@@ -93,24 +94,25 @@ let characters = [
       "Paul Wesley"
     ],
     media: [
-      "TOS",
-      "TAS",
-      "TMP",
-      "TWOK",
-      "TSFS",
-      "TVH",
-      "TFF",
-      "TUC",
-      "GEN",
-      "ST09",
-      "STID",
-      "STB"
+      media.TOS,
+      media.TAS,
+      media.TMP,
+      media.TWOK,
+      media.TSFS,
+      media.TVH,
+      media.TFF,
+      media.TUC,
+      // media.GEN,
+      // media.ST09,
+      // media.STID,
+      // media.STB
     ],
     images: [
       {
         path: "kirk0.jpg",
         year: 2266,
-        media: "TOS"
+        media: media.TOS,
+        actor: "William Shatner"
       }
     ]
   }
