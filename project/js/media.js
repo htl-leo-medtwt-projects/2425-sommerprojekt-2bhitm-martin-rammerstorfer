@@ -3,28 +3,24 @@
 
 let media = {
   TC: {
-    id: 0,
     name: "The Cage",
     abbreviation: "TC",
     description: "Pilot episode of Star Trek: The Original Series",
     type: "episode",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 63,
+    avgLengthMinutes: null,
     totalLengthMinutes: 63,
     firstAired: "1965-01-23",
     lastAired: "1965-01-23",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2265,
+    endYear: 2265,
     characters: [],
-    images: [
-      {
-        path: "tc0.jpg"
-      }
-    ]
+    images: [{ path: "tc_0.jpg" }]
   },
   TOS: {
-    id: 1,
     name: "Star Trek: The Original Series",
     abbreviation: "TOS",
     description: "The first Star Trek television series, following the adventures of the starship Enterprise",
@@ -37,15 +33,12 @@ let media = {
     lastAired: "1969-06-03",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2265,
+    endYear: 2269,
     characters: [],
-    images: [
-      {
-        path: "tos0.jpg"
-      }
-    ]
+    images: [{ path: "tos_0.jpg" }]
   },
   TAS: {
-    id: 2,
     name: "Star Trek: The Animated Series",
     abbreviation: "TAS",
     description: "An animated continuation of Star Trek: The Original Series",
@@ -58,139 +51,389 @@ let media = {
     lastAired: "1974-10-12",
     isAnimated: true,
     mainShip: ships.ENTERPRISE,
+    startYear: 2269,
+    endYear: 2270,
     characters: [],
-    images: [
-      {
-        path: "tas0.jpg"
-      }
-    ]
+    images: [{ path: "tas_0.jpg" }]
   },
   TMP: {
-    id: 3,
     name: "Star Trek: The Motion Picture",
     abbreviation: "TMP",
     description: "The first Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 132,
+    avgLengthMinutes: null,
     totalLengthMinutes: 132,
     firstAired: "1979-12-07",
     lastAired: "1979-12-07",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2273,
+    endYear: 2273,
     characters: [],
-    images: [
-      {
-        path: "tmp0.jpg"
-      }
-    ]
+    images: [{ path: "tmp_0.jpg" }]
   },
   TWOK: {
-    id: 4,
     name: "Star Trek II: The Wrath of Khan",
     abbreviation: "TWOK",
     description: "The second Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 113,
+    avgLengthMinutes: null,
     totalLengthMinutes: 113,
     firstAired: "1982-06-04",
     lastAired: "1982-06-04",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2285,
+    endYear: 2285,
     characters: [],
-    images: [
-      {
-        path: "twok0.jpg"
-      }
-    ]
+    images: [{ path: "twok_0.jpg" }]
   },
   TSFS: {
-    id: 5,
     name: "Star Trek III: The Search for Spock",
     abbreviation: "TSFS",
     description: "The third Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 105,
+    avgLengthMinutes: null,
     totalLengthMinutes: 105,
     firstAired: "1984-06-01",
     lastAired: "1984-06-01",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2285,
+    endYear: 2285,
     characters: [],
-    images: [
-      {
-        path: "tsfs0.jpg"
-      }
-    ]
+    images: [{ path: "tsfs_0.jpg" }]
   },
   TVH: {
-    id: 6,
     name: "Star Trek IV: The Voyage Home",
     abbreviation: "TVH",
     description: "The fourth Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 119,
+    avgLengthMinutes: null,
     totalLengthMinutes: 119,
     firstAired: "1986-11-26",
     lastAired: "1986-11-26",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
+    startYear: 2286,
+    endYear: 2286,
     characters: [],
-    images: [
-      {
-        path: "tvh0.jpg"
-      }
-    ]
+    images: [{ path: "tvh_0.jpg" }]
   },
   TFF: {
-    id: 7,
     name: "Star Trek V: The Final Frontier",
     abbreviation: "TFF",
     description: "The fifth Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 107,
+    avgLengthMinutes: null,
     totalLengthMinutes: 107,
     firstAired: "1989-06-09",
     lastAired: "1989-06-09",
     isAnimated: false,
     mainShip: ships.ENTERPRISE_A,
+    startYear: 2287,
+    endYear: 2287,
     characters: [],
-    images: [
-      {
-        path: "tff0.jpg"
-      }
-    ]
+    images: [{ path: "tff_0.jpg" }]
   },
   TUC: {
-    id: 8,
     name: "Star Trek VI: The Undiscovered Country",
     abbreviation: "TUC",
     description: "The sixth Star Trek feature film",
-    type: "movie",
+    type: "film",
     seasons: null,
     episodes: null,
-    avgLengthMinutes: 110,
+    avgLengthMinutes: null,
     totalLengthMinutes: 110,
     firstAired: "1991-12-06",
     lastAired: "1991-12-06",
     isAnimated: false,
     mainShip: ships.ENTERPRISE_A,
+    startYear: 2293,
+    endYear: 2293,
     characters: [],
-    images: [
-      {
-        path: "tuc0.jpg"
-      }
-    ]
-  } 
+    images: [{ path: "tuc_0.jpg" }]
+  },
+  TNG: {
+    name: "Star Trek: The Next Generation",
+    abbreviation: "TNG",
+    description: "The second Star Trek television series, set in the 24th century",
+    type: "series",
+    seasons: 7,
+    episodes: 178,
+    avgLengthMinutes: 45,
+    totalLengthMinutes: 8010,
+    firstAired: "1987-09-28",
+    lastAired: "1994-05-23",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE_D,
+    startYear: 2364,
+    endYear: 2370,
+    characters: [],
+    images: [{ path: "tng_0.jpg" }]
+  },
+  DS9: {
+    name: "Star Trek: Deep Space Nine",
+    abbreviation: "DS9",
+    description: "A Star Trek series set on a space station near a strategic wormhole",
+    type: "series",
+    seasons: 7,
+    episodes: 176,
+    avgLengthMinutes: 45,
+    totalLengthMinutes: 7920,
+    firstAired: "1993-01-03",
+    lastAired: "1999-06-02",
+    isAnimated: false,
+    mainShip: ships.DEFIANT,
+    startYear: 2369,
+    endYear: 2375,
+    characters: [],
+    images: [{ path: "ds9_0.jpg" }]
+  },
+  GEN: {
+    name: "Star Trek: Generations",
+    abbreviation: "GEN",
+    description: "The seventh Star Trek feature film, bridging TOS and TNG",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 118,
+    firstAired: "1994-11-18",
+    lastAired: "1994-11-18",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE_D,
+    startYear: 2371,
+    endYear: 2371,
+    characters: [],
+    images: [{ path: "gen_0.jpg" }]
+  },
+  VOY: {
+    name: "Star Trek: Voyager",
+    abbreviation: "VOY",
+    description: "A Star Trek series about a starship stranded in the Delta Quadrant",
+    type: "series",
+    seasons: 7,
+    episodes: 172,
+    avgLengthMinutes: 45,
+    totalLengthMinutes: 7740,
+    firstAired: "1995-01-16",
+    lastAired: "2001-05-23",
+    isAnimated: false,
+    mainShip: ships.VOYAGER,
+    startYear: 2371,
+    endYear: 2378,
+    characters: [],
+    images: [{ path: "voy_0.jpg" }]
+  },
+  FC: {
+    name: "Star Trek: First Contact",
+    abbreviation: "FC",
+    description: "The eighth Star Trek feature film, featuring the Borg",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 111,
+    firstAired: "1996-11-22",
+    lastAired: "1996-11-22",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE_E,
+    startYear: 2373,
+    endYear: 2373,
+    characters: [],
+    images: [{ path: "fc_0.jpg" }]
+  },
+  INS: {
+    name: "Star Trek: Insurrection",
+    abbreviation: "INS",
+    description: "The ninth Star Trek feature film",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 103,
+    firstAired: "1998-12-11",
+    lastAired: "1998-12-11",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE_E,
+    startYear: 2375,
+    endYear: 2375,
+    characters: [],
+    images: [{ path: "ins_0.jpg" }]
+  },
+  NEM: {
+    name: "Star Trek: Nemesis",
+    abbreviation: "NEM",
+    description: "The tenth Star Trek feature film",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 116,
+    firstAired: "2002-12-13",
+    lastAired: "2002-12-13",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE_E,
+    startYear: 2379,
+    endYear: 2379,
+    characters: [],
+    images: [{ path: "nem_0.jpg" }]
+  },
+  ENT: {
+    name: "Star Trek: Enterprise",
+    abbreviation: "ENT",
+    description: "A prequel Star Trek series set in the 22nd century",
+    type: "series",
+    seasons: 4,
+    episodes: 98,
+    avgLengthMinutes: 45,
+    totalLengthMinutes: 4410,
+    firstAired: "2001-09-26",
+    lastAired: "2005-05-13",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE,
+    startYear: 2151,
+    endYear: 2155,
+    characters: [],
+    images: [{ path: "ent_0.jpg" }]
+  },
+  ST09: {
+    name: "Star Trek (2009)",
+    abbreviation: "ST09",
+    description: "A reboot of the Star Trek franchise",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 127,
+    firstAired: "2009-05-08",
+    lastAired: "2009-05-08",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE,
+    startYear: 2258,
+    endYear: 2258,
+    characters: [],
+    images: [{ path: "st09_0.jpg" }]
+  },
+  STID: {
+    name: "Star Trek Into Darkness",
+    abbreviation: "STID",
+    description: "The second film in the rebooted Star Trek franchise",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 132,
+    firstAired: "2013-05-17",
+    lastAired: "2013-05-17",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE,
+    startYear: 2259,
+    endYear: 2259,
+    characters: [],
+    images: [{ path: "stid_0.jpg" }]
+  },
+  STB: {
+    name: "Star Trek Beyond",
+    abbreviation: "STB",
+    description: "The third film in the rebooted Star Trek franchise",
+    type: "film",
+    seasons: null,
+    episodes: null,
+    avgLengthMinutes: null,
+    totalLengthMinutes: 122,
+    firstAired: "2016-07-22",
+    lastAired: "2016-07-22",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE,
+    startYear: 2263,
+    endYear: 2263,
+    characters: [],
+    images: [{ path: "stb_0.jpg" }]
+  },
+  DIS: {
+    name: "Star Trek: Discovery",
+    abbreviation: "DIS",
+    description: "A Star Trek series set before the events of TOS",
+    type: "series",
+    seasons: 5,
+    episodes: 65,
+    avgLengthMinutes: 50,
+    totalLengthMinutes: 2750,
+    firstAired: "2017-09-24",
+    lastAired: "2022-03-17",
+    isAnimated: false,
+    mainShip: ships.DISCOVERY,
+    startYear: 2256,
+    endYear: 3191,
+    characters: [],
+    images: [{ path: "dis_0.jpg" }]
+  },
+  PIC: {
+    name: "Star Trek: Picard",
+    abbreviation: "PIC",
+    description: "A Star Trek series following Jean-Luc Picard in his later years",
+    type: "series",
+    seasons: 3,
+    episodes: 30,
+    avgLengthMinutes: 50,
+    totalLengthMinutes: 1500,
+    firstAired: "2020-01-23",
+    lastAired: "2023-04-20",
+    isAnimated: false,
+    mainShip: ships.LA_SIRENA,
+    startYear: 2399,
+    endYear: 2402,
+    characters: [],
+    images: [{ path: "pic_0.jpg" }]
+  },
+  LOW: {
+    name: "Star Trek: Lower Decks",
+    abbreviation: "LOW",
+    description: "An animated Star Trek series focusing on the support crew of a starship",
+    type: "series",
+    seasons: 3,
+    episodes: 30,
+    avgLengthMinutes: 25,
+    totalLengthMinutes: 750,
+    firstAired: "2020-08-06",
+    lastAired: "2024-12-19",
+    isAnimated: true,
+    mainShip: ships.CERRITOS,
+    startYear: 2380,
+    endYear: 2382,
+    characters: [],
+    images: [{ path: "low_0.jpg" }]
+  },
+  SNW: {
+    name: "Star Trek: Strange New Worlds",
+    abbreviation: "SNW",
+    description: "A Star Trek series following the adventures of the Enterprise under Captain Pike",
+    type: "series",
+    seasons: 2,
+    episodes: 20,
+    avgLengthMinutes: 50,
+    totalLengthMinutes: 1000,
+    firstAired: "2022-05-05",
+    lastAired: "2023-08-10",
+    isAnimated: false,
+    mainShip: ships.ENTERPRISE,
+    startYear: 2259,
+    endYear: 2266,
+    characters: [],
+    images: [{ path: "snw_0.jpg" }]
+  }
 };
 
 let mediaArr = [
@@ -203,23 +446,21 @@ let mediaArr = [
   media.TVH,
   media.TFF,
   media.TUC,
-  // media.TNG,
-  // media.DS9,
-  // media.GEN,
-  // media.VOY,
-  // media.FC,
-  // media.INS,
-  // media.NEM,
-  // media.ENT,
-  // media.ST09,
-  // media.STID,
-  // media.STB,
-  // media.DIS,
-  // media.SHO,
-  // media.PIC,
-  // media.LOW,
-  // media.SNW,
-  // media.S31
+  media.TNG,
+  media.DS9,
+  media.GEN,
+  media.VOY,
+  media.FC,
+  media.INS,
+  media.NEM,
+  media.ENT,
+  media.ST09,
+  media.STID,
+  media.STB,
+  media.DIS,
+  media.PIC,
+  media.LOW,
+  media.SNW
 ];
 
 for (let i = 0; i < mediaArr.length; i++) {

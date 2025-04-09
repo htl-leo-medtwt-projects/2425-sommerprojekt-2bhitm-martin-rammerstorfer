@@ -44,10 +44,10 @@ let charactersArr = [
     media: [
       media.TC,
       media.TOS,
-      // media.ST09,
-      // media.STID,
-      // media.DIS,
-      // media.SNW
+      media.ST09,
+      media.STID,
+      media.DIS,
+      media.SNW
     ],
     images: []
   },
@@ -102,10 +102,10 @@ let charactersArr = [
       media.TVH,
       media.TFF,
       media.TUC,
-      // media.GEN,
-      // media.ST09,
-      // media.STID,
-      // media.STB
+      media.GEN,
+      media.ST09,
+      media.STID,
+      media.STB
     ],
     images: [
       {
