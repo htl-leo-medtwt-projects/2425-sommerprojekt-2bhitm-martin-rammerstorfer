@@ -1,6 +1,6 @@
 :root {
   --color-bg: white;
-  --color-bg2: #999;
+  --color-bg2: #eee;
   --color-text: black;
   --color-accent1: #d6a444;
   --color-accent2: #c1c730;
@@ -9,7 +9,7 @@
   --image-bg: url(../img/interior.jpeg);
   --transition-duration: 0.3s;
   --transition-timing: ease;
-  --width: 70vw;
+  --width: 80vw;
   --text-shadow: 0 0 4px black;
   --drop-shadow: 1px 1px 0 black;
 }
@@ -29,6 +29,8 @@ body {
   background-attachment: fixed;
   background-position: center;
   overflow-x: hidden;
+  margin-top: 18vh;
+  margin-bottom: 4vh;
 }
 
 @font-face {
@@ -114,6 +116,7 @@ header > nav a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: -10vh;
 }
 
 #intro > #intro_container > h1 {
@@ -151,42 +154,52 @@ header > nav a:hover {
 
 main {
   background-color: var(--color-bg);
-  color: var(--color-text);
   transition: background-color var(--transition-duration) var(--transition-timing);
+  color: var(--color-text);
+  box-shadow: 0 0 6px black, 1px 1px 0 black;
+  width: var(--width);
+  border-radius: 2px;
+  margin: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  overflow: hidden;
 }
 
 main > #explore {
-  height: 75vh;
-  padding: 40px;
-  width: var(--width);
-  margin: auto;
+  width: 100%;
 }
 
-main > #explore > h2 {
+main h2 {
   font-family: startrek;
-  font-size: 40px;
+  font-size: 48px;
   text-transform: UPPERCASE;
   color: var(--color-text);
   margin-bottom: 10px;
   transition: color var(--transition-duration) var(--transition-timing);
+  text-align: center;
 }
 
 main > #explore > a {
-  height: 40%;
-  width: 100%;
+  width: 90%;
   margin: auto;
 }
 
 main > #explore > a > div {
-  height: 40%;
-  width: 100%;
+  height: 200px;
+  width: 80%;
   margin: 0 auto 20px auto;
   color: white;
   text-shadow: var(--text-shadow), var(--drop-shadow);
   font-family: federation;
-  padding: 10px;
-  background-size: cover;
+  padding: 20px;
+  background-size: 100%;
+  background-position: top center;
   border: 2px solid var(--color-accent2);
+  transition: background-size var(--transition-duration) var(--transition-timing);
+}
+
+main > #explore > a > div:hover {
+  background-size: 110%;
 }
 
 main > #explore > #explore_characters > div {
@@ -198,17 +211,17 @@ main > #explore > #explore_media > div {
 }
 
 main > #explore > a > div p {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 main > #explore > a > div h3 {
-  font-size: 30px;
+  font-size: 26px;
+  font-weight: bold;
   margin-bottom: 10px;
+  text-transform: UPPERCASE;
 }
 
 footer {
-  background-color: var(--color-bg);
-  color: var(--color-text);
   height: 14vh;
   width: 100vw;
   margin: auto;
@@ -218,6 +231,8 @@ footer {
   font-family: federation;
   font-size: 20px;
   text-align: center;
+  color: white;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
   transition: background-color var(--transition-duration) var(--transition-timing);
 }
 
@@ -227,4 +242,44 @@ footer > p {
 
 #selected {
   text-decoration: underline;
+}
+
+#characters_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  width: var(--width);
+  margin: auto;
+  padding: 20px;
+}
+
+.character {
+  background-color: var(--color-bg2);
+  font-family: federation;
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 24px;
+}
+.character > .img_container {
+  width: 100%;
+  background-color: var(--color-bg2);
+}
+.character > .img_container > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  padding: 10px;
+  user-select: none;
+}
+.character > h3 {
+  margin-bottom: 6px;
+  font-size: 24px;
+}
+.character > p {
+  margin-bottom: 4px;
+}
+.description {
+  font-style: italic;
 }

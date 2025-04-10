@@ -4,12 +4,13 @@
 let charactersArr = [
   {
     id: 0,
-    name: "Christopher Pike",
+    name: "James T. Kirk",
     description: "Starfleet officer, captain of the USS Enterprise",
-    firstNames: "Christopher",
-    lastName: "Pike",
+    firstNames: "James Tiberius",
+    lastName: "Kirk",
+    titles: null,
     altNames: [
-      "Captain Pike"
+      "Jim"
     ],
     species: [
       "Human"
@@ -17,58 +18,71 @@ let charactersArr = [
     gender: "male",
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
-    rank: "Fleet captain",
+    rank: "Captain",
     occupation: "Starfleet officer",
-    serialNumber: "TG009-00995501",
+    serialNumber: "SC937-0176CEC",
     ships: [
-      ships.ANTARES,
-      ships.CHATELET,
-      ships.ARYABHATTA,
+      ships.FARRAGUT,
       ships.ENTERPRISE,
       ships.ENTERPRISE_A,
       ships.ENTERPRISE_B
     ],
-    status: "active",
-    birthDate: null,
-    birthPlace: "Earth,United States of America,California,Mojave",
-    deathDate: null,
-    deathPlace: null,
-    maritalStatus: null,
-    father: "Charlie Pike",
-    mother: "Willa McKinnies",
-    siblings: [],
-    partners: [],
+    status: "deceased",
+    birthDate: "2233-03-22",
+    birthPlace: "Earth,United States of America,Iowa,Riverside",
+    deathDate: "2371",
+    deathPlace: "Veridian III",
+    maritalStatus: "widower",
+    father: "George Kirk",
+    mother: "Winona Kirk",
+    siblings: [
+      "George Samuel Kirk"
+    ],
+    partners: [
+      "Miramanee"
+    ],
     actors: [
-      "Jeffrey Hunter",
-      "Sean Kenney",
-      "Anson Mount"
+      "William Shatner",
+      "Paul Wesley"
     ],
     media: [
-      media.TC,
       media.TOS,
+      media.TAS,
+      media.TMP,
+      media.TWOK,
+      media.TSFS,
+      media.TVH,
+      media.TFF,
+      media.TUC,
+      media.GEN,
       media.ST09,
       media.STID,
-      media.DIS,
-      media.SNW
+      media.STB
     ],
     images: [
       {
-        path: "pike_0.jpg",
-        year: 2254,
-        media: media.TC,
-        actor: "Jeffrey Hunter"
-      },
-      {
-        path: "pike_1.jpg",
-        year: 2267,
+        path: "kirk_0.jpg",
+        year: 2266,
         media: media.TOS,
-        actor: "Sean Kenney"
+        actor: "William Shatner"
       },
       {
-        path: "pike_2.jpg",
+        path: "kirk_1.jpg",
+        year: 2371,
+        media: media.GEN,
+        actor: "William Shatner"
+      },
+      {
+        path: "kirk_2.jpg",
+        year: 2269,
+        media: media.TAS,
+        actor: "William Shatner"
+      },
+      {
+        path: "kirk_3.jpg",
         year: 2259,
-        media: media.SNW,
-        actor: "Anson Mount"
+        media: media.STID,
+        actor: "Paul Wesley"
       }
     ]
   },
@@ -78,10 +92,8 @@ let charactersArr = [
     description: "Science officer aboard the USS Enterprise",
     firstNames: "S'chn T'gai",
     lastName: "Spock",
-    altNames: [
-      "S'chn T'gai Spock",
-      "Mr. Spock"
-    ],
+    titles: null,
+    altNames: [],
     species: [
       "Vulcan",
       "Human"
@@ -166,13 +178,15 @@ let charactersArr = [
     ]
   },
   {
-    id: 100,
-    name: "James T. Kirk",
-    description: "Starfleet officer, captain of the USS Enterprise",
-    firstNames: "James Tiberius",
-    lastName: "Kirk",
+    id: 2,
+    name: "Leonard McCoy",
+    description: "Chief medical officer aboard the USS Enterprise",
+    firstNames: "Leonard Horatio",
+    lastName: "McCoy",
+    titles: "Dr.",
     altNames: [
-      "Jim"
+      "Bones",
+      "Doc"
     ],
     species: [
       "Human"
@@ -180,32 +194,30 @@ let charactersArr = [
     gender: "male",
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
-    rank: "Captain",
-    occupation: "Starfleet officer",
-    serialNumber: "SC937-0176CEC",
+    rank: "Admiral",
+    occupation: "Doctor",
+    serialNumber: null,
     ships: [
-      ships.FARRAGUT,
       ships.ENTERPRISE,
-      ships.ENTERPRISE_A,
-      ships.ENTERPRISE_B
+      ships.ENTERPRISE_A
     ],
-    status: "deceased",
-    birthDate: "2233-03-22",
-    birthPlace: "Earth,United States of America,Iowa,Riverside",
-    deathDate: "2371",
-    deathPlace: "Veridian III",
-    maritalStatus: "widower",
-    father: "George Kirk",
-    mother: "Winona Kirk",
+    status: "retired",
+    birthDate: "2227-02-16",
+    birthPlace: "Earth,United States of America,Georgia,Atlanta",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "divorced",
+    father: "David McCoy",
+    mother: "Eleanora McCoy",
     siblings: [
-      "George Samuel Kirk"
+      "Donna McCoy"
     ],
     partners: [
-      "Miramanee"
+      "Natira"
     ],
     actors: [
-      "William Shatner",
-      "Paul Wesley"
+      "DeForest Kelley",
+      "Karl Urban"
     ],
     media: [
       media.TOS,
@@ -223,29 +235,100 @@ let charactersArr = [
     ],
     images: [
       {
-        path: "kirk_0.jpg",
-        year: 2266,
+        path: "mccoy_0.jpg",
+        year: 2268,
         media: media.TOS,
-        actor: "William Shatner"
+        actor: "DeForest Kelley"
       },
       {
-        path: "kirk_1.jpg",
-        year: 2371,
-        media: media.GEN,
-        actor: "William Shatner"
+        path: "mccoy_1.jpg",
+        year: 2293,
+        media: media.TUC,
+        actor: "DeForest Kelley"
       },
       {
-        path: "kirk_2.jpg",
+        path: "mccoy_2.jpg",
         year: 2269,
         media: media.TAS,
-        actor: "William Shatner"
+        actor: "DeForest Kelley"
       },
       {
-        path: "kirk_3.jpg",
-        year: 2259,
-        media: media.STID,
-        actor: "Paul Wesley"
+        path: "mccoy_3.jpg",
+        year: 2263,
+        media: media.STB,
+        actor: "Karl Urban"
       }
     ]
-  }
+  },
+  {
+    id: 3,
+    name: "Christopher Pike",
+    description: "Starfleet officer, captain of the USS Enterprise",
+    firstNames: "Christopher",
+    lastName: "Pike",
+    titles: null,
+    altNames: [
+      "Captain Pike"
+    ],
+    species: [
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Fleet captain",
+    occupation: "Starfleet officer",
+    serialNumber: "TG009-00995501",
+    ships: [
+      ships.ANTARES,
+      ships.CHATELET,
+      ships.ARYABHATTA,
+      ships.ENTERPRISE,
+      ships.ENTERPRISE_A,
+      ships.ENTERPRISE_B
+    ],
+    status: "active",
+    birthDate: null,
+    birthPlace: "Earth,United States of America,California,Mojave",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: null,
+    father: "Charlie Pike",
+    mother: "Willa McKinnies",
+    siblings: [],
+    partners: [],
+    actors: [
+      "Jeffrey Hunter",
+      "Sean Kenney",
+      "Anson Mount"
+    ],
+    media: [
+      media.TC,
+      media.TOS,
+      media.ST09,
+      media.STID,
+      media.DIS,
+      media.SNW
+    ],
+    images: [
+      {
+        path: "pike_0.jpg",
+        year: 2254,
+        media: media.TC,
+        actor: "Jeffrey Hunter"
+      },
+      {
+        path: "pike_1.jpg",
+        year: 2267,
+        media: media.TOS,
+        actor: "Sean Kenney"
+      },
+      {
+        path: "pike_2.jpg",
+        year: 2259,
+        media: media.SNW,
+        actor: "Anson Mount"
+      }
+    ]
+  },
 ];
