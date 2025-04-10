@@ -18,8 +18,10 @@ function setAnimation(elem, startX, duration) {
   });
 }
 
-function checkFilter(i) {
-  return true;
+function checkFilter(c) {
+  let filter = document.getElementById('filter').value;
+  let filter2 = document.getElementById('filter2').value;
+  return (filter === 'all' || c.species.includes(filter)) && (filter2 === 'all' || c.gender === filter2);
 }
 
 function getActors(c) {
@@ -58,7 +60,7 @@ function load() {
   let outp = '';
   for (let i = 0; i < charactersArr.length; i++) {
     let c = charactersArr[i];
-    if (checkFilter(i)) {
+    if (checkFilter(c)) {
       outp += `
         <div class="character">
           <div class="img_container"><img src="img/characters/${c.images[0].path}" alt="${c.name} in ${c.images[0].year}"></div>

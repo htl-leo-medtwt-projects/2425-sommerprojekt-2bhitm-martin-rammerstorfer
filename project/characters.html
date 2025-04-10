@@ -30,6 +30,17 @@
   <main>
     <section id="characters">
       <h2>Characters</h2>
+      <select id="filter" onchange="load();">
+        <option value="all">All species</option>
+        <option value="Human">Humans</option>
+        <option value="Vulcan">Vulcans</option>
+        <option value="Klingon">Klingons</option>
+      </select>
+      <select id="filter2" onchange="load();">
+        <option value="all">Both genders</option>
+        <option value="male">male</option>
+        <option value="female">female</option>
+      </select>
       <div id="characters_container"></div>
     </section>
   </main>

@@ -8,7 +8,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "destroyed",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_0.jpg" }]
   },
   ENTERPRISE_A: {
@@ -18,7 +18,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "preserved",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_a_0.jpg" }]
   },
   ENTERPRISE_B: {
@@ -28,7 +28,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_b_0.jpg" }]
   },
   ENTERPRISE_C: {
@@ -38,7 +38,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "destroyed",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_c_0.jpg" }]
   },
   ENTERPRISE_D: {
@@ -48,7 +48,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "preserved",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_d_0.jpg" }]
   },
   ENTERPRISE_E: {
@@ -58,7 +58,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "out of service",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_e_0.jpg" }]
   },
   ENTERPRISE_F: {
@@ -68,7 +68,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "decommissioned",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_f_0.jpg" }]
   },
   ENTERPRISE_G: {
@@ -78,7 +78,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "enterprise_g_0.jpg" }]
   },
   DEFIANT: {
@@ -88,7 +88,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "defiant_0.jpg" }]
   },
   VOYAGER: {
@@ -98,7 +98,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "voyager_0.jpg" }]
   },
   DISCOVERY: {
@@ -108,7 +108,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "destroyed",
-    crew: [],
+    // crew: [],
     images: [{ path: "discovery_0.jpg" }]
   },
   LA_SIRENA: {
@@ -118,7 +118,7 @@ let ships = {
     owner: "Crist\u{00f3}bal Rios",
     operator: "Crist\u{00f3}bal Rios",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "la_sirena_0.jpg" }]
   },
   CERRITOS: {
@@ -128,7 +128,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "cerritos_0.jpg" }]
   },
   FARRAGUT: {
@@ -138,7 +138,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "active",
-    crew: [],
+    // crew: [],
     images: [{ path: "farragut_0.jpg" }]
   },
   ANTARES: {
@@ -148,7 +148,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "unknown",
-    crew: [],
+    // crew: [],
     images: [{ path: "antares_0.jpg" }]
   },
   CHATELET: {
@@ -158,7 +158,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "unknown",
-    crew: [],
+    // crew: [],
     images: [{ path: "chatelet_0.jpg" }]
   },
   ARYABHATTA: {
@@ -168,7 +168,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "unknown",
-    crew: [],
+    // crew: [],
     images: [{ path: "aryabhatta_0.jpg" }]
   },
   ARTEMIS: {
@@ -178,7 +178,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "unknown",
-    crew: [],
+    // crew: [],
     images: [{ path: "artemis_0.jpg" }]
   },
   SURAK: {
@@ -188,7 +188,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "lost",
-    crew: [],
+    // crew: [],
     images: [{ path: "surak_0.jpg" }]
   },
   INTREPID_II: {
@@ -198,7 +198,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "unknown",
-    crew: [],
+    // crew: [],
     images: [{ path: "intrepid_ii_0.jpg" }]
   },
   MONITOR: {
@@ -208,7 +208,7 @@ let ships = {
     owner: "United Federation of Planets",
     operator: "Starfleet",
     status: "destroyed",
-    crew: [],
+    // crew: [],
     images: [{ path: "monitor_0.jpg" }]
   }
 };
@@ -230,6 +230,6 @@ let shipsArr = [
   ships.ARYABHATTA
 ];
 
-for (let i = 0; i < shipsArr.length; i++) {
-  shipsArr[i].crew = charactersArr.filter(character => character.ships.includes(shipsArr[i]));
-}
+// for (let i = 0; i < shipsArr.length; i++) {
+//   shipsArr[i].crew = charactersArr.filter(character => character.ships.includes(shipsArr[i]));
+// }
