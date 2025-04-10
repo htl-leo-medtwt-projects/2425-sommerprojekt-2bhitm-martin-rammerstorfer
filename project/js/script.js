@@ -15,7 +15,9 @@ function changeColorMode() {
     // setStyleColor('accent3', darkMode ? '#2b53a7' : '#2b53a7');
     // setStyleColor('accent4', darkMode ? '#a71313' : '#a71313');
 
-    r.style.setProperty(`--image-bg`, `url(../img/${ darkMode ? 'space.jpg' : 'interior.jpeg' })`);
+    // r.style.setProperty(`--image-bg`, `url(../img/${ darkMode ? 'space.jpg' : 'interior.jpeg' })`);
+
+    d.body.style.backgroundImage = `url(img/${ darkMode ? 'space.jpg' : 'interior.jpeg' })`;
 
     // d.querySelector('#color_mode').innerHTML = darkMode ? '&#9788;' : '&#9789;';
 }

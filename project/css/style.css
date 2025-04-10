@@ -9,7 +9,9 @@
   --image-bg: url(../img/interior.jpeg);
   --transition-duration: 0.3s;
   --transition-timing: ease;
-  --width: 80vw;
+  --width: 70vw;
+  --text-shadow: 0 0 4px black;
+  --drop-shadow: 1px 1px 0 black;
 }
 
 * {
@@ -27,7 +29,6 @@ body {
   background-attachment: fixed;
   background-position: center;
   overflow-x: hidden;
-  transition: background-image var(--transition-duration) var(--transition-timing);
 }
 
 @font-face {
@@ -51,6 +52,7 @@ header {
   align-items: center;
   transition: background-color var(--transition-duration) var(--transition-timing);
   border-top: 4px solid var(--color-accent3);
+  z-index: 10;
 }
 
 header > #color_mode {
@@ -90,6 +92,7 @@ header > nav {
 header > nav a {
   font-family: startrek;
   text-transform: UPPERCASE;
+  font-size: 20px;
   color: var(--color-text);
   transition: color var(--transition-duration) var(--transition-timing);
 }
@@ -115,25 +118,29 @@ header > nav a:hover {
 
 #intro > #intro_container > h1 {
   font-family: startrek;
-  font-size: 70px;
+  font-size: 90px;
   text-transform: UPPERCASE;
   color: white;
-  text-shadow: 0 0 4px black;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
 }
 
 #intro > #intro_container > p {
   font-family: federation;
+  font-size: 20px;
   color: white;
-  text-shadow: 0 0 4px black;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #intro > #intro_container a {
   font-family: startrek;
   text-transform: lowercase;
   color: white;
-  text-shadow: 0 0 4px black;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
   transition: color var(--transition-duration) var(--transition-timing);
-  font-size: 20px;
+  font-size: 26px;
   margin-top: 10px;
 }
 
@@ -149,7 +156,7 @@ main {
 }
 
 main > #explore {
-  height: 70vh;
+  height: 75vh;
   padding: 40px;
   width: var(--width);
   margin: auto;
@@ -174,9 +181,50 @@ main > #explore > a > div {
   height: 40%;
   width: 100%;
   margin: 0 auto 20px auto;
-  color: var(--color-text);
+  color: white;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
   font-family: federation;
-  background-color: var(--color-accent2);
   padding: 10px;
-  transition: color var(--transition-duration) var(--transition-timing);
+  background-size: cover;
+  border: 2px solid var(--color-accent2);
+}
+
+main > #explore > #explore_characters > div {
+  background-image: url(../img/crew_tng.jpg);
+}
+
+main > #explore > #explore_media > div {
+  background-image: url(../img/crew_voy.jpg);
+}
+
+main > #explore > a > div p {
+  font-size: 18px;
+}
+
+main > #explore > a > div h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  height: 14vh;
+  width: 100vw;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: federation;
+  font-size: 20px;
+  text-align: center;
+  transition: background-color var(--transition-duration) var(--transition-timing);
+}
+
+footer > p {
+  font-size: 18px;
+}
+
+#selected {
+  text-decoration: underline;
 }
