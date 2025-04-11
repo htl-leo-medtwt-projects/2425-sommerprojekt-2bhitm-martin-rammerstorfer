@@ -21,7 +21,8 @@ function setAnimation(elem, startX, duration) {
 function checkFilter(c) {
   let filter = document.getElementById('filter').value;
   let filter2 = document.getElementById('filter2').value;
-  return (filter === 'all' || c.species.includes(filter)) && (filter2 === 'all' || c.gender === filter2);
+  let filter3 = document.getElementById('search').value;
+  return (filter === 'all' || c.species.includes(filter)) && (filter2 === 'all' || c.gender === filter2) && (c.name.toLowerCase().includes(filter3.toLowerCase()) || (c.firstNames.toLowerCase().includes(filter3.toLowerCase())));
 }
 
 function getActors(c) {
@@ -98,3 +99,9 @@ function load() {
   }
 }
 load();
+
+document.getElementById('search').addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+    load();
+  }
+});

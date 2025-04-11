@@ -5,10 +5,12 @@
 gsap.registerPlugin(ScrollTrigger);
 function setAnimation(elem, startY, duration) {
   gsap.set(elem, {
-    y: startY
+    y: startY,
+    opacity: 0
   });
   gsap.to(elem, {
     y: 0,
+    opacity: 1,
     duration: duration,
     ease: "power2.out",
     scrollTrigger: {
