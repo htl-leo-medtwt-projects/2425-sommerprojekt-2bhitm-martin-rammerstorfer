@@ -286,6 +286,9 @@ footer > p {
 .character > p {
   margin-bottom: 4px;
 }
+#no_characters {
+  font-family: federation;
+}
 
 #media_container {
   display: flex;

@@ -3,17 +3,17 @@
 /// <reference path="characters.js" />
 
 gsap.registerPlugin(ScrollTrigger);
-function setAnimation(elem, startX, duration) {
+function setAnimation(elem, startY, duration) {
   gsap.set(elem, {
-    x: startX
+    y: startY
   });
   gsap.to(elem, {
-    x: 0,
+    y: 0,
     duration: duration,
     ease: "power2.out",
     scrollTrigger: {
       trigger: elem,
-      start: '32% 80%'
+      start: '-260% 80%'
     }
   });
 }
@@ -58,13 +58,13 @@ function load() {
     let elem = document.getElementsByClassName('mediaElement')[i];
     switch (i % 3) {
       case 0:
-        setAnimation(elem, '140vw', 0.6);
+        setAnimation(elem, '300%', 0.6);
         break;
       case 1:
-        setAnimation(elem, '120vw', 0.8);
+        setAnimation(elem, '320%', 0.8);
         break;
       case 2:
-        setAnimation(elem, '100vw', 1);
+        setAnimation(elem, '330%', 1);
         break;
     }
   }

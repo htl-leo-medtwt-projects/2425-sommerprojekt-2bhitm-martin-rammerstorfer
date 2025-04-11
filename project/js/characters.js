@@ -5,10 +5,10 @@ let charactersArr = [
   {
     id: 0,
     name: "James T. Kirk",
-    description: "Starfleet officer, captain of the USS Enterprise",
+    description: "Captain of the USS Enterprise",
     firstNames: "James Tiberius",
     lastName: "Kirk",
-    titles: null,
+    titles: "Captain",
     altNames: [
       "Jim"
     ],
@@ -92,7 +92,7 @@ let charactersArr = [
     description: "Science officer aboard the USS Enterprise",
     firstNames: "S'chn T'gai",
     lastName: "Spock",
-    titles: null,
+    titles: "Captain",
     altNames: [],
     species: [
       "Vulcan",
@@ -183,7 +183,7 @@ let charactersArr = [
     description: "Chief medical officer aboard the USS Enterprise",
     firstNames: "Leonard Horatio",
     lastName: "McCoy",
-    titles: "Dr.",
+    titles: "Doctor",
     altNames: [
       "Bones",
       "Doc"
@@ -262,11 +262,69 @@ let charactersArr = [
   },
   {
     id: 3,
+    name: "Nyota Uhura",
+    description: "Communications officer aboard the USS Enterprise",
+    firstNames: "Nyota",
+    lastName: "Uhura",
+    titles: null,
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    gender: "female",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Captain",
+    occupation: "Commanding officer",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE,
+      ships.ENTERPRISE_A,
+      ships.LEONDEGRANCE
+    ],
+    status: "retired",
+    birthDate: "2237",
+    birthPlace: "Earth,Kenya",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "single",
+    father: null,
+    mother: null,
+    siblings: [],
+    partners: [],
+    actors: [
+      "Nichelle Nichols",
+      "Celia Rose Gooding"
+    ],
+    media: [
+      media.TOS,
+      media.TAS,
+      media.TMP,
+      media.TWOK,
+      media.TSFS,
+      media.TVH,
+      media.TFF,
+      media.TUC,
+      media.ST09,
+      media.STID,
+      media.STB
+    ],
+    images: [
+      {
+        path: "uhura_0.jpg",
+        year: 2266,
+        media: media.TOS,
+        actor: "Nichelle Nichols"
+      }
+    ]
+  },
+  {
+    id: 5,
     name: "Christopher Pike",
-    description: "Starfleet officer, captain of the USS Enterprise",
+    description: "Original captain of the USS Enterprise",
     firstNames: "Christopher",
     lastName: "Pike",
-    titles: null,
+    titles: "Captain",
     altNames: [
       "Captain Pike"
     ],
@@ -331,4 +389,235 @@ let charactersArr = [
       }
     ]
   },
+  {
+    id: 100,
+    name: "Jean-Luc Picard",
+    description: "Captain of the USS Enterprise-D",
+    firstNames: "Jean-Luc",
+    lastName: "Picard",
+    titles: null,
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Admiral",
+    occupation: "Flag officer",
+    serialNumber: "SP-937-215",
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E,
+      ships.STARGAZER
+    ],
+    status: "active",
+    birthDate: "2305-07-13",
+    birthPlace: "Earth,France,La Barre",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "single",
+    father: "Maurice Picard",
+    mother: "Yvette Picard",
+    siblings: [
+      "Robert Picard",
+      "Marie Picard"
+    ],
+    partners: [],
+    actors: [
+      "Patrick Stewart"
+    ],
+    media: [
+      media.TNG,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "picard_0.jpg",
+        year: 2364,
+        media: media.TNG,
+        actor: "Patrick Stewart"
+      }
+    ]
+  },
+  {
+    id: 101,
+    name: "William T. Riker",
+    description: "First officer of the USS Enterprise-D",
+    firstNames: "William Thomas",
+    lastName: "Riker",
+    titles: "Captain",
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Captain",
+    occupation: "Starfleet officer",
+    serialNumber: "SC-231-427",
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E,
+      ships.TITAN
+    ],
+    status: "active",
+    birthDate: "2335-08-19",
+    birthPlace: "Earth,United States of America,Alaska",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "married",
+    father: "Kyle Riker",
+    mother: "Betty Riker",
+    siblings: [],
+    partners: [
+      "Deanna Troi"
+    ],
+    actors: [
+      "Jonathan Frakes",
+    ],
+    media: [
+      media.TNG,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "riker_0.jpg",
+        year: 2364,
+        media: media.TNG,
+        actor: "Jonathan Frakes"
+      }
+    ]
+  },
+  {
+    id: 102,
+    name: "Deanna Troi",
+    description: "Ship's counselor aboard the USS Enterprise-D",
+    firstNames: "Deanna",
+    lastName: "Troi",
+    titles: null,
+    altNames: [],
+    species: [
+      "Betazoid",
+      "Human"
+    ],
+    gender: "female",
+    homePlanet: "Betazed",
+    affiliation: "Federation Starfleet",
+    rank: "Commander",
+    occupation: "Counselor",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E,
+      ships.TITAN
+    ],
+    status: "active",
+    birthDate: "2336-03-29",
+    birthPlace: "Betazed",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "married",
+    father: "Ian Andrew Troi",
+    mother: "Lwaxana Troi",
+    siblings: [
+      "Kestra Troi"
+    ],
+    partners: [
+      "William Riker"
+    ],
+    actors: [
+      "Marina Sirtis",
+    ],
+    media: [
+      media.TNG,
+      media.GEN,
+      media.VOY,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "troi_0.jpg",
+        year: 2364,
+        media: media.TNG,
+        actor: "Marina Sirtis"
+      }
+    ]
+  },
+  {
+    id: 103,
+    name: "Worf",
+    description: "Chief of security aboard the USS Enterprise-D",
+    firstNames: null,
+    lastName: "Worf",
+    titles: "Captain",
+    altNames: [],
+    species: [
+      "Klingon",
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Qo-noS",
+    affiliation: "Federation Starfleet",
+    rank: "Captain",
+    occupation: "Starfleet officer",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E,
+      ships.DEEP_SPACE_9
+    ],
+    status: "active",
+    birthDate: "2340",
+    birthPlace: "Qo-noS",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "widower",
+    father: "Mogh",
+    mother: null,
+    siblings: [
+      "Kurn",
+      "Nikolai Rozhenko",
+      "Jeremy Aster"
+    ],
+    partners: [
+      "Jadzia Dax"
+    ],
+    actors: [
+      "Michael Dorn",
+    ],
+    media: [
+      media.TNG,
+      media.DS9,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "worf_0.jpg",
+        year: 2366,
+        media: media.TNG,
+        actor: "Michael Dorn"
+      }
+    ]
+  }
 ];

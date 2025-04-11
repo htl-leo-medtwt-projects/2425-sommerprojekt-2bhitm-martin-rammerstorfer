@@ -13,7 +13,7 @@ function setAnimation(elem, startX, duration) {
     ease: "power2.out",
     scrollTrigger: {
       trigger: elem,
-      start: '32% 80%'
+      start: '25% 80%'
     }
   });
 }
@@ -58,6 +58,7 @@ function getShips(c) {
 
 function load() {
   let outp = '';
+  let noneFound = true;
   for (let i = 0; i < charactersArr.length; i++) {
     let c = charactersArr[i];
     if (checkFilter(c)) {
@@ -70,10 +71,14 @@ function load() {
           <p><b>Occupation:</b> ${c.occupation}</p>
           <p><b>Home planet:</b> ${c.homePlanet}</p>
           <p><b>Species:</b> ${getSpecies(c)}</p>
-          <p><b>Actors:</b> ${getActors(c)}</p>
+          <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
         </div>
       `;
+      noneFound = false;
     }
+  }
+  if (noneFound) {
+    outp += `<p id="no_characters">No characters found</p>`;
   }
   document.getElementById('characters_container').innerHTML = outp;
   

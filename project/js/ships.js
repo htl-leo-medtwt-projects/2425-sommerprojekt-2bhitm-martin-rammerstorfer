@@ -39,7 +39,7 @@ let ships = {
     operator: "Starfleet",
     status: "destroyed",
     // crew: [],
-    images: [{ path: "enterprise_c_0.jpg" }]
+    images: []
   },
   ENTERPRISE_D: {
     name: "USS Enterprise D",
@@ -49,7 +49,7 @@ let ships = {
     operator: "Starfleet",
     status: "preserved",
     // crew: [],
-    images: [{ path: "enterprise_d_0.jpg" }]
+    images: []
   },
   ENTERPRISE_E: {
     name: "USS Enterprise E",
@@ -59,7 +59,7 @@ let ships = {
     operator: "Starfleet",
     status: "out of service",
     // crew: [],
-    images: [{ path: "enterprise_e_0.jpg" }]
+    images: []
   },
   ENTERPRISE_F: {
     name: "USS Enterprise F",
@@ -69,7 +69,7 @@ let ships = {
     operator: "Starfleet",
     status: "decommissioned",
     // crew: [],
-    images: [{ path: "enterprise_f_0.jpg" }]
+    images: []
   },
   ENTERPRISE_G: {
     name: "USS Enterprise G",
@@ -79,7 +79,7 @@ let ships = {
     operator: "Starfleet",
     status: "active",
     // crew: [],
-    images: [{ path: "enterprise_g_0.jpg" }]
+    images: []
   },
   DEFIANT: {
     name: "USS Defiant",
@@ -89,7 +89,7 @@ let ships = {
     operator: "Starfleet",
     status: "active",
     // crew: [],
-    images: [{ path: "defiant_0.jpg" }]
+    images: []
   },
   VOYAGER: {
     name: "USS Voyager",
@@ -99,7 +99,7 @@ let ships = {
     operator: "Starfleet",
     status: "active",
     // crew: [],
-    images: [{ path: "voyager_0.jpg" }]
+    images: []
   },
   DISCOVERY: {
     name: "USS Discovery",
@@ -109,7 +109,7 @@ let ships = {
     operator: "Starfleet",
     status: "destroyed",
     // crew: [],
-    images: [{ path: "discovery_0.jpg" }]
+    images: []
   },
   LA_SIRENA: {
     name: "SS La Sirena",
@@ -119,7 +119,7 @@ let ships = {
     operator: "Crist\u{00f3}bal Rios",
     status: "active",
     // crew: [],
-    images: [{ path: "la_sirena_0.jpg" }]
+    images: []
   },
   CERRITOS: {
     name: "USS Cerritos",
@@ -129,7 +129,27 @@ let ships = {
     operator: "Starfleet",
     status: "active",
     // crew: [],
-    images: [{ path: "cerritos_0.jpg" }]
+    images: []
+  },
+  STARGAZER: {
+    name: "USS Stargazer",
+    registry: "NCC-2893",
+    class: "Constellation",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "preserved",
+    // crew: [],
+    images: [{ path: "stargazer_0.jpg" }]
+  },
+  TITAN: {
+    name: "USS Titan",
+    registry: "NCC-80102",
+    class: "Luna",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "decommissioned",
+    // crew: [],
+    images: []
   },
   FARRAGUT: {
     name: "USS Farragut",
@@ -139,7 +159,7 @@ let ships = {
     operator: "Starfleet",
     status: "active",
     // crew: [],
-    images: [{ path: "farragut_0.jpg" }]
+    images: []
   },
   ANTARES: {
     name: "USS Antares",
@@ -149,7 +169,7 @@ let ships = {
     operator: "Starfleet",
     status: "unknown",
     // crew: [],
-    images: [{ path: "antares_0.jpg" }]
+    images: []
   },
   CHATELET: {
     name: "USS Chatelet",
@@ -159,7 +179,7 @@ let ships = {
     operator: "Starfleet",
     status: "unknown",
     // crew: [],
-    images: [{ path: "chatelet_0.jpg" }]
+    images: []
   },
   ARYABHATTA: {
     name: "USS Aryabhatta",
@@ -169,7 +189,7 @@ let ships = {
     operator: "Starfleet",
     status: "unknown",
     // crew: [],
-    images: [{ path: "aryabhatta_0.jpg" }]
+    images: []
   },
   ARTEMIS: {
     name: "USS Artemis",
@@ -179,7 +199,7 @@ let ships = {
     operator: "Starfleet",
     status: "unknown",
     // crew: [],
-    images: [{ path: "artemis_0.jpg" }]
+    images: []
   },
   SURAK: {
     name: "USS Surak",
@@ -189,7 +209,7 @@ let ships = {
     operator: "Starfleet",
     status: "lost",
     // crew: [],
-    images: [{ path: "surak_0.jpg" }]
+    images: []
   },
   INTREPID_II: {
     name: "USS Intrepid II",
@@ -199,7 +219,7 @@ let ships = {
     operator: "Starfleet",
     status: "unknown",
     // crew: [],
-    images: [{ path: "intrepid_ii_0.jpg" }]
+    images: []
   },
   MONITOR: {
     name: "USS Monitor",
@@ -209,8 +229,28 @@ let ships = {
     operator: "Starfleet",
     status: "destroyed",
     // crew: [],
-    images: [{ path: "monitor_0.jpg" }]
-  }
+    images: []
+  },
+  LEONDEGRANCE: {
+    name: "USS Leondegrance",
+    registry: "NCC-2176",
+    class: "Lancelot",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "decommissioned",
+    // crew: [],
+    images: []
+  },
+  DEEP_SPACE_9: {
+    name: "Deep Space 9",
+    registry: null,
+    class: null,
+    owner: "Bajoran Republic",
+    operator: "Bajoran Militia",
+    status: "active",
+    // crew: [],
+    images: []
+  },
 };
 
 let shipsArr = [
