@@ -12,7 +12,7 @@ let ships = {
     images: [{ path: "enterprise_0.jpg" }]
   },
   ENTERPRISE_A: {
-    name: "USS Enterprise A",
+    name: "USS Enterprise-A",
     registry: "NCC-1701-A",
     class: "Constitution II",
     owner: "United Federation of Planets",
@@ -22,7 +22,7 @@ let ships = {
     images: [{ path: "enterprise_a_0.jpg" }]
   },
   ENTERPRISE_B: {
-    name: "USS Enterprise B",
+    name: "USS Enterprise-B",
     registry: "NCC-1701-B",
     class: "Excelsior",
     owner: "United Federation of Planets",
@@ -32,7 +32,7 @@ let ships = {
     images: [{ path: "enterprise_b_0.jpg" }]
   },
   ENTERPRISE_C: {
-    name: "USS Enterprise C",
+    name: "USS Enterprise-C",
     registry: "NCC-1701-C",
     class: "Ambassador",
     owner: "United Federation of Planets",
@@ -42,7 +42,7 @@ let ships = {
     images: []
   },
   ENTERPRISE_D: {
-    name: "USS Enterprise D",
+    name: "USS Enterprise-D",
     registry: "NCC-1701-D",
     class: "Galaxy",
     owner: "United Federation of Planets",
@@ -52,7 +52,7 @@ let ships = {
     images: []
   },
   ENTERPRISE_E: {
-    name: "USS Enterprise E",
+    name: "USS Enterprise-E",
     registry: "NCC-1701-E",
     class: "Sovereign",
     owner: "United Federation of Planets",
@@ -62,7 +62,7 @@ let ships = {
     images: []
   },
   ENTERPRISE_F: {
-    name: "USS Enterprise F",
+    name: "USS Enterprise-F",
     registry: "NCC-1701-F",
     class: "Odyssey",
     owner: "United Federation of Planets",
@@ -72,7 +72,7 @@ let ships = {
     images: []
   },
   ENTERPRISE_G: {
-    name: "USS Enterprise G",
+    name: "USS Enterprise-G",
     registry: "NCC-1701-G",
     class: "Constitution III",
     owner: "United Federation of Planets",
@@ -103,7 +103,7 @@ let ships = {
   },
   DISCOVERY: {
     name: "USS Discovery",
-    registry: "NCC",
+    registry: "NCC-1031",
     class: "Miranda",
     owner: "United Federation of Planets",
     operator: "Starfleet",
@@ -131,6 +131,16 @@ let ships = {
     // crew: [],
     images: []
   },
+  EXCELSIOR: {
+    name: "USS Excelsior",
+    registry: "NCC-2000",
+    class: "Excelsior",
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "preserved",
+    // crew: [],
+    images: [{ path: "excelsior_0.jpg" }]
+  },
   STARGAZER: {
     name: "USS Stargazer",
     registry: "NCC-2893",
@@ -140,6 +150,16 @@ let ships = {
     status: "preserved",
     // crew: [],
     images: [{ path: "stargazer_0.jpg" }]
+  },
+  STARDIVER: {
+    name: "USS Stardiver",
+    registry: null,
+    class: null,
+    owner: "United Federation of Planets",
+    operator: "Starfleet",
+    status: "destroyed",
+    // crew: [],
+    images: []
   },
   TITAN: {
     name: "USS Titan",

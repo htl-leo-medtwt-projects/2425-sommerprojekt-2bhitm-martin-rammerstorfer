@@ -262,6 +262,73 @@ let charactersArr = [
   },
   {
     id: 3,
+    name: "Montgomery Scott",
+    description: "Chief engineer aboard the USS Enterprise",
+    firstNames: "Montgomery",
+    lastName: "Scott",
+    titles: null,
+    altNames: [
+      "Scotty"
+    ],
+    species: [
+      "Human"
+    ],
+    gender: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Captain",
+    occupation: "Chief engineer",
+    serialNumber: "SE 19754 T",
+    ships: [
+      ships.ENTERPRISE,
+      ships.ENTERPRISE_A,
+      ships.ENTERPRISE_B,
+      ships.EXCELSIOR,
+      ships.STARDIVER
+    ],
+    status: "active",
+    birthDate: "2222",
+    birthPlace: "Earth,United Kingdom,Scotland",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "single",
+    father: null,
+    mother: null,
+    siblings: [],
+    partners: [],
+    actors: [
+      "James Doohan",
+      "Martin Quinn",
+      "Carlos Alazraqui",
+      "Matthew Wolf"
+    ],
+    media: [
+      media.TOS,
+      media.TAS,
+      media.TMP,
+      media.TWOK,
+      media.TSFS,
+      media.TVH,
+      media.TFF,
+      media.TUC,
+      media.GEN,
+      media.ST09,
+      media.STID,
+      media.STB,
+      media.LOW,
+      media.SNW
+    ],
+    images: [
+      {
+        path: "scott_0.jpg",
+        year: 2266,
+        media: media.TOS,
+        actor: "James Doohan"
+      }
+    ]
+  },
+  {
+    id: 4,
     name: "Nyota Uhura",
     description: "Communications officer aboard the USS Enterprise",
     firstNames: "Nyota",
