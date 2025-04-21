@@ -443,7 +443,7 @@ let charactersArr = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     name: "Christopher Pike",
     description: "Original captain of the USS Enterprise",
     firstNames: "Christopher",
@@ -696,7 +696,7 @@ let charactersArr = [
       "Human"
     ],
     gender: "male",
-    homePlanet: "Qo-noS",
+    homePlanet: "Qo'noS",
     affiliation: "Federation Starfleet",
     rank: "Captain",
     occupation: "Starfleet officer",
@@ -708,7 +708,7 @@ let charactersArr = [
     ],
     status: "active",
     birthDate: "2340",
-    birthPlace: "Qo-noS",
+    birthPlace: "Qo'noS",
     deathDate: null,
     deathPlace: null,
     maritalStatus: "widower",
@@ -757,32 +757,34 @@ let charactersArr = [
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
     rank: "Captain",
-    occupation: "Starfleet officer",
+    occupation: "Emissary of the Prophets",
     serialNumber: "DS9-001",
     ships: [
       ships.DEEP_SPACE_9
     ],
-    status: "active",
-    birthDate: "2327-12-12",
-    birthPlace: "Earth",
+    status: "missing",
+    birthDate: "2332",
+    birthPlace: "Earth,United States of America,Louisiana,New Orleans",
     deathDate: null,
     deathPlace: null,
-    maritalStatus: "widowed",
+    maritalStatus: "married",
     father: null,
     mother: null,
-    siblings: [],
-    partners: [],
+    siblings: ["Judith Sisko"],
+    partners: [
+      "Kassidy Yates-Sisko",
+      "Jennifer Sisko"
+    ],
     actors: [
       "Avery Brooks"
     ],
     media: [
-      media.DS9,
-      media.DIS
+      media.DS9
     ],
     images: [
       {
         path: "sisko_0.jpg",
-        year: 2369,
+        year: 2371,
         media: media.DS9,
         actor: "Avery Brooks"
       }
