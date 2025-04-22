@@ -63,10 +63,10 @@ function load() {
         setAnimation(elem, '300%', 0.6);
         break;
       case 1:
-        setAnimation(elem, '320%', 0.8);
+        setAnimation(elem, '300%', 0.8);
         break;
       case 2:
-        setAnimation(elem, '330%', 1);
+        setAnimation(elem, '300%', 1);
         break;
     }
   }
