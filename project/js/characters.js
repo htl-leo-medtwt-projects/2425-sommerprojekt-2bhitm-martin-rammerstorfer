@@ -801,35 +801,44 @@ let charactersArr = [
     species: ["Bajoran"],
     gender: "female",
     homePlanet: "Bajor",
-    affiliation: "Bajoran Militia / Federation",
+    affiliation: "Federation Starfleet",
     rank: "Colonel",
-    occupation: "Military officer",
+    occupation: "Commanding officer",
     serialNumber: null,
     ships: [
       ships.DEEP_SPACE_9
     ],
     status: "active",
-    birthDate: "2333-05-08",
+    birthDate: "2343",
     birthPlace: "Bajor",
     deathDate: null,
     deathPlace: null,
     maritalStatus: "single",
-    father: null,
-    mother: null,
-    siblings: [],
+    father: "Kira Taban",
+    mother: "Kira Meru",
+    siblings: [
+      "Kira Reon",
+      "Kira Pohl"
+    ],
     partners: [],
     actors: [
       "Nana Visitor"
     ],
     media: [
       media.DS9,
-      media.DIS
+      media.LOW
     ],
     images: [
       {
         path: "kira_0.jpg",
-        year: 2369,
+        year: 2375,
         media: media.DS9,
+        actor: "Nana Visitor"
+      },
+      {
+        path: "kira_1.jpg",
+        year: 2381,
+        media: media.LOW,
         actor: "Nana Visitor"
       }
     ]
@@ -844,8 +853,8 @@ let charactersArr = [
     altNames: [],
     species: ["Changeling"],
     gender: "male",
-    homePlanet: "Unknown",
-    affiliation: "Deep Space Nine Security",
+    homePlanet: null,
+    affiliation: "Great Link",
     rank: "Chief of Security",
     occupation: "Security Officer",
     serialNumber: null,
@@ -854,25 +863,26 @@ let charactersArr = [
     ],
     status: "active",
     birthDate: null,
-    birthPlace: "The Great Link",
+    birthPlace: null,
     deathDate: null,
     deathPlace: null,
-    maritalStatus: null,
+    maritalStatus: "divorced",
     father: null,
     mother: null,
     siblings: [],
-    partners: [],
+    partners: [
+      "Lwaxana Troi",
+    ],
     actors: [
       "René Auberjonois"
     ],
     media: [
-      media.DS9,
-      media.DIS
+      media.DS9
     ],
     images: [
       {
         path: "odo_0.jpg",
-        year: 2369,
+        year: 2375,
         media: media.DS9,
         actor: "René Auberjonois"
       }
@@ -880,6 +890,50 @@ let charactersArr = [
   },
   {
     id: 203,
+    name: "Julian Bashir",
+    description: "Chief Medical Officer aboard Deep Space Nine",
+    firstNames: "Julian",
+    lastName: "Bashir",
+    titles: "Doctor",
+    altNames: [],
+    species: ["Human Augment"],
+    gender: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Lieutenant",
+    occupation: "Chief medical officer",
+    serialNumber: null,
+    ships: [
+      ships.DEEP_SPACE_9,
+      ships.DEFIANT
+    ],
+    status: "active",
+    birthDate: "2341",
+    birthPlace: "Earth",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "single",
+    father: "Richard Bashir",
+    mother: "Amsha Bashir",
+    siblings: [],
+    partners: [],
+    actors: [
+      "Alexander Siddig"
+    ],
+    media: [
+      media.DS9
+    ],
+    images: [
+      {
+        path: "bashir_0.jpg",
+        year: 2373,
+        media: media.DS9,
+        actor: "Alexander Siddig"
+      }
+    ]
+  },
+  {
+    id: 204,
     name: "Quark",
     description: "Ferengi bartender and owner of a bar on Deep Space Nine",
     firstNames: "Quark",
@@ -889,9 +943,9 @@ let charactersArr = [
     species: ["Ferengi"],
     gender: "male",
     homePlanet: "Ferenginar",
-    affiliation: "None",
+    affiliation: null,
     rank: null,
-    occupation: "Bar owner / Merchant",
+    occupation: "Entrepeneur",
     serialNumber: null,
     ships: [],
     status: "active",
@@ -899,68 +953,34 @@ let charactersArr = [
     birthPlace: "Ferenginar",
     deathDate: null,
     deathPlace: null,
-    maritalStatus: "single",
-    father: null,
-    mother: null,
-    siblings: [],
-    partners: [],
+    maritalStatus: "divorced",
+    father: "Keldar",
+    mother: "Ishka",
+    siblings: [
+      "Rom"
+    ],
+    partners: [
+      "Grilka"
+    ],
     actors: [
       "Armin Shimerman"
     ],
     media: [
       media.DS9,
-      media.DIS
+      media.LOW
     ],
     images: [
       {
         path: "quark_0.jpg",
-        year: 2369,
+        year: 2375,
         media: media.DS9,
         actor: "Armin Shimerman"
-      }
-    ]
-  },
-  {
-    id: 204,
-    name: "Julian Bashir",
-    description: "Chief Medical Officer aboard Deep Space Nine",
-    firstNames: "Julian",
-    lastName: "Bashir",
-    titles: "Doctor",
-    altNames: [],
-    species: ["Human"],
-    gender: "male",
-    homePlanet: "Earth",
-    affiliation: "Federation Starfleet",
-    rank: "Commander",
-    occupation: "Doctor",
-    serialNumber: null,
-    ships: [
-      ships.DEEP_SPACE_9
-    ],
-    status: "active",
-    birthDate: "2336-04-15",
-    birthPlace: "Earth",
-    deathDate: null,
-    deathPlace: null,
-    maritalStatus: "single",
-    father: null,
-    mother: null,
-    siblings: [],
-    partners: [],
-    actors: [
-      "Alexander Siddig"
-    ],
-    media: [
-      media.DS9,
-      media.DIS
-    ],
-    images: [
+      },
       {
-        path: "bashir_0.jpg",
-        year: 2369,
-        media: media.DS9,
-        actor: "Alexander Siddig"
+        path: "quark_1.jpg",
+        year: 2381,
+        media: media.LOW,
+        actor: "Armin Shimerman"
       }
     ]
   },
@@ -976,20 +996,20 @@ let charactersArr = [
     gender: "male",
     homePlanet: "Earth",
     affiliation: "United Earth Starfleet",
-    rank: "Captain",
-    occupation: "Starfleet Captain",
-    serialNumber: null,
+    rank: "Admiral",
+    occupation: "President of the Federation",
+    serialNumber: "SA-022-9237-CY",
     ships: [
       ships.ENTERPRISE
     ],
     status: "active",
-    birthDate: "2112-07-12",
-    birthPlace: "Earth,United States,California,San Francisco",
+    birthDate: "2112",
+    birthPlace: "Earth,United States of America,New York,Upstate New York",
     deathDate: null,
     deathPlace: null,
     maritalStatus: "single",
-    father: null,
-    mother: null,
+    father: "Henry Archer",
+    mother: "Sally Archer",
     siblings: [],
     partners: [],
     actors: [
@@ -1011,30 +1031,30 @@ let charactersArr = [
     id: 301,
     name: "T'Pol",
     description: "Science officer aboard the NX-01 Enterprise",
-    firstNames: "T'Pol",
-    lastName: null,
+    firstNames: null,
+    lastName: "T'Pol",
     titles: null,
     altNames: [],
     species: ["Vulcan"],
     gender: "female",
     homePlanet: "Vulcan",
-    affiliation: "United Earth Starfleet / Vulcan",
+    affiliation: "United Earth Starfleet",
     rank: "Commander",
-    occupation: "Science Officer",
-    serialNumber: null,
+    occupation: "Science officer",
+    serialNumber: "2861F0306JB1",
     ships: [
       ships.ENTERPRISE
     ],
     status: "active",
-    birthDate: "2100-01-01",
+    birthDate: "2088",
     birthPlace: "Vulcan",
     deathDate: null,
     deathPlace: null,
-    maritalStatus: "single",
+    maritalStatus: "annulled",
     father: null,
-    mother: null,
+    mother: "T'Les",
     siblings: [],
-    partners: [],
+    partners: ["Koss"],
     actors: [
       "Jolene Blalock"
     ],
@@ -1052,7 +1072,7 @@ let charactersArr = [
   },
   {
     id: 302,
-    name: "Charles 'Trip' Tucker III",
+    name: "Charles Tucker III",
     description: "Chief Engineer aboard the NX-01 Enterprise",
     firstNames: "Charles",
     lastName: "Tucker",
@@ -1064,21 +1084,21 @@ let charactersArr = [
     gender: "male",
     homePlanet: "Earth",
     affiliation: "United Earth Starfleet",
-    rank: "Lieutenant Commander",
-    occupation: "Chief Engineer",
+    rank: "Commander",
+    occupation: "Chief engineer",
     serialNumber: null,
     ships: [
       ships.ENTERPRISE
     ],
-    status: "active",
-    birthDate: "2115-05-18",
-    birthPlace: "Earth,United States,Texas,Houston",
-    deathDate: null,
-    deathPlace: null,
-    maritalStatus: "married",
-    father: null,
+    status: "deceased",
+    birthDate: "2121",
+    birthPlace: "Earth,United States of America",
+    deathDate: "2161",
+    deathPlace: "USS Enterprise",
+    maritalStatus: "single",
+    father: "Charles Tucker II",
     mother: null,
-    siblings: [],
+    siblings: ["Elizabeth Tucker"],
     partners: [],
     actors: [
       "Connor Trinneer"
@@ -1088,13 +1108,14 @@ let charactersArr = [
     ],
     images: [
       {
-        path: "tucker_0.jpg",
-        year: 2151,
+        path: "trip_0.jpg",
+        year: 2161,
         media: media.ENT,
         actor: "Connor Trinneer"
       }
     ]
   },
+  // possibly need fixing
   {
     id: 303,
     name: "Malcolm Reed",
@@ -1108,23 +1129,23 @@ let charactersArr = [
     homePlanet: "Earth",
     affiliation: "United Earth Starfleet",
     rank: "Lieutenant",
-    occupation: "Armory Officer",
-    serialNumber: null,
+    occupation: "Tactical officer",
+    serialNumber: "4767M6701DK1",
     ships: [
       ships.ENTERPRISE
     ],
     status: "active",
-    birthDate: "2110-02-20",
-    birthPlace: "Earth,United States,Virginia,Richmond",
+    birthDate: null,
+    birthPlace: null,
     deathDate: null,
     deathPlace: null,
     maritalStatus: "single",
-    father: null,
-    mother: null,
-    siblings: [],
+    father: "Stuart Reed",
+    mother: "Mary Reed",
+    siblings: ["Madeline Reed"],
     partners: [],
     actors: [
-      "Anthony Montgomery"
+      "Dominic Keating"
     ],
     media: [
       media.ENT
@@ -1132,9 +1153,9 @@ let charactersArr = [
     images: [
       {
         path: "reed_0.jpg",
-        year: 2151,
+        year: 2154,
         media: media.ENT,
-        actor: "Anthony Montgomery"
+        actor: "Dominic Keating"
       }
     ]
   },
@@ -1161,7 +1182,7 @@ let charactersArr = [
     birthPlace: "Earth,United States,California,Los Angeles",
     deathDate: null,
     deathPlace: null,
-    maritalStatus: "single",
+    maritalStatus: "married",
     father: null,
     mother: null,
     siblings: [],
@@ -1175,7 +1196,7 @@ let charactersArr = [
     images: [
       {
         path: "sato_0.jpg",
-        year: 2151,
+        year: 2161,
         media: media.ENT,
         actor: "Linda Park"
       }
@@ -1183,7 +1204,7 @@ let charactersArr = [
   },
   {
     id: 305,
-    name: "Dr. Phlox",
+    name: "Phlox",
     description: "Chief Medical Officer aboard the NX-01 Enterprise",
     firstNames: "Phlox",
     lastName: null,
@@ -1218,7 +1239,7 @@ let charactersArr = [
     images: [
       {
         path: "phlox_0.jpg",
-        year: 2151,
+        year: 2154,
         media: media.ENT,
         actor: "John Billingsley"
       }
@@ -1231,23 +1252,23 @@ let charactersArr = [
     firstNames: "Michael",
     lastName: "Burnham",
     titles: "Commander",
-    altNames: ["Burnham"],
+    altNames: [],
     species: ["Human"],
     gender: "female",
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
-    rank: "Commander",
-    occupation: "Science Specialist",
-    serialNumber: null,
+    rank: "Admiral",
+    occupation: "Flag officer",
+    serialNumber: "SC0064-0974SHN",
     ships: [ships.DISCOVERY],
     status: "active",
     birthDate: null,
     birthPlace: "Earth",
     deathDate: null,
     deathPlace: null,
-    maritalStatus: "single",
-    father: null,
-    mother: null,
+    maritalStatus: "married",
+    father: "Mike Burnham",
+    mother: "Gabrielle Burnham",
     siblings: [],
     partners: [],
     actors: ["Sonequa Martin-Green"],
@@ -1255,7 +1276,7 @@ let charactersArr = [
     images: [
       {
         path: "burnham_0.jpg",
-        year: 2255,
+        year: 2256,
         media: media.DIS,
         actor: "Sonequa Martin-Green"
       }
@@ -1292,7 +1313,7 @@ let charactersArr = [
     images: [
       {
         path: "saru_0.jpg",
-        year: 2255,
+        year: 3191,
         media: media.DIS,
         actor: "Doug Jones"
       }
@@ -1311,7 +1332,7 @@ let charactersArr = [
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
     rank: "Lieutenant Commander",
-    occupation: "Engineer / Astromycologist",
+    occupation: "Astromycologist",
     serialNumber: null,
     ships: [ships.DISCOVERY],
     status: "active",
@@ -1329,7 +1350,7 @@ let charactersArr = [
     images: [
       {
         path: "stamets_0.jpg",
-        year: 2255,
+        year: 2256,
         media: media.DIS,
         actor: "Anthony Rapp"
       }
@@ -1343,7 +1364,7 @@ let charactersArr = [
     lastName: "Tyler",
     titles: null,
     altNames: [],
-    species: ["Human"],
+    species: ["Klingon", "Human"],
     gender: "male",
     homePlanet: "Earth",
     affiliation: "Federation Starfleet",
@@ -1353,7 +1374,7 @@ let charactersArr = [
     ships: [ships.DISCOVERY],
     status: "active",
     birthDate: null,
-    birthPlace: "Unknown",
+    birthPlace: null,
     deathDate: null,
     deathPlace: null,
     maritalStatus: "single",
@@ -1366,7 +1387,7 @@ let charactersArr = [
     images: [
       {
         path: "tyler_0.jpg",
-        year: 2255,
+        year: 2257,
         media: media.DIS,
         actor: "Shazad Latif"
       }

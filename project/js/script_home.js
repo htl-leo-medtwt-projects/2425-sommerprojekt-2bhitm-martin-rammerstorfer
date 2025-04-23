@@ -16,5 +16,3 @@ function setAnimation(elem, startX, duration) {
 
 setAnimation(document.querySelector('#explore_characters > div'), '-100vw', 1);
 setAnimation(document.querySelector('#explore_media > div'), '-100vw', 1);
-
-console.log('script_home.js loaded');

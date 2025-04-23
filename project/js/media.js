@@ -466,3 +466,4 @@ let mediaArr = [
 // for (let i = 0; i < mediaArr.length; i++) {
 //   mediaArr[i].characters = charactersArr.filter(character => character.media.includes(mediaArr[i]));
 // }
+ 
