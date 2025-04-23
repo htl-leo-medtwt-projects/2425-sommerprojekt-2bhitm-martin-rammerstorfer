@@ -19,10 +19,19 @@ function setAnimation(elem, startX, duration) {
 }
 
 function checkFilter(c) {
-  let filter = document.getElementById('filter').value;
-  let filter2 = document.getElementById('filter2').value;
-  let filter3 = document.getElementById('search').value;
-  return (filter === 'all' || c.species.includes(filter)) && (filter2 === 'all' || c.gender === filter2) && (c.name.toLowerCase().includes(filter3.toLowerCase()) || (c.firstNames.toLowerCase().includes(filter3.toLowerCase())));
+  let filter_species = document.getElementById('filter_species').value;
+  let filter_sex = document.getElementById('filter_sex').value;
+  let search = document.getElementById('search').value.toLowerCase();
+  return (
+    (filter_species === 'all' || c.species.includes(filter_species)) &&
+    (filter_sex === 'all' || c.sex === filter_sex) &&
+    (
+      (c.name.toLowerCase().includes(search)) ||
+      (c.firstNames.toLowerCase().includes(search)) ||
+      (c.lastName.toLowerCase().includes(search)) ||
+      (c.altNames.filter(str => str.includes(search)).length > 0)
+    )
+  );
 }
 
 function getActors(c) {
@@ -59,31 +68,30 @@ function getShips(c) {
 
 function load() {
   let outp = '';
-  let noneFound = true;
-  for (let i = 0; i < charactersArr.length; i++) {
-    let c = charactersArr[i];
-    if (checkFilter(c)) {
-      outp += `
-        <div class="character">
-          <div class="img_container"><img src="img/characters/${c.images[0].path}" alt="${c.name} in ${c.images[0].year}"></div>
-          <h3>${c.name}</h3>
-          <p class="description">${c.description}</p>
-          <p><b>Gender:</b> ${c.gender}</p>
-          <p><b>Occupation:</b> ${c.occupation}</p>
-          <p><b>Home planet:</b> ${c.homePlanet}</p>
-          <p><b>Species:</b> ${getSpecies(c)}</p>
-          <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
-        </div>
-      `;
-      noneFound = false;
-    }
-  }
-  if (noneFound) {
+
+  let charactersArrFiltered = charactersArr.filter(c => checkFilter(c));
+
+  if (charactersArrFiltered.length === 0) {
     outp += `<p id="no_characters">No characters found</p>`;
+  }
+  for (let i = 0; i < charactersArrFiltered.length; i++) {
+    let c = charactersArrFiltered[i];
+    outp += `
+      <div class="character">
+        <div class="img_container"><img src="img/characters/${c.images[0].path}" alt="${c.name} in ${c.images[0].year}"></div>
+        <h3>${c.name}</h3>
+        <p class="description">${c.description}</p>
+        <p><b>Sex:</b> ${c.sex}</p>
+        <p><b>Occupation:</b> ${c.occupation}</p>
+        <p><b>Home planet:</b> ${c.homePlanet}</p>
+        <p><b>Species:</b> ${getSpecies(c)}</p>
+        <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
+      </div>
+    `;
   }
   document.getElementById('characters_container').innerHTML = outp;
   
-  for (let i = 0; i < charactersArr.length; i++) {
+  for (let i = 0; i < charactersArrFiltered.length; i++) {
     let elem = document.getElementsByClassName('character')[i];
     switch (i % 3) {
       case 0:
@@ -99,9 +107,3 @@ function load() {
   }
 }
 load();
-
-document.getElementById('search').addEventListener('keyup', function(event) {
-  if (event.key === 'Enter') {
-    load();
-  }
-});
