@@ -197,9 +197,8 @@ main > #explore > a > div {
   color: white;
   text-shadow: var(--text-shadow), var(--drop-shadow);
   font-family: federation;
-  padding: 20px;
   background-size: 100%;
-  background-position: top center;
+  padding: 20px;
   border: 2px solid var(--color-accent2);
   transition: background-size var(--transition-duration) var(--transition-timing);
 }
@@ -208,12 +207,14 @@ main > #explore > a > div:hover {
   background-size: 110%;
 }
 
-main > #explore > #explore_characters > div {
-  background-image: url(../img/crew_tng.jpg);
+main > #explore > #explore_media > div {
+  background-image: url(../img/dvds.jpeg);
+  background-position: top center;
 }
 
-main > #explore > #explore_media > div {
+main > #explore > #explore_characters > div {
   background-image: url(../img/crew_voy.jpg);
+  background-position: center;
 }
 
 main > #explore > a > div p {
@@ -251,18 +252,21 @@ footer > p {
   top: 88vh;
   right: -40vw;
   width: 30vw;
+  user-select: none;
 }
 #planet {
   position: absolute;
   bottom: 6vh;
   right: -5vw;
   width: 13vw;
+  user-select: none;
 }
 #planet2 {
   position: absolute;
   bottom: 30vh;
   left: -7vw;
   width: 16vw;
+  user-select: none;
 }
 
 #selected {
@@ -289,8 +293,11 @@ footer > p {
   font-family: federation;
   width: 30%;
   padding: 10px;
-  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing), box-shadow .5s var(--transition-timing);
   cursor: pointer;
+}
+.character:hover {
+  box-shadow: 1px 1px 0 var(--color-text);
 }
 .character > .img_container {
   width: 100%;
@@ -334,8 +341,11 @@ footer > p {
   font-family: federation;
   width: 30%;
   padding: 10px;
-  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing), box-shadow .5s var(--transition-timing);
   cursor: pointer;
+}
+.mediaElement:hover {
+  box-shadow: 1px 1px 0 var(--color-text);
 }
 .mediaElement > .img_container {
   width: 100%;
@@ -433,13 +443,13 @@ input {
   position: relative;
 }
 #popup_content > .img_container img {
+  height: 100%;
   width: 100%;
   object-position: center;
   padding: 10px;
   user-select: none;
 }
 .popup_character .img_container img {
-  height: 100%;
   object-fit: cover;
 }
 .popup_media .img_container img {
@@ -486,6 +496,7 @@ input {
 
 .instruction {
   font-family: federation;
+  font-weight: bold;
   color: var(--color-text);
   transition: color var(--transition-duration) var(--transition-timing);
 }

@@ -15,7 +15,7 @@ function setAnimation(elem, startY, duration) {
     ease: "power2.out",
     scrollTrigger: {
       trigger: elem,
-      start: '-260% 80%'
+      start: '-280% 80%'
     }
   });
 }
@@ -29,25 +29,31 @@ function load() {
   let outp = '';
   let mediaArrFiltered = mediaArr.filter(m => checkFilter(m));
   
-  let sortVal = document.getElementById('sort').value;
-  if (sortVal === 'title') {
-    mediaArrFiltered.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (sortVal === 'data') {
-    mediaArrFiltered.sort((a, b) => {
-      const dateA = a.firstAired || '';
-      const dateB = b.firstAired || '';
-      return dateA.localeCompare(dateB);
-    });
-  } else if (sortVal === 'runtime') {
-    mediaArrFiltered.sort((a, b) => {
-      const runA = a.type === 'film' ? a.totalLengthMinutes : a.avgLengthMinutes;
-      const runB = b.type === 'film' ? b.totalLengthMinutes : b.avgLengthMinutes;
-      return runA - runB;
-    });
+  let sortBy = document.getElementById('sort').value;
+  switch (sortBy) {
+    case 'date':
+      mediaArrFiltered.sort((a, b) => {
+        let dateA = a.firstAired || '';
+        let dateB = b.firstAired || '';
+        return dateA.localeCompare(dateB);
+      });
+      break;
+    case 'title':
+      mediaArrFiltered.sort((a, b) => {
+        return extractTitle(a.name).localeCompare(extractTitle(b.name));
+      });
+      break;
+    case 'runtime':
+      mediaArrFiltered.sort((a, b) => {
+        let runA = a.type === 'film' ? a.totalLengthMinutes : a.avgLengthMinutes;
+        let runB = b.type === 'film' ? b.totalLengthMinutes : b.avgLengthMinutes;
+        return runA - runB;
+      });
+      break;
   }
 
   if (mediaArrFiltered.length === 0) {
-    outp += `<p id="none_found">No media found</p>`;
+    outp += `<p id="none_found">No matching media found</p>`;
   }
   for (let i = 0; i < mediaArrFiltered.length; i++) {
     let m = mediaArrFiltered[i];
@@ -93,6 +99,14 @@ function load() {
 }
 load();
 
+function extractTitle(str) {
+  let colonIndex = str.indexOf(':');
+  if (colonIndex !== -1) {
+    str = str.substring(colonIndex + 1).trim();
+  }
+  return str.replace(/^(star trek\s*)/i, '');
+}
+
 function popUp(elem, n) {
   let outp = '';
 
@@ -107,6 +121,8 @@ function popUp(elem, n) {
           <p><b>Seasons:</b> ${m.seasons}</p>
           <p><b>Episodes:</b> ${m.episodes}</p>
           <p><b>Runtime:</b> ${m.avgLengthMinutes} minutes</p>
+          <p><b>First aired:</b> ${m.firstAired}</p>
+          <p><b>Last aired:</b> ${m.lastAired}</p>
         </div>
     `;
   } else if (m.type === 'film') {

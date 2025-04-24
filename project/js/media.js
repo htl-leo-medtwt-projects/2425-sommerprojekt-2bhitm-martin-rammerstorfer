@@ -41,7 +41,7 @@ let media = {
   TAS: {
     name: "Star Trek: The Animated Series",
     abbreviation: "TAS",
-    description: "An animated continuation of Star Trek: The Original Series",
+    description: "An animated continuation of The Original Series",
     type: "series",
     seasons: 2,
     episodes: 22,
@@ -466,4 +466,3 @@ let mediaArr = [
 // for (let i = 0; i < mediaArr.length; i++) {
 //   mediaArr[i].characters = charactersArr.filter(character => character.media.includes(mediaArr[i]));
 // }
- 
