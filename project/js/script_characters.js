@@ -72,7 +72,7 @@ function load() {
   let charactersArrFiltered = charactersArr.filter(c => checkFilter(c));
 
   if (charactersArrFiltered.length === 0) {
-    outp += `<p id="no_characters">No characters found</p>`;
+    outp += `<p id="none_found">No characters found</p>`;
   }
   for (let i = 0; i < charactersArrFiltered.length; i++) {
     let c = charactersArrFiltered[i];
