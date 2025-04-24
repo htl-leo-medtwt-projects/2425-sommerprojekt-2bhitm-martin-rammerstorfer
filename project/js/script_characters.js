@@ -23,7 +23,7 @@ function checkFilter(c) {
   let filter_sex = document.getElementById('filter_sex').value;
   let search = document.getElementById('search').value.toLowerCase();
   return (
-    (filter_species === 'all' || c.species.includes(filter_species)) &&
+    (filter_species === 'all' || c.species.includes(filter_species) || (c.species[0] !== 'Human' && c.species[0] !== 'Vulcan' && c.species[0] !== 'Klingon' && filter_species === 'other')) &&
     (filter_sex === 'all' || c.sex === filter_sex) &&
     (
       (c.name.toLowerCase().includes(search)) ||
@@ -77,15 +77,13 @@ function load() {
   for (let i = 0; i < charactersArrFiltered.length; i++) {
     let c = charactersArrFiltered[i];
     outp += `
-      <div class="character">
-        <div class="img_container"><img src="img/characters/${c.images[0].path}" alt="${c.name} in ${c.images[0].year}"></div>
+      <div class="character" onclick="popUp(this, ${i})">
+        <div class="img_container"><img src="img/characters/${c.images[0].path}" alt="${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}"></div>
         <h3>${c.name}</h3>
         <p class="description">${c.description}</p>
-        <p><b>Sex:</b> ${c.sex}</p>
-        <p><b>Occupation:</b> ${c.occupation}</p>
-        <p><b>Home planet:</b> ${c.homePlanet}</p>
         <p><b>Species:</b> ${getSpecies(c)}</p>
-        <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
+        <p><b>Sex:</b> ${c.sex}</p>
+        <p><b>Rank:</b> ${c.rank}</p>
       </div>
     `;
   }
@@ -107,3 +105,35 @@ function load() {
   }
 }
 load();
+
+function popUp(elem, n) {
+  let outp = '';
+
+  let c = charactersArr.filter(c => checkFilter(c))[n];
+  outp += `
+    <div class="img_container"><img src="img/characters/${c.images[0].path}" alt=""><p class="img_caption">${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p></div>
+    <div class="info_container">
+      <h3>${c.name.replace(/ /g, '&thinsp;')}</h3>
+      <p class="description">${c.description}</p>
+      <p><b>Species:</b> ${getSpecies(c)}</p>
+      <p><b>Sex:</b> ${c.sex}</p>
+      <p><b>Rank:</b> ${c.rank}</p>
+      <p><b>Occupation:</b> ${c.occupation}</p>
+      <p><b>Home planet:</b> ${c.homePlanet}</p>
+      <p><b>First appearance:</b> ${c.media[0] === media.TC ? "TOS" : c.media[0].abbreviation}</p>
+      <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
+    </div>
+  `;
+  document.getElementById('popup_content').innerHTML = outp;
+  
+  document.getElementById('popup').style.display = 'block';
+
+  document.getElementById('popup_background').style.animation = 'fadeIn 0.4s ease-in-out forwards 1';
+  
+  document.getElementById('popup_content').style.animation = 'popUp 0.4s ease-in-out forwards 1';
+}
+
+function closePopUp() {
+  document.getElementById('popup_content').innerHTML = '';
+  document.getElementById('popup').style.display = 'none';
+}

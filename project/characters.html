@@ -40,7 +40,7 @@
           <option value="Human">Human</option>
           <option value="Vulcan">Vulcan</option>
           <option value="Klingon">Klingon</option>
-          <option value="Betazoid">Betazoid</option>
+          <option value="other">Other</option>
         </select>
         <select id="filter_sex" onchange="load();">
           <option value="all">Male & Female</option>
@@ -51,6 +51,12 @@
       <div id="characters_container"></div>
     </section>
   </main>
+
+  <div id="popup">
+    <div id="popup_background" onclick="closePopUp();"></div>
+    <span id="popup_close" onclick="closePopUp();">&times;</span>
+    <div id="popup_content"></div>
+  </div>
   
 </body>
 </html>
