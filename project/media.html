@@ -32,15 +32,26 @@
       <h2>Shows&thinsp;and&thinsp;Movies</h2>
       
       <div id="select_container">
-      <select id="filter" onchange="load();">
-        <option value="all">All</option>
-        <option value="series">Shows</option>
-        <option value="film">Movies</option>
-      </select>
+        <select id="filter" onchange="load();">
+          <option value="all">All</option>
+          <option value="series">Shows</option>
+          <option value="film">Movies</option>
+        </select>
+        <select id="sort" onchange="load();">
+          <option value="date">Date</option>
+          <option value="title">Title</option>
+          <!-- <option value="rating">Rating</option> -->
+        </select>
       </div>
       <div id="media_container"></div>
     </section>
   </main>
+
+  <div id="popup" class="popup_media">
+    <div id="popup_background" onclick="closePopUp();"></div>
+    <span id="popup_close" onclick="closePopUp();">&times;</span>
+    <div id="popup_content"></div>
+  </div>
 
 </body>
 </html>

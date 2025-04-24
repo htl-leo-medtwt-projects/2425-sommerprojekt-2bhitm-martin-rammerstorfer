@@ -30,13 +30,13 @@ function load() {
   let mediaArrFiltered = mediaArr.filter(m => checkFilter(m));
 
   if (mediaArrFiltered.length === 0) {
-    outp += `<p id="none_found">No characters found</p>`;
+    outp += `<p id="none_found">No media found</p>`;
   }
   for (let i = 0; i < mediaArrFiltered.length; i++) {
     let m = mediaArrFiltered[i];
     if (m.type === 'series') {
       outp += `
-        <div class="mediaElement">
+        <div class="mediaElement" onclick="popUp(this, ${i})">
           <div class="img_container"><img src="img/media/${m.images[0].path}" alt="${m.name}"></div>
           <h3>${m.name}</h3>
           <p class="description">${m.description}</p>
@@ -47,7 +47,7 @@ function load() {
       `;
     } else if (m.type === 'film') {
       outp += `
-        <div class="mediaElement">
+        <div class="mediaElement" onclick="popUp(this, ${i})">
           <div class="img_container"><img src="img/media/${m.images[0].path}" alt="${m.name}"></div>
           <h3>${m.name}</h3>
           <p class="description">${m.description}</p>
@@ -75,3 +75,44 @@ function load() {
   }
 }
 load();
+
+function popUp(elem, n) {
+  let outp = '';
+
+  let m = mediaArr.filter(m => checkFilter(m))[n];
+
+  if (m.type === 'series') {
+    outp += `
+        <div class="img_container"><img src="img/media/${m.images[0].path}" alt="${m.name}"></div>
+        <div class="info_container">
+          <h3>${m.name.replace(/ /g, '&thinsp;')}</h3>
+          <p class="description">${m.description}</p>
+          <p><b>Seasons:</b> ${m.seasons}</p>
+          <p><b>Episodes:</b> ${m.episodes}</p>
+          <p><b>Runtime:</b> ${m.avgLengthMinutes} minutes</p>
+        </div>
+    `;
+  } else if (m.type === 'film') {
+    outp += `
+      <div class="img_container"><img src="img/media/${m.images[0].path}" alt="${m.name}"></div>
+      <div class="info_container">
+        <h3>${m.name.replace(/ /g, '&thinsp;')}</h3>
+        <p class="description">${m.description}</p>
+        <p><b>Length:</b> ${m.totalLengthMinutes} minutes</p>
+        <p><b>Release date:</b> ${m.firstAired}</p>
+      </div>
+    `;
+  }
+  document.getElementById('popup_content').innerHTML = outp;
+  
+  document.getElementById('popup').style.display = 'block';
+
+  document.getElementById('popup_background').style.animation = 'fadeIn 0.4s ease-in-out forwards 1';
+  
+  document.getElementById('popup_content').style.animation = 'popUp 0.4s ease-in-out forwards 1';
+}
+
+function closePopUp() {
+  document.getElementById('popup_content').innerHTML = '';
+  document.getElementById('popup').style.display = 'none';
+}

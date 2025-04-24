@@ -335,6 +335,7 @@ footer > p {
   width: 30%;
   padding: 10px;
   transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+  cursor: pointer;
 }
 .mediaElement > .img_container {
   width: 100%;
@@ -423,12 +424,17 @@ input {
   position: relative;
 }
 #popup_content > .img_container img {
-  height: 100%;
   width: 100%;
-  object-fit: cover;
   object-position: center;
   padding: 10px;
   user-select: none;
+}
+.popup_character .img_container img {
+  height: 100%;
+  object-fit: cover;
+}
+.popup_media .img_container img {
+  object-fit: contain;
 }
 #popup_content > .info_container h3 {
   font-family: startrek;
