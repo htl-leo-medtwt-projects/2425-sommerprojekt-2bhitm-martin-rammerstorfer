@@ -368,6 +368,15 @@ footer > p {
   gap: 10px;
 }
 
+#sort_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  padding: 6px;
+  gap: 10px;
+}
+
 select {
   border-radius: 0;
   padding: 8px;
@@ -473,6 +482,12 @@ input {
   position: absolute;
   bottom: 20px;
   left: 20px;
+}
+
+.instruction {
+  font-family: federation;
+  color: var(--color-text);
+  transition: color var(--transition-duration) var(--transition-timing);
 }
 
 @keyframes fadeIn {

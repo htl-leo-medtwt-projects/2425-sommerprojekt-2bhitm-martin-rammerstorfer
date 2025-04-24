@@ -28,6 +28,23 @@ function checkFilter(m) {
 function load() {
   let outp = '';
   let mediaArrFiltered = mediaArr.filter(m => checkFilter(m));
+  
+  let sortVal = document.getElementById('sort').value;
+  if (sortVal === 'title') {
+    mediaArrFiltered.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortVal === 'data') {
+    mediaArrFiltered.sort((a, b) => {
+      const dateA = a.firstAired || '';
+      const dateB = b.firstAired || '';
+      return dateA.localeCompare(dateB);
+    });
+  } else if (sortVal === 'runtime') {
+    mediaArrFiltered.sort((a, b) => {
+      const runA = a.type === 'film' ? a.totalLengthMinutes : a.avgLengthMinutes;
+      const runB = b.type === 'film' ? b.totalLengthMinutes : b.avgLengthMinutes;
+      return runA - runB;
+    });
+  }
 
   if (mediaArrFiltered.length === 0) {
     outp += `<p id="none_found">No media found</p>`;
