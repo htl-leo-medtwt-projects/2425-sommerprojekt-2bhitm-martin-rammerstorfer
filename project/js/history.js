@@ -2,8 +2,8 @@ let timeline = [
   {
     year: 1966,
     date: "September 6",
-    description: "Star Trek: The Original Series premieres on Canada's CTV network",
-    description_long: "Star Trek: The Original Series premieres on Canada's CTV network. The series is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
+    description: "TOS premieres on Canada's CTV network",
+    description_long: "Star Trek: The Original Series premieres on the Candian network CTV. The series is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
     images: [
       "img/history/tos_crew.jpg",
       "img/history/roddenberry.jpg"
