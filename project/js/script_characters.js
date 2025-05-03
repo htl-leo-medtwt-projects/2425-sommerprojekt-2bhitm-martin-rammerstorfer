@@ -124,7 +124,12 @@ function popUp(elem, n) {
 
   let c = charactersArr.filter(c => checkFilter(c))[n];
   outp += `
-    <div class="img_container"><img src="img/characters/${c.images[0].path}" alt=""><p class="img_caption">${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p></div>
+    <div class="img_container">
+      <img id="characterImg" src="img/characters/${c.images[0].path}" alt="">
+      <p id="characterImgCaption" class="img_caption">${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p>
+      <div class="btn_image" id="btn_left" onclick="cycleLeft()">&#x1f890;</div>
+      <div class="btn_image" id="btn_right" onclick="cycleRight()">&#x1f892;</div>
+    </div>
     <div class="info_container">
       <h3>${c.name.replace(/ /g, '&thinsp;')}</h3>
       <p class="description">${c.description}</p>
@@ -144,9 +149,52 @@ function popUp(elem, n) {
   document.getElementById('popup_background').style.animation = 'fadeIn 0.4s ease-in-out forwards 1';
   
   document.getElementById('popup_content').style.animation = 'popUp 0.4s ease-in-out forwards 1';
+
+  sources = [];
+  captions = [];
+  for (let i=0; i<c.images.length; i++) {
+    sources.push(c.images[i].path);
+    captions.push(`${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[i].year}`);
+  }
+  index = 0;
+  clearInterval(interval);
+  interval = setInterval(cycleRight, time);
 }
 
 function closePopUp() {
   document.getElementById('popup_content').innerHTML = '';
   document.getElementById('popup').style.display = 'none';
+
+  sources = [];
+  captions = [];
+  index = 0;
+  clearInterval(interval);
 }
+
+let time = 4000;
+let sources = [];
+let captions = [];
+let interval = setInterval(()=>{}, time);
+let index = 0;
+
+function cycleLeft() {
+  index += sources.length - 1;
+  index %= sources.length;
+  document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
+  document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
+  clearInterval(interval);
+  interval = setInterval(cycleLeft, time);
+}
+function cycleRight() {
+  index++;
+  index %= sources.length;
+  document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
+  document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
+  clearInterval(interval);
+  interval = setInterval(cycleRight, time);
+}
+
+document.addEventListener('keyup', (key) => {
+  if (key.code === 'ArrowLeft') cycleLeft();
+  else if (key.code === 'ArrowRight') cycleRight();
+});

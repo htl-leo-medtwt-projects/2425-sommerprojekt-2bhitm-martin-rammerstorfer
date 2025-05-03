@@ -510,6 +510,21 @@ input {
   bottom: 20px;
   left: 20px;
 }
+.btn_image {
+  position: absolute;
+  font-size: 80px;
+  color: white;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  cursor: pointer;
+  user-select: none;
+  top: 40%;
+}
+#btn_left {
+  left: 18px;
+}
+#btn_right {
+  right: 18px;
+}
 
 .instruction {
   font-family: federation;
