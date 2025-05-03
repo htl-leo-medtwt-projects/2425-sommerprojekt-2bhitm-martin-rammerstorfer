@@ -1356,7 +1356,7 @@ let charactersArr = [
   {
     id: 403,
     name: "Ash Tyler",
-    description: "Security officer aboard the USS Discovery with a mysterious past",
+    description: "Security officer aboard the USS Discovery",
     firstNames: "Ash",
     lastName: "Tyler",
     titles: "",

@@ -1,6 +1,6 @@
-/// <reference path="ships.js" />
-/// <reference path="media.js" />
-/// <reference path="characters.js" />
+/// <reference path="data/ships.js" />
+/// <reference path="data/media.js" />
+/// <reference path="data/characters.js" />
 
 gsap.registerPlugin(ScrollTrigger);
 function setAnimation(elem, startX, duration) {
@@ -105,6 +105,19 @@ function load() {
   }
 }
 load();
+
+function resetSearch() {
+  let filter_species = document.getElementById('filter_species');
+  let filter_sex = document.getElementById('filter_sex');
+  let search = document.getElementById('search');
+
+  if (filter_species.value !== 'all' || filter_sex.value !== 'all' || search.value !== '') {
+    filter_species.value = 'all';
+    filter_sex.value = 'all';
+    search.value = '';
+    load();
+  }
+}
 
 function popUp(elem, n) {
   let outp = '';

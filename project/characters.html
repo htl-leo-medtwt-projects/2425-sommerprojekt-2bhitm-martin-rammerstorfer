@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="./css/style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="js/ships.js" defer></script>
-  <script src="js/media.js" defer></script>
-  <script src="js/characters.js" defer></script>
+  <script src="js/data/ships.js" defer></script>
+  <script src="js/data/media.js" defer></script>
+  <script src="js/data/characters.js" defer></script>
   <script src="js/script_characters.js" defer></script>
   <script src="js/script.js" defer></script>
-
-  * Image-Slider auf Characters-Seite
 </head>
 <body>
 
@@ -34,7 +32,6 @@
       <h2>Characters</h2>
       <div id="search_container">
         <input type="text" id="search" placeholder="Search by name..." onkeyup="load();">
-        <!-- <div id="btn_reset" onclick="reset();"><img src="img/reset.png" alt="Reset"></div> -->
       </div>
       <div id="select_container">
         <select id="filter_species" onchange="load();">
@@ -49,6 +46,9 @@
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
+      </div>
+      <div id="reset_container">
+        <div id="btn_reset" onclick="resetSearch();">&#x21ba; Reset filters</div>
       </div>
       <div id="characters_container"></div>
     </section>

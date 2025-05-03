@@ -1,6 +1,6 @@
-/// <reference path="ships.js" />
-/// <reference path="media.js" />
-/// <reference path="characters.js" />
+/// <reference path="data/ships.js" />
+/// <reference path="data/media.js" />
+/// <reference path="data/characters.js" />
 
 gsap.registerPlugin(ScrollTrigger);
 function setAnimation(elem, startY, duration) {
@@ -148,4 +148,8 @@ function popUp(elem, n) {
 function closePopUp() {
   document.getElementById('popup_content').innerHTML = '';
   document.getElementById('popup').style.display = 'none';
+}
+
+for (let i = 0; i < mediaArr.length; i++) {
+  mediaArr[i].characters = charactersArr.filter(character => character.media.includes(mediaArr[i]));
 }

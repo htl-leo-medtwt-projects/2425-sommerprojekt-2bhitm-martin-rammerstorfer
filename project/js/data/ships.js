@@ -273,22 +273,22 @@ let ships = {
   },
 };
 
-let shipsArr = [
-  ships.ENTERPRISE,
-  ships.ENTERPRISE_A,
-  ships.ENTERPRISE_B,
-  ships.ENTERPRISE_C,
-  ships.ENTERPRISE_D,
-  ships.ENTERPRISE_E,
-  ships.ENTERPRISE_F,
-  ships.ENTERPRISE_G,
-  ships.DEFIANT,
-  ships.VOYAGER,
-  ships.DISCOVERY,
-  ships.ANTARES,
-  ships.CHATELET,
-  ships.ARYABHATTA
-];
+// let shipsArr = [
+//   ships.ENTERPRISE,
+//   ships.ENTERPRISE_A,
+//   ships.ENTERPRISE_B,
+//   ships.ENTERPRISE_C,
+//   ships.ENTERPRISE_D,
+//   ships.ENTERPRISE_E,
+//   ships.ENTERPRISE_F,
+//   ships.ENTERPRISE_G,
+//   ships.DEFIANT,
+//   ships.VOYAGER,
+//   ships.DISCOVERY,
+//   ships.ANTARES,
+//   ships.CHATELET,
+//   ships.ARYABHATTA
+// ];
 
 // for (let i = 0; i < shipsArr.length; i++) {
 //   shipsArr[i].crew = charactersArr.filter(character => character.ships.includes(shipsArr[i]));

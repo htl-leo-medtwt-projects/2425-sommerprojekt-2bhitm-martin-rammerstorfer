@@ -404,6 +404,23 @@ input {
   margin-bottom: 6px;
 }
 
+#reset_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  padding: 6px;
+  gap: 10px;
+}
+
+#btn_reset {
+  font-family: federation, sans-serif;
+  cursor: pointer;
+  padding: 8px;
+  margin: auto;
+  display: block;
+}
+
 #popup {
   position: fixed;
   top: 0;

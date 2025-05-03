@@ -1,5 +1,4 @@
 /// <reference path="ships.js" />
-/// <reference path="characters.js" />
 
 let media = {
   TC: {
@@ -17,7 +16,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2254,
     endYear: 2254,
-    // characters: [],
+    characters: [],
     images: [{ path: "tc_0.jpg" }]
   },
   TOS: {
@@ -35,7 +34,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2265,
     endYear: 2269,
-    // characters: [],
+    characters: [],
     images: [{ path: "tos_0.jpg" }]
   },
   TAS: {
@@ -53,7 +52,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2269,
     endYear: 2270,
-    // characters: [],
+    characters: [],
     images: [{ path: "tas_0.jpg" }]
   },
   TMP: {
@@ -71,7 +70,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2273,
     endYear: 2273,
-    // characters: [],
+    characters: [],
     images: [{ path: "tmp_0.jpg" }]
   },
   TWOK: {
@@ -89,7 +88,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2285,
     endYear: 2285,
-    // characters: [],
+    characters: [],
     images: [{ path: "twok_0.jpg" }]
   },
   TSFS: {
@@ -107,7 +106,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2285,
     endYear: 2285,
-    // characters: [],
+    characters: [],
     images: [{ path: "tsfs_0.jpg" }]
   },
   TVH: {
@@ -125,7 +124,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2286,
     endYear: 2286,
-    // characters: [],
+    characters: [],
     images: [{ path: "tvh_0.jpg" }]
   },
   TFF: {
@@ -143,7 +142,7 @@ let media = {
     mainShip: ships.ENTERPRISE_A,
     startYear: 2287,
     endYear: 2287,
-    // characters: [],
+    characters: [],
     images: [{ path: "tff_0.jpg" }]
   },
   TUC: {
@@ -161,7 +160,7 @@ let media = {
     mainShip: ships.ENTERPRISE_A,
     startYear: 2293,
     endYear: 2293,
-    // characters: [],
+    characters: [],
     images: [{ path: "tuc_0.jpg" }]
   },
   TNG: {
@@ -179,7 +178,7 @@ let media = {
     mainShip: ships.ENTERPRISE_D,
     startYear: 2364,
     endYear: 2370,
-    // characters: [],
+    characters: [],
     images: [{ path: "tng_0.jpg" }]
   },
   DS9: {
@@ -197,7 +196,7 @@ let media = {
     mainShip: ships.DEFIANT,
     startYear: 2369,
     endYear: 2375,
-    // characters: [],
+    characters: [],
     images: [{ path: "ds9_0.jpg" }]
   },
   GEN: {
@@ -215,7 +214,7 @@ let media = {
     mainShip: ships.ENTERPRISE_D,
     startYear: 2371,
     endYear: 2371,
-    // characters: [],
+    characters: [],
     images: [{ path: "gen_0.jpg" }]
   },
   VOY: {
@@ -233,7 +232,7 @@ let media = {
     mainShip: ships.VOYAGER,
     startYear: 2371,
     endYear: 2378,
-    // characters: [],
+    characters: [],
     images: [{ path: "voy_0.jpg" }]
   },
   FC: {
@@ -251,7 +250,7 @@ let media = {
     mainShip: ships.ENTERPRISE_E,
     startYear: 2373,
     endYear: 2373,
-    // characters: [],
+    characters: [],
     images: [{ path: "fc_0.jpg" }]
   },
   INS: {
@@ -269,7 +268,7 @@ let media = {
     mainShip: ships.ENTERPRISE_E,
     startYear: 2375,
     endYear: 2375,
-    // characters: [],
+    characters: [],
     images: [{ path: "ins_0.jpg" }]
   },
   NEM: {
@@ -287,7 +286,7 @@ let media = {
     mainShip: ships.ENTERPRISE_E,
     startYear: 2379,
     endYear: 2379,
-    // characters: [],
+    characters: [],
     images: [{ path: "nem_0.jpg" }]
   },
   ENT: {
@@ -305,7 +304,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2151,
     endYear: 2155,
-    // characters: [],
+    characters: [],
     images: [{ path: "ent_0.jpg" }]
   },
   ST09: {
@@ -323,7 +322,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2258,
     endYear: 2258,
-    // characters: [],
+    characters: [],
     images: [{ path: "st09_0.jpg" }]
   },
   STID: {
@@ -341,7 +340,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2259,
     endYear: 2259,
-    // characters: [],
+    characters: [],
     images: [{ path: "stid_0.jpg" }]
   },
   STB: {
@@ -359,7 +358,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2263,
     endYear: 2263,
-    // characters: [],
+    characters: [],
     images: [{ path: "stb_0.jpg" }]
   },
   DIS: {
@@ -377,7 +376,7 @@ let media = {
     mainShip: ships.DISCOVERY,
     startYear: 2256,
     endYear: 3191,
-    // characters: [],
+    characters: [],
     images: [{ path: "dis_0.jpg" }]
   },
   PIC: {
@@ -395,7 +394,7 @@ let media = {
     mainShip: ships.LA_SIRENA,
     startYear: 2399,
     endYear: 2402,
-    // characters: [],
+    characters: [],
     images: [{ path: "pic_0.jpg" }]
   },
   LOW: {
@@ -413,7 +412,7 @@ let media = {
     mainShip: ships.CERRITOS,
     startYear: 2380,
     endYear: 2382,
-    // characters: [],
+    characters: [],
     images: [{ path: "low_0.jpg" }]
   },
   SNW: {
@@ -431,7 +430,7 @@ let media = {
     mainShip: ships.ENTERPRISE,
     startYear: 2259,
     endYear: 2266,
-    // characters: [],
+    characters: [],
     images: [{ path: "snw_0.jpg" }]
   }
 };
@@ -462,7 +461,3 @@ let mediaArr = [
   media.LOW,
   media.SNW
 ];
-
-// for (let i = 0; i < mediaArr.length; i++) {
-//   mediaArr[i].characters = charactersArr.filter(character => character.media.includes(mediaArr[i]));
-// }

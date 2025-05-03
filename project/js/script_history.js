@@ -1,4 +1,4 @@
-/// <reference path="history.js" />
+/// <reference path="data/history.js" />
 
 let historyFullpage = new fullpage('#fullpage', {
   autoScrolling: true,
