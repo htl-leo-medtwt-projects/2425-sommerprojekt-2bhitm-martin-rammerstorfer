@@ -127,8 +127,12 @@ function popUp(elem, n) {
     <div class="img_container">
       <img id="characterImg" src="img/characters/${c.images[0].path}" alt="">
       <p id="characterImgCaption" class="img_caption">${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p>
-      <div class="btn_image" id="btn_left" onclick="cycleLeft()">&#x1f890;</div>
-      <div class="btn_image" id="btn_right" onclick="cycleRight()">&#x1f892;</div>
+      ${
+        c.images.length > 1 ? `
+          <div class="btn_image" id="btn_left" onclick="cycleLeft()">&#x1f890;</div>
+          <div class="btn_image" id="btn_right" onclick="cycleRight()">&#x1f892;</div>
+        ` : ''
+      }
     </div>
     <div class="info_container">
       <h3>${c.name.replace(/ /g, '&thinsp;')}</h3>
@@ -138,7 +142,7 @@ function popUp(elem, n) {
       <p><b>Rank:</b> ${c.rank}</p>
       <p><b>Occupation:</b> ${c.occupation}</p>
       <p><b>Home planet:</b> ${c.homePlanet}</p>
-      <p><b>First appearance:</b> ${c.media[0] === media.TC ? "TOS" : c.media[0].abbreviation}</p>
+      <p><b>First appearance:</b> ${extractTitle(c.media[0] === media.TC ? media.TOS.name : c.media[0].name)}</p>
       <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
     </div>
   `;
@@ -157,8 +161,8 @@ function popUp(elem, n) {
     captions.push(`${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[i].year}`);
   }
   index = 0;
-  clearInterval(interval);
-  interval = setInterval(cycleRight, time);
+  // clearInterval(interval);
+  // interval = setInterval(cycleRight, time);
 }
 
 function closePopUp() {
@@ -168,13 +172,21 @@ function closePopUp() {
   sources = [];
   captions = [];
   index = 0;
-  clearInterval(interval);
+  // clearInterval(interval);
+}
+
+function extractTitle(str) {
+  let colonIndex = str.indexOf(':');
+  if (colonIndex !== -1) {
+    str = str.substring(colonIndex + 1).trim();
+  }
+  return str.replace(/^(star trek\s*)/i, '');
 }
 
 let time = 4000;
 let sources = [];
 let captions = [];
-let interval = setInterval(()=>{}, time);
+// let interval = setInterval(()=>{}, time);
 let index = 0;
 
 function cycleLeft() {
@@ -182,19 +194,20 @@ function cycleLeft() {
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
   document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
-  clearInterval(interval);
-  interval = setInterval(cycleLeft, time);
+  // clearInterval(interval);
+  // interval = setInterval(cycleLeft, time);
 }
 function cycleRight() {
   index++;
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
   document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
-  clearInterval(interval);
-  interval = setInterval(cycleRight, time);
+  // clearInterval(interval);
+  // interval = setInterval(cycleRight, time);
 }
 
 document.addEventListener('keyup', (key) => {
   if (key.code === 'ArrowLeft') cycleLeft();
   else if (key.code === 'ArrowRight') cycleRight();
+  else if (key.code === 'Escape') closePopUp();
 });

@@ -298,8 +298,6 @@ let charactersArr = [
     actors: [
       "James Doohan",
       "Martin Quinn",
-      "Carlos Alazraqui",
-      "Matthew Wolf"
     ],
     media: [
       media.TOS,
@@ -310,11 +308,11 @@ let charactersArr = [
       media.TVH,
       media.TFF,
       media.TUC,
+      media.TNG,
       media.GEN,
       media.ST09,
       media.STID,
       media.STB,
-      media.LOW,
       media.SNW
     ],
     images: [
@@ -323,6 +321,24 @@ let charactersArr = [
         year: 2266,
         media: media.TOS,
         actor: "James Doohan"
+      },
+      {
+        path: "scotty_1.jpg",
+        year: 2369,
+        media: media.TNG,
+        actor: "James Doohan"
+      },
+      {
+        path: "scotty_2.jpg",
+        year: 2270,
+        media: media.TAS,
+        actor: "James Doohan"
+      },
+      {
+        path: "scotty_3.jpg",
+        year: 2259,
+        media: media.SNW,
+        actor: "Martin Quinn"
       }
     ]
   },
@@ -342,7 +358,7 @@ let charactersArr = [
     affiliation: "Federation Starfleet",
     rank: "Lieutenant",
     occupation: "Helmsman",
-    serialNumber: "SL-0000",
+    serialNumber: null,
     ships: [
       ships.ENTERPRISE,
       ships.ENTERPRISE_A
@@ -379,6 +395,18 @@ let charactersArr = [
         path: "sulu_0.jpg",
         year: 2266,
         media: media.TOS,
+        actor: "George Takei"
+      },
+      {
+        path: "sulu_1.jpg",
+        year: 2293,
+        media: media.TUC,
+        actor: "George Takei"
+      },
+      {
+        path: "sulu_2.jpg",
+        year: 2269,
+        media: media.TAS,
         actor: "George Takei"
       }
     ]
@@ -430,7 +458,8 @@ let charactersArr = [
       media.TUC,
       media.ST09,
       media.STID,
-      media.STB
+      media.STB,
+      media.SNW
     ],
     images: [
       {
@@ -438,6 +467,24 @@ let charactersArr = [
         year: 2266,
         media: media.TOS,
         actor: "Nichelle Nichols"
+      },
+      {
+        path: "uhura_1.jpg",
+        year: 2293,
+        media: media.TUC,
+        actor: "Nichelle Nichols"
+      },
+      {
+        path: "uhura_2.jpg",
+        year: 2270,
+        media: media.TAS,
+        actor: "Nichelle Nichols"
+      },
+      {
+        path: "uhura_3.jpg",
+        year: 2259,
+        media: media.SNW,
+        actor: "Celia Rose Gooding"
       }
     ]
   },
@@ -565,6 +612,18 @@ let charactersArr = [
         year: 2364,
         media: media.TNG,
         actor: "Patrick Stewart"
+      },
+      {
+        path: "picard_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Patrick Stewart"
+      },
+      {
+        path: "picard_2.jpg",
+        year: 2401,
+        media: media.PIC,
+        actor: "Patrick Stewart"
       }
     ]
   },
@@ -619,6 +678,18 @@ let charactersArr = [
         path: "riker_0.jpg",
         year: 2364,
         media: media.TNG,
+        actor: "Jonathan Frakes"
+      },
+      {
+        path: "riker_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Jonathan Frakes"
+      },
+      {
+        path: "riker_2.jpg",
+        year: 2401,
+        media: media.PIC,
         actor: "Jonathan Frakes"
       }
     ]
@@ -677,6 +748,24 @@ let charactersArr = [
         path: "troi_0.jpg",
         year: 2364,
         media: media.TNG,
+        actor: "Marina Sirtis"
+      },
+      {
+        path: "troi_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Marina Sirtis"
+      },
+      {
+        path: "troi_2.jpg",
+        year: 2401,
+        media: media.PIC,
+        actor: "Marina Sirtis"
+      },
+      {
+        path: "troi_3.jpg",
+        year: 2380,
+        media: media.LOW,
         actor: "Marina Sirtis"
       }
     ]
@@ -738,6 +827,152 @@ let charactersArr = [
         year: 2366,
         media: media.TNG,
         actor: "Michael Dorn"
+      },
+      {
+        path: "worf_1.jpg",
+        year: 2373,
+        media: media.FC,
+        actor: "Michael Dorn"
+      },
+      {
+        path: "worf_2.jpg",
+        year: 2401,
+        media: media.PIC,
+        actor: "Michael Dorn"
+      }
+    ]
+  },
+  {
+    id: 104,
+    name: "Beverly Crusher",
+    description: "Chief medical officer aboard the USS Enterprise-D",
+    firstNames: "Beverly",
+    lastName: "Crusher",
+    titles: "",
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    sex: "female",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Admiral",
+    occupation: "Head of Starfleet Medical",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E
+    ],
+    status: "active",
+    birthDate: "2324-10-13",
+    birthPlace: "Luna,Copernicus City",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "widow",
+    father: "Paul Howard",
+    mother: "Isabel Howard",
+    siblings: [],
+    partners: [
+      "Jack R. Crusher"
+    ],
+    actors: [
+      "Gates McFadden"
+    ],
+    media: [
+      media.TNG,
+      media.DS9,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "crusher_0.jpg",
+        year: 2364,
+        media: media.TNG,
+        actor: "Gates McFadden"
+      },
+      {
+        path: "crusher_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Gates McFadden"
+      },
+      {
+        path: "crusher_2.jpg",
+        year: 2402,
+        media: media.PIC,
+        actor: "Gates McFadden"
+      }
+    ]
+  },
+  {
+    id: 105,
+    name: "Wesley Crusher",
+    description: "Son of Beverly Crusher",
+    firstNames: "Wesley",
+    lastName: "Crusher",
+    titles: "",
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    sex: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Lieutenant junior grade",
+    occupation: "Traveler",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E
+    ],
+    status: "active",
+    birthDate: "2348",
+    birthPlace: null,
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: "single",
+    father: "Jack R. Crusher",
+    mother: "Beverly Crusher",
+    siblings: [
+      "Jack Crusher"
+    ],
+    partners: [],
+    actors: [
+      "Wil Wheaton"
+    ],
+    media: [
+      media.TNG,
+      media.DS9,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "crusherw_0.jpg",
+        year: 2364,
+        media: media.TNG,
+        actor: "Wil Wheaton"
+      },
+      {
+        path: "crusherw_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Wil Wheaton"
+      },
+      {
+        path: "crusherw_2.jpg",
+        year: 2401,
+        media: media.PIC,
+        actor: "Wil Wheaton"
       }
     ]
   },
@@ -827,13 +1062,13 @@ let charactersArr = [
     ],
     images: [
       {
-        path: "kira_0.jpg",
+        path: "nerys_0.jpg",
         year: 2375,
         media: media.DS9,
         actor: "Nana Visitor"
       },
       {
-        path: "kira_1.jpg",
+        path: "nerys_1.jpg",
         year: 2381,
         media: media.LOW,
         actor: "Nana Visitor"
