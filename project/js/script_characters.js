@@ -83,7 +83,7 @@ function load() {
         <p class="description">${c.description}</p>
         <p><b>Species:</b> ${getSpecies(c)}</p>
         <p><b>Sex:</b> ${c.sex}</p>
-        <p><b>Rank:</b> ${c.rank}</p>
+        ${c.rank === null ? '' : `<p><b>Rank:</b> ${c.rank}</p>`}
       </div>
     `;
   }
@@ -139,10 +139,10 @@ function popUp(elem, n) {
       <p class="description">${c.description}</p>
       <p><b>Species:</b> ${getSpecies(c)}</p>
       <p><b>Sex:</b> ${c.sex}</p>
-      <p><b>Rank:</b> ${c.rank}</p>
+      ${c.rank === null ? '' : `<p><b>Rank:</b> ${c.rank}</p>`}
       <p><b>Occupation:</b> ${c.occupation}</p>
       <p><b>Home planet:</b> ${c.homePlanet}</p>
-      <p><b>First appearance:</b> ${extractTitle(c.media[0] === media.TC ? media.TOS.name : c.media[0].name)}</p>
+      <p><b>First appearance:</b> <a href="media.html?${c.media[0] === media.TC ? media.TOS.abbreviation : c.media[0].abbreviation}">${extractTitle(c.media[0] === media.TC ? media.TOS.name : c.media[0].name)}</a></p>
       <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
     </div>
   `;

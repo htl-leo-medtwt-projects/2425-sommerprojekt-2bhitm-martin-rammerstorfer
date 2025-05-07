@@ -844,6 +844,68 @@ let charactersArr = [
   },
   {
     id: 104,
+    name: "Data",
+    description: "Chief medical officer aboard the USS Enterprise-D",
+    firstNames: "Data",
+    lastName: "",
+    titles: "",
+    altNames: [],
+    species: [
+      "Android"
+    ],
+    sex: "male",
+    homePlanet: "Omicron Theta",
+    affiliation: "Federation Starfleet",
+    rank: "Lieutenant commander",
+    occupation: "Operations management officer",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E
+    ],
+    status: "active",
+    birthDate: "2338-02-02",
+    birthPlace: "Omicron Theta",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: null,
+    father: "Noonien Soong",
+    mother: "Juliana Soong",
+    siblings: [
+      "B-4",
+      "Lore"
+    ],
+    partners: [],
+    actors: [
+      "Brent Spiner"
+    ],
+    media: [
+      media.TNG,
+      media.DS9,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "data_0.jpg",
+        year: 2366,
+        media: media.TNG,
+        actor: "Brent Spiner"
+      },
+      {
+        path: "data_1.jpg",
+        year: 2379,
+        media: media.NEM,
+        actor: "Brent Spiner"
+      }
+    ]
+  },
+  {
+    id: 105,
     name: "Beverly Crusher",
     description: "Chief medical officer aboard the USS Enterprise-D",
     firstNames: "Beverly",
@@ -910,7 +972,7 @@ let charactersArr = [
     ]
   },
   {
-    id: 105,
+    id: 106,
     name: "Wesley Crusher",
     description: "Son of Beverly Crusher",
     firstNames: "Wesley",
