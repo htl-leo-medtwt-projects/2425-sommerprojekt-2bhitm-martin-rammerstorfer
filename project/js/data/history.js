@@ -1,16 +1,24 @@
 let timeline = [
   {
-    year: 1966,
-    date: "September 6",
-    description: "TOS premieres on Canada's CTV network",
-    description_long: "Star Trek: The Original Series premieres on the Candian network CTV. The series is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
+    year: 1964,
+    date: "March 11",
+    description: "Roddenberry comes up with Star Trek",
+    description_long: "Gene Roddenberry pitches the idea of Star Trek to NBC, envisioning a science fiction show set in the far future.",
     images: [
-      "img/history/tos_crew.jpg",
       "img/history/roddenberry.jpg"
     ],
-    videos: [
-      "video/history/tos_trailer.mp4"
+    videos: [],
+    audios: []
+  },
+  {
+    year: 1966,
+    date: "Sep 6",
+    description: "TOS premieres on Canadian TV",
+    description_long: "<a href=\"media.html?selected=TOS\">Star Trek: The Original Series</a> premieres on the Canadian network CTV with its pilot The Cage. The show is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
+    images: [
+      "img/history/the_cage.jpg"
     ],
+    videos: [],
     audios: []
   },
   {
@@ -27,39 +35,35 @@ let timeline = [
   {
     year: 1973,
     date: "June 8",
-    description: "Star Trek: The Animated Series debuts",
-    description_long: "Star Trek: The Animated Series brings back the adventures of the original crew in animated form, continuing the legacy of the franchise.",
+    description: "The Animated Series debuts",
+    description_long: "<a href=\"media.html?selected=TAS\">Star Trek: The Animated Series</a> brings back the adventures of the original crew in animated form, continuing the legacy of the franchise.",
     images: [
       "img/history/animated_series.jpg"
     ],
-    videos: [
-      "video/history/animated_series_trailer.mp4"
-    ],
+    videos: [],
     audios: []
   },
   {
     year: 1979,
-    date: "December 7",
-    description: "Star Trek: The Motion Picture is released",
-    description_long: "The first Star Trek film, Star Trek: The Motion Picture, is released, bringing the franchise to the big screen.",
-    images: [
-      "img/history/movie_crew.jpg"
-    ],
+    date: "Dec 7",
+    description: "The Motion Picture is released",
+    description_long: "The first Star Trek film, <a href=\"media.html?selected=TMP\">Star Trek: The Motion Picture</a>, is released, bringing the franchise to the big screen.",
+    images: [],
     videos: [
-      "video/history/movie_trailer.mp4"
+      "video/history/tmp_trailer.mp4"
     ],
     audios: []
   },
   {
     year: 1987,
-    date: "September 28",
-    description: "Star Trek: The Next Generation premieres",
-    description_long: "Star Trek: The Next Generation introduces a new crew led by Captain Jean-Luc Picard aboard the USS Enterprise-D, expanding the universe.",
+    date: "Sep 28",
+    description: "Next Generation premieres",
+    description_long: "<a href=\"media.html?selected=TNG\">Star Trek: The Next Generation</a> introduces a new crew led by Captain Jean-Luc Picard aboard the USS Enterprise-D, exploring uncharted parts of the galaxy.",
     images: [
       "img/history/next_generation.jpg"
     ],
     videos: [
-      "video/history/next_generation_intro.mp4"
+      // "video/history/tng_intro.mp4"
     ],
     audios: []
   },
@@ -71,36 +75,8 @@ let timeline = [
     images: [
       "img/history/deep_space_nine.jpg"
     ],
-    videos: [
-      "video/history/deep_space_nine_intro.mp4"
-    ],
-    audios: []
-  },
-  {
-    year: 1995,
-    date: "January 28",
-    description: "Star Trek: Voyager premieres",
-    description_long: "Star Trek: Voyager follows the crew of the USS Voyager as they try to return to Earth after being stranded in a distant quadrant of the galaxy.",
-    images: [
-      "img/history/voyager.jpg"
-    ],
-    videos: [
-      "video/history/voyager_intro.mp4"
-    ],
-    audios: []
-  },
-  {
-    year: 1995,
-    date: "August 15",
-    description: "Inaugural Star Trek Fan Awards",
-    description_long: "The first annual Star Trek Fan Awards celebrated the artistic achievements within the franchise and the passion of its community.",
-    images: [
-      "img/history/fan_awards.jpg"
-    ],
     videos: [],
-    audios: [
-      "audio/history/fan_awards_theme.mp3"
-    ]
+    audios: []
   },
   {
     year: 2001,
@@ -130,7 +106,7 @@ let timeline = [
   },
   {
     year: 2016,
-    date: "April 8",
+    date: "Sep 8",
     description: "50th Anniversary Fan Event",
     description_long: "To commemorate 50 years of Star Trek, fans worldwide organized events, panel discussions, and retrospectives celebrating the franchise's impact on popular culture.",
     images: [
