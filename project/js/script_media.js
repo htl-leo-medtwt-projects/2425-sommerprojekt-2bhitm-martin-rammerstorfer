@@ -5,13 +5,10 @@
 let selected = '';
 
 const queryString = window.location.search;
-console.log(queryString);
 
 if (queryString !== '') {
   const urlParams = new URLSearchParams(queryString);
-
   selected = urlParams.get('selected');
-  console.log(selected);
 }
 
 if (selected.toLowerCase() == 'tc') {
@@ -163,14 +160,11 @@ function popUp(elem, n) {
     `;
   }
   document.getElementById('popup_content').innerHTML = outp;
-  
   document.getElementById('popup').style.display = 'block';
-
   document.getElementById('popup_background').style.animation = 'fadeIn 0.4s ease-in-out forwards 1';
-  
   document.getElementById('popup_content').style.animation = 'popUp 0.4s ease-in-out forwards 1';
 }
-if (selected !== null) {
+if (selected !== null && selected !== '') {
   popUp(document.getElementsByClassName('mediaElement')[getMediaIndex(selected)], getMediaIndex(selected));
 }
 
@@ -182,3 +176,7 @@ function closePopUp() {
 for (let i = 0; i < mediaArr.length; i++) {
   mediaArr[i].characters = charactersArr.filter(character => character.media.includes(mediaArr[i]));
 }
+
+document.addEventListener('keyup', (key) => {
+  if (key.code === 'Escape') closePopUp();
+});

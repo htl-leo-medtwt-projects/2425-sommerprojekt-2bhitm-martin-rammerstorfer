@@ -126,7 +126,10 @@ function popUp(elem, n) {
   outp += `
     <div class="img_container">
       <img id="characterImg" src="img/characters/${c.images[0].path}" alt="">
-      <p id="characterImgCaption" class="img_caption">${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p>
+      <p id="characterImgCaption" class="img_caption">
+        <a id="img_link" href="media.html?selected=${c.images[0].media.abbreviation}">${c.images[0].media === media.TC ? media.TOS.abbreviation : c.images[0].media.abbreviation}</a>
+        <br>${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}
+      </p>
       ${
         c.images.length > 1 ? `
           <div class="btn_image" id="btn_left" onclick="cycleLeft()">&#x1f890;</div>
@@ -142,16 +145,13 @@ function popUp(elem, n) {
       ${c.rank === null ? '' : `<p><b>Rank:</b> ${c.rank}</p>`}
       <p><b>Occupation:</b> ${c.occupation}</p>
       <p><b>Home planet:</b> ${c.homePlanet}</p>
-      <p><b>First appearance:</b> <a href="media.html?selected=${c.media[0].abbreviation}">${extractTitle(c.media[0] === media.TC ? media.TOS.name : c.media[0].name)}</a></p>
+      <p><b>First appearance:</b> <a href="media.html?selected=${c.images[index].media.abbreviation}">${extractTitle(c.images[index].media === media.TC ? media.TOS.name : c.images[index].media.name)}</a></p>
       <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
     </div>
   `;
   document.getElementById('popup_content').innerHTML = outp;
-  
   document.getElementById('popup').style.display = 'block';
-
   document.getElementById('popup_background').style.animation = 'fadeIn 0.4s ease-in-out forwards 1';
-  
   document.getElementById('popup_content').style.animation = 'popUp 0.4s ease-in-out forwards 1';
 
   sources = [];
@@ -193,7 +193,10 @@ function cycleLeft() {
   index += sources.length - 1;
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
-  document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
+  document.getElementById('characterImgCaption').innerHTML = `
+    <a id="img_link" href="media.html?selected=${c.images[index].media.abbreviation}">${c.images[index].media.abbreviation === media.TC ? media.TOS.abbreviation : c.images[index].media.abbreviation}</a>
+    <br>${captions[index]}
+  `;
   // clearInterval(interval);
   // interval = setInterval(cycleLeft, time);
 }
@@ -201,7 +204,10 @@ function cycleRight() {
   index++;
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
-  document.getElementById('characterImgCaption').innerHTML = `${captions[index]}`;
+  document.getElementById('characterImgCaption').innerHTML = `
+    <a id="img_link" href="media.html?selected=${c.media[index].abbreviation}">${c.media[index] === media.TC ? media.TOS.abbreviation : c.media[index].abbreviation}</a>
+    <br>${captions[index]}
+  `;
   // clearInterval(interval);
   // interval = setInterval(cycleRight, time);
 }
