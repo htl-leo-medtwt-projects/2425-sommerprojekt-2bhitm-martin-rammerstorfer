@@ -3,22 +3,24 @@ let timeline = [
     year: 1964,
     date: "March 11",
     description: "Roddenberry comes up with Star Trek",
-    description_long: "Gene Roddenberry pitches the idea of Star Trek to NBC, envisioning a science fiction show set in the far future.",
+    description_long: "Gene Roddenberry pitches the idea of a science fiction show set in the far future to NBC. More on Wikipedia: <a href=\"https://en.wikipedia.org/wiki/Star_Trek#History\">Star Trek History</a>.",
     images: [
       "img/history/roddenberry.jpg"
     ],
     videos: [],
+    posters: [],
     audios: []
   },
   {
     year: 1966,
     date: "Sep 6",
     description: "TOS premieres on Canadian TV",
-    description_long: "<a href=\"media.html?selected=TOS\">Star Trek: The Original Series</a> premieres on the Canadian network CTV with its pilot The Cage. The show is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
+    description_long: "<a href=\"media.html?selected=TOS\">Star Trek: The Original Series</a> premieres on the Canadian network CTV with its pilot &ldquo;The Cage&rdquo;. The show is created by Gene Roddenberry and stars William Shatner as Captain James T. Kirk, Leonard Nimoy as Spock, and DeForest Kelley as Dr. Leonard McCoy.",
     images: [
       "img/history/the_cage.jpg"
     ],
     videos: [],
+    posters: [],
     audios: []
   },
   {
@@ -30,17 +32,19 @@ let timeline = [
       "img/history/first_convention.jpg"
     ],
     videos: [],
+    posters: [],
     audios: []
   },
   {
     year: 1973,
-    date: "June 8",
+    date: "Sep 8",
     description: "The Animated Series debuts",
     description_long: "<a href=\"media.html?selected=TAS\">Star Trek: The Animated Series</a> brings back the adventures of the original crew in animated form, continuing the legacy of the franchise.",
     images: [
       "img/history/animated_series.jpg"
     ],
     videos: [],
+    posters: [],
     audios: []
   },
   {
@@ -51,6 +55,9 @@ let timeline = [
     images: [],
     videos: [
       "video/history/tmp_trailer.mp4"
+    ],
+    posters: [
+      "video/history/tmp_trailer.jpg"
     ],
     audios: []
   },
@@ -65,58 +72,67 @@ let timeline = [
     videos: [
       // "video/history/tng_intro.mp4"
     ],
+    posters: [],
     audios: []
   },
   {
     year: 1993,
     date: "May 28",
-    description: "Star Trek: Deep Space Nine premieres",
-    description_long: "Star Trek: Deep Space Nine introduces a unique setting on a space station near a strategic wormhole, exploring different aspects of the Star Trek universe.",
+    description: "Deep Space Nine premieres",
+    description_long: "<a href=\"media.html?selected=DS9\">Star Trek: Deep Space Nine</a> introduces a unique setting on a space station near a strategically placed wormhole.",
     images: [
       "img/history/deep_space_nine.jpg"
     ],
     videos: [],
+    posters: [],
     audios: []
   },
   {
     year: 2001,
     date: "May 23",
-    description: "Star Trek: Enterprise premieres",
-    description_long: "Star Trek: Enterprise serves as a prequel to the original series, exploring the early years of space exploration.",
+    description: "Enterprise premieres",
+    description_long: "<a href=\"media.html?selected=ENT\">Star Trek: Enterprise</a> serves as a prequel to the original series, exploring the early years of space exploration.",
     images: [
-      "img/history/enterprise.jpg"
+      "img/history/ent_crew.jpg"
     ],
     videos: [
-      "video/history/enterprise_intro.mp4"
+      // "video/history/ent_intro.mp4"
     ],
+    posters: [],
     audios: []
   },
   {
     year: 2009,
     date: "May 8",
-    description: "Star Trek reboots with a new film",
-    description_long: "The reboot film introduces a new cast and an alternate timeline, offering a fresh take on the classic franchise.",
+    description: "The franchise reboots with a new film",
+    description_long: "The <a href=\"media.html?selected=TOS\">film</a> and its sequels takes place in an alternate timeline and introduces a new cast, offering a fresh take on the franchise.",
     images: [
       // "img/history/reboot_film.jpg"
     ],
     videos: [
       "video/history/st09_trailer.mp4"
     ],
+    posters: [
+      "video/history/st09_trailer.jpg"
+    ],
     audios: []
   },
   {
     year: 2016,
     date: "Sep 8",
-    description: "50th Anniversary Fan Event",
+    description: "50th Anniversary Fan Events",
     description_long: "To commemorate 50 years of Star Trek, fans worldwide organized events, panel discussions, and retrospectives celebrating the franchise's impact on popular culture.",
     images: [
-      "img/history/anniversary.jpg"
+      // "img/history/anniversary.jpg"
     ],
     videos: [
       "video/history/anniversary.mp4"
     ],
+    posters: [
+      "video/history/anniversary.jpg"
+    ],
     audios: [
-      "audio/history/anniversary_podcast.mp3"
+      // "audio/history/anniversary_podcast.mp3"
     ]
   }
 ];

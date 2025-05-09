@@ -960,7 +960,7 @@ let charactersArr = [
       {
         path: "laforge_1.jpg",
         year: 2379,
-        media: meüdia.NEM,
+        media: media.NEM,
         actor: "LeVar Burton"
       },
       {

@@ -7,10 +7,11 @@
 	<link rel="icon" type="image/x-icon" href="img/badge.png">
 	<link rel="stylesheet" href="./css/style.css">
   <script src="js/script.js" defer></script>
+  <script src="js/script_game.js" defer></script>
 </head>
 <body>
   
-  <header>
+  <header id="header">
     <div id="color_mode" onclick="changeColorMode();"><img src="img/badge.png" alt="Logo"></div>
     <nav>
       <a href="index.html">Home</a>
@@ -24,7 +25,9 @@
   <main>
     <div id="gameContainer">
       <div id="gameFrame">
-        <h2>Game</h2>
+        <h1>Game</h1>
+        <div id="audio" onclick="toggleAudio()">&#x1f508;</div>
+        <div id="fullscreen" onclick="openFullscreen()">&#x26f6;</div>
       </div>
     </div>
   </main>

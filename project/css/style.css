@@ -54,7 +54,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color var(--transition-duration) var(--transition-timing);
+  transition: background-color var(--transition-duration) var(--transition-timing), top 0.2 ease-out;
   border-top: 4px solid var(--color-accent3);
   z-index: 20;
   box-shadow: 0 0 6px black, 0 1px 0 black;
@@ -622,7 +622,7 @@ input {
   /* margin-top: 100px; */
   /* margin-bottom: 100px; */
   padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   padding-left: 4vw;
   padding-right: 4vw;
   overflow: hidden;
@@ -686,6 +686,8 @@ input {
   object-position: top;
   padding: 10px;
   user-select: none;
+  object-fit: cover;
+  object-position: center;
 }
 
 .section h3 {
@@ -708,23 +710,80 @@ input {
 }
 
 #gameContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: var(--width);
   padding: 6px;
-  gap: 10px;
   width: 65vw;
   height: 65vh;
   margin: auto;
+  position: relative;
 }
 
 #gameFrame {
   width: 100%;
   height: 100%;
   border: none;
-  background-color: var(--color-bg2);
   box-shadow: 0 0 6px black, 1px 1px 0 black;
+  position: relative;
+  background-color: black;
+  color: white;
+  background-image: url('../img/viewscreen2.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#gameFrame h1 {
+  padding-top: 50px;
+  font-size: 50px;
+  font-family: federation;
+  text-align: center;
+}
+
+#fullscreen {
+  position: absolute;
+  left: 3%;
+  bottom: 3%;
+  font-size: 30px;
+  user-select: none;
+  cursor: pointer;
+  text-shadow: 0 1px 0 black,
+    0 -1px 0 black,
+    -1px 0 0 black,
+    1px 0 0 black,
+    2px 2px 0 black,
+    -2px 2px 0 black,
+    2px -2px 0 black,
+    -2px -2px 0 black,
+    0 2px 0 black,
+    0 -2px 0 black,
+    -2px 0 black,
+    2px 0 black,
+    1px 2px 0 black,
+    -1px 2px 0 black,
+    1px -2px 0 black,
+    -1px -2px 0 black,
+    2px 1px 0 black,
+    -2px 1px 0 black,
+    2px -1px 0 black,
+    -2px -1px 0 black;
+  transition: scale 0.3s ease;
+}
+
+#audio {
+  position: absolute;
+  left: 8%;
+  bottom: 3%;
+  font-size: 30px;
+  user-select: none;
+  cursor: pointer;
+  filter: grayscale(1);
+  transition: scale 0.3s ease;
+}
+
+#fullscreen:hover {
+  scale: 1.2;
+}
+
+#audio:hover {
+  scale: 1.2;
 }
 
 @keyframes fadeIn {

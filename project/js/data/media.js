@@ -28,7 +28,7 @@ let media = {
     episodes: 79,
     avgLengthMinutes: 50,
     totalLengthMinutes: 3950,
-    firstAired: "1966-09-08",
+    firstAired: "1966-09-06",
     lastAired: "1969-06-03",
     isAnimated: false,
     mainShip: ships.ENTERPRISE,
