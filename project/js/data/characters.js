@@ -906,6 +906,73 @@ let charactersArr = [
   },
   {
     id: 105,
+    name: "Geordi La Forge",
+    description: "Chief medical officer aboard the USS Enterprise-D",
+    firstNames: "Geordi",
+    lastName: "La Forge",
+    titles: "",
+    altNames: [],
+    species: [
+      "Human"
+    ],
+    sex: "male",
+    homePlanet: "Earth",
+    affiliation: "Federation Starfleet",
+    rank: "Commodore",
+    occupation: "Fleet Museum Curator",
+    serialNumber: null,
+    ships: [
+      ships.ENTERPRISE_D,
+      ships.ENTERPRISE_E
+    ],
+    status: "active",
+    birthDate: "2338-02-02",
+    birthPlace: "Earth,African Confederation,Somalia,Mogadishu",
+    deathDate: null,
+    deathPlace: null,
+    maritalStatus: null,
+    father: "Edward M. La Forge",
+    mother: "Silva La Forge",
+    siblings: [
+      "Ariana La Forge",
+    ],
+    partners: [],
+    actors: [
+      "LeVar Burton"
+    ],
+    media: [
+      media.TNG,
+      media.DS9,
+      media.GEN,
+      media.FC,
+      media.INS,
+      media.NEM,
+      media.DIS,
+      media.PIC
+    ],
+    images: [
+      {
+        path: "laforge_0.jpg",
+        year: 2368,
+        media: media.TNG,
+        actor: "LeVar Burton"
+      },
+      {
+        path: "laforge_1.jpg",
+        year: 2379,
+        media: meüdia.NEM,
+        actor: "LeVar Burton"
+      },
+      {
+        path: "laforge_2.jpg",
+        year: 2401,
+        media: media.PIC,
+        actor: "LeVar Burton"
+      }
+    ]
+  },
+  {
+    id: 106,
     name: "Beverly Crusher",
     description: "Chief medical officer aboard the USS Enterprise-D",
     firstNames: "Beverly",
@@ -972,7 +1039,7 @@ let charactersArr = [
     ]
   },
   {
-    id: 106,
+    id: 107,
     name: "Wesley Crusher",
     description: "Son of Beverly Crusher",
     firstNames: "Wesley",

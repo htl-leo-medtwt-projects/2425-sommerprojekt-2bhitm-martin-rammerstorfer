@@ -568,6 +568,27 @@ input {
   
 }
 
+#top_btn {
+  position: fixed;
+  bottom: 8vh;
+  right: 5vw;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 20%;
+  text-align: center;
+  box-shadow: 0 0 6px black, 1px 1px 0 black;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color var(--transition-duration) var(--transition-timing);
+}
+#top_btn:hover {
+  background-color: var(--color-bg2);
+}
+
 .section {
   display: flex;
   flex-wrap: nowrap;

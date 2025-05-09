@@ -34,10 +34,14 @@ function getMedia(event) {
     outp += `<img src="${event.images[i]}">`;
   }
   for (let i = 0; i < Math.min(event.videos.length, 1); i++) {
-    outp += `<video controls><source src="${event.videos[i]}" type="video/mp4"></video>`;
+    outp += `<video controls autoplay><source src="${event.videos[i]}" type="video/mp4"></video>`;
   }
   for (let i = 0; i < Math.min(event.audios.length, 1); i++) {
     outp += `<audio controls><source src="${event.audios[i]}" type="audio/mpeg"></audio>`;
   }
   return outp;
+}
+
+function toTop() {
+  historyFullpage.moveTo(1);
 }

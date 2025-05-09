@@ -97,10 +97,10 @@ let timeline = [
     description: "Star Trek reboots with a new film",
     description_long: "The reboot film introduces a new cast and an alternate timeline, offering a fresh take on the classic franchise.",
     images: [
-      "img/history/reboot_film.jpg"
+      // "img/history/reboot_film.jpg"
     ],
     videos: [
-      "video/history/reboot_trailer.mp4"
+      "video/history/st09_trailer.mp4"
     ],
     audios: []
   },
