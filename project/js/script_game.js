@@ -1,3 +1,8 @@
+function startGame() {
+  let frame = document.getElementById('gameFrame');
+  frame.innerHTML = '';
+}
+
 function toggleAudio() {
   audio = !audio;
   if (audio) music.play();
@@ -19,6 +24,19 @@ function toggleAudio() {
 function muteSounds(mute=true) {
   // SOUNDS.test.muted = mute;
 }
+
+// import BigText from 'big-text.js';
+
+// BigText("#gameTitle",{
+// 	rotateText: {Number},
+// 	fontSizeFactor: {Number},
+// 	maximumFontSize: {Number},
+// 	limitingDimension: {String},
+// 	horizontalAlign: {String},
+// 	verticalAlign: {String},
+// 	textAlign: {String},
+// 	whiteSpace: {String},
+// });
 
 let fullscreen = false;
 

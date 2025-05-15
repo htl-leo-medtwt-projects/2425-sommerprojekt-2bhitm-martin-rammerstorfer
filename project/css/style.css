@@ -5,7 +5,7 @@
   --color-accent1: #d6a444;
   --color-accent2: #c1c730;
   --color-accent3: #2b53a7;
-  --color-accent4: #a71313;
+  --color-accent4: #bd1616;
   --color-link: #2b53a7;
   --image-bg: url(../img/interior.jpeg);
   --transition-duration: 0.3s;
@@ -710,11 +710,11 @@ input {
 }
 
 #gameContainer {
-  padding: 6px;
   width: 65vw;
   height: 65vh;
   margin: auto;
   position: relative;
+  user-select: none;
 }
 
 #gameFrame {
@@ -730,19 +730,11 @@ input {
   background-position: center;
 }
 
-#gameFrame h1 {
-  padding-top: 50px;
-  font-size: 50px;
-  font-family: federation;
-  text-align: center;
-}
-
 #fullscreen {
   position: absolute;
   left: 3%;
   bottom: 3%;
   font-size: 30px;
-  user-select: none;
   cursor: pointer;
   text-shadow: 0 1px 0 black,
     0 -1px 0 black,
@@ -765,6 +757,7 @@ input {
     2px -1px 0 black,
     -2px -1px 0 black;
   transition: scale 0.3s ease;
+  color: white;
 }
 
 #audio {
@@ -772,10 +765,10 @@ input {
   left: 8%;
   bottom: 3%;
   font-size: 30px;
-  user-select: none;
   cursor: pointer;
   filter: grayscale(1);
   transition: scale 0.3s ease;
+  color: white;
 }
 
 #fullscreen:hover {
@@ -784,6 +777,30 @@ input {
 
 #audio:hover {
   scale: 1.2;
+}
+
+#gameFrame > #gameTitle {
+  font-family: federation;
+  position: relative;
+  padding-top: 10%;
+  height: 10%;
+  text-align: center;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+
+#gameFrame > #start {
+  font-family: startrek;
+  font-size: 32px;
+  position: relative;
+  padding-top: 16%;
+  height: 40%;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  transition: color var(--transition-duration) linear;
+}
+#gameFrame > #start:hover {
+  color: var(--color-accent4);
 }
 
 @keyframes fadeIn {
