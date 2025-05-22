@@ -6,7 +6,11 @@
   <title>Game</title>
 	<link rel="icon" type="image/x-icon" href="img/badge.png">
 	<link rel="stylesheet" href="./css/style.css">
+  <!-- <script type="module">
+    import BigText from './js/big-text.js';
+  </script> -->
   <script src="js/script.js" defer></script>
+  <script src="js/script_keyevents.js" defer></script>
   <script src="js/script_game.js" defer></script>
 </head>
 <body>
@@ -25,9 +29,13 @@
   <main>
     <div id="gameContainer">
       <div id="gameFrame">
-        <h1 id="gameTitle">Game</h1>
-        <div id="start" onclick="startGame();">start</div>
-        <div id="ship"></div>
+        <div id="titleScreen">
+          <h1 id="gameTitle">Game</h1>
+          <div id="start" onclick="startGame();">start</div>
+        </div>
+        <div id="ship">
+          <img id="shipImg" src="img/game/enterprise_1.png" alt="Enterprise"/>
+        </div>
       </div>
       <div id="audio" onclick="toggleAudio();">&#x1f508;</div>
       <div id="fullscreen" onclick="openFullscreen();">&#x26f6;</div>
