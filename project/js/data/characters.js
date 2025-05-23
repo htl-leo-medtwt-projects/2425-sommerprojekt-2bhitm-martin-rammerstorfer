@@ -84,7 +84,8 @@ let charactersArr = [
         media: media.STID,
         actor: "Paul Wesley"
       }
-    ]
+    ],
+    audio: 'kirk.mp3'
   },
   {
     id: 1,
@@ -174,7 +175,8 @@ let charactersArr = [
         media: media.SNW,
         actor: "Ethan Peck"
       }
-    ]
+    ],
+    audio: 'spock.mp3'
   },
   {
     id: 2,
@@ -257,7 +259,8 @@ let charactersArr = [
         media: media.STB,
         actor: "Karl Urban"
       }
-    ]
+    ],
+    audio: 'mccoy.mp3'
   },
   {
     id: 3,
@@ -625,7 +628,8 @@ let charactersArr = [
         media: media.PIC,
         actor: "Patrick Stewart"
       }
-    ]
+    ],
+    audio: 'picard.mp3'
   },
   {
     id: 101,
