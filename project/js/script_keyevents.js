@@ -27,7 +27,7 @@ function keyListenerDown(e) {
     if (key === "s") {
         KEY_EVENTS.down = true;
     }
-    if (key === "space") {
+    if (e.code === "Space") {
         KEY_EVENTS.space = true;
     }
     KEY_EVENTS.shift = e.shiftKey;

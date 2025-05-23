@@ -574,7 +574,7 @@ input {
   right: 5vw;
   width: 50px;
   height: 50px;
-  background-color: var(--color-bg);
+  background-color: var(--color-bg2);
   color: var(--color-text);
   font-size: 30px;
   padding: 5px;
@@ -586,7 +586,7 @@ input {
   transition: background-color var(--transition-duration) var(--transition-timing);
 }
 #top_btn:hover {
-  background-color: var(--color-bg2);
+  background-color: var(--color-bg);
 }
 
 .section {
@@ -731,6 +731,7 @@ input {
   background-size: cover;
   background-position: center;
   overflow: hidden;
+  transform-origin: top;
 }
 
 #fullscreen {
@@ -784,6 +785,7 @@ input {
 
 #gameFrame #gameTitle {
   font-family: federation;
+  font-size: 30px;
   position: relative;
   padding-top: 10%;
   height: 10%;
@@ -793,30 +795,33 @@ input {
 
 #titleScreen {
   display: block;
+  position: relative;
+  z-index: 15;
 }
 #gameFrame #start {
   font-family: startrek;
-  font-size: 32px;
+  font-size: 40px;
   position: relative;
-  padding-top: 16%;
-  height: 40%;
+  margin-top: 10%;
   text-align: center;
   cursor: pointer;
   text-shadow: var(--text-shadow), var(--drop-shadow);
   transition: color var(--transition-duration) linear;
 }
 #gameFrame #start:hover {
-  color: var(--color-accent4);
+  color: var(--color-accent1);
 }
 
 #gameFrame #ship {
   position: absolute;
-  top: 1%;
-  left: 1%;
-  width: 18%;
+  top: 40%;
+  left: 5%;
+  width: 14%;
   height: auto;
   display: none;
+  overflow: hidden;
   z-index: 4;
+  /* background-color: green; */
   
   /* position: absolute;
   width: 50px; /* viewing window
@@ -826,6 +831,7 @@ input {
   z-index: 1; */
 }
 #gameFrame #ship #shipImg {
+  position: relative;
   width: 100%;
 }
 
@@ -833,12 +839,44 @@ input {
   display: none;
   width: 6%;
   position: absolute;
-  top: 1%;
+  top: 4%;
   left: 105%;
+  /* background-color: blue; */
 }
 .asteroidImg {
   width: 100%;
 }
+
+.projectile {
+  position: absolute;
+  background-color: var(--color-accent4);
+  width: 2.5%;
+  height: 1%;
+  display: none;
+}
+
+#score {
+  position: absolute;
+  top: 4%;
+  font-family: federation;
+  right: 2%;
+  width: 98%;
+  font-size: 22px;
+  text-align: right;
+  display: none;
+}
+
+#health {
+  position: absolute;
+  top: 4%;
+  font-family: federation;
+  left: 2%;
+  width: 98%;
+  font-size: 22px;
+  text-align: left;
+  display: none;
+}
+
 
 @keyframes fadeIn {
   0% {
@@ -857,3 +895,113 @@ input {
     transform: scale(1);
   }
 }
+
+/* @media screen and (max-width: 1100px) /* screen width < 1100px {
+  .grid { grid-template-columns: 42% 42%; }
+  .speedrun .table-container {
+    overflow-x: scroll;
+  }
+  .speedrun table {
+    text-wrap: nowrap;
+  }
+  .setting {
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+  }
+  .grid-item, .grid h3 {
+    max-width: 280px;
+  }
+  #decoration-text-50 {
+    display: flex;
+  }
+  #decoration-text-25, #decoration-text-70 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) /* screen width < 800px {
+  header {
+    display: block;
+    position: absolute;
+  }
+  header .logo img {
+    height: 50vh;
+    min-height: 60px;
+    margin-bottom: 5px;
+  }
+  header nav {
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 12vh;
+  }
+  body {
+    margin-top: 40vh;
+  }
+  header nav a {
+    font-size: 24px;
+    background-color: var(--color-bg);
+    width: 100%;
+    text-align: center;
+    transition: background-color var(--transition-duration) var(--transition-timing);
+    /* transition: background-color 0.4s, color 0.4s, border 0.4s;
+    padding: 6px;
+    border-radius: 0 0 2px 2px;
+  }
+  header nav a:hover {
+    background-color: var(--color-bg2);
+
+  }
+  /* #active {
+    border-top: 2px solid transparent;
+  }
+  #active:hover {
+    border-top: 2px solid var(--accent-3);
+  }
+  #hero {
+    margin-top: 40px;
+  }
+  .img-text { display: block; }
+  .img-text .img {
+    width: 60vw;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .img-text .content {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .locations iframe {
+    display: none;
+  }
+  #modal-content {
+    width: 100%;
+  }
+  .grid {
+    grid-template-columns: auto; 
+  }
+  .wall-of-text video {
+    max-width: 95%;
+  }
+  .speedrun .video-container {
+    flex-wrap: wrap;
+  }
+  #decoration-text-25 {
+    display: flex;
+  }
+  #decoration-text-50, #decoration-text-70 {
+    display: none;
+  }
+  .speedrun video {
+    max-width: 95%;
+  }
+  .setting {
+    font-size: 55px;
+    width: 55px;
+    height: 55px;
+  }
+} */

@@ -1,5 +1,5 @@
 let GAME_CONFIG = {
-  gameSpeed: 8
+  gameSpeed: 32
 };
 
 let FRAME = {
@@ -10,28 +10,53 @@ let FRAME = {
 let PLAYER = {
   box: document.getElementById('ship'),
   spriteImg: document.getElementById('shipImg'),
-  speed: 1,
+  x: 5,
+  y: 40,
+  speed: 0.4,
   lives: 3
 };
 
-
-let ASTEROIDS = [];
-for (let i = 0; i < 12; i++) {
+let PROJECTILES = [];
+for (let i = 0; i < 6; i++) {
   let outp = '';
   outp += `
-    <div class="asteroid" id="asteroid${i}">
-      <img class="asteroidImg" id="asteroidImg${i}" src="img/game/asteroid-${i+1}.png" alt="*"/>
+    <div class="projectile" id="projectile${i}">
+      
     </div>
   `;
+  // <img class="projectileImg" id="projectileImg${i}" src="img/game/projectile-${i+1}.png" alt="->"/>
   FRAME.elem.innerHTML += outp;
-  ASTEROIDS.push({
-    box: document.getElementById(`asteroid${i}`),
-    spriteImg: document.getElementById(`asteroidImg${i}`),
+  PROJECTILES.push({
+    box: document.getElementById(`projectile${i}`),
+    spriteImg: document.getElementById(`projectileImg${i}`),
+    x: 5,
+    y: 40,
     isActive: false
   });
 }
 
 function startGame() {
+  let ASTEROIDS = [];
+  for (let i = 0; i < 12; i++) {
+    let outp = '';
+    outp += `
+      <div class="asteroid" id="asteroid${i}">
+        <img class="asteroidImg" id="asteroidImg${i}" src="img/game/asteroid-${i+1}.png" alt="*"/>
+      </div>
+    `;
+    FRAME.elem.innerHTML += outp;
+    ASTEROIDS.push({
+      box: document.getElementById(`asteroid${i}`),
+      spriteImg: document.getElementById(`asteroidImg${i}`),
+      x: 105,
+      y: 5,
+      isActive: false
+    });
+  }
+
+  document.getElementById('health').innerHTML = `
+    Shield status: NORMAL
+  `
   showGameScreen();
   gameLoop();
 }
@@ -42,9 +67,12 @@ function showGameScreen() {
 
   document.getElementById('ship').style.display = 'block';
 
-  for (let i = 0; i < ASTEROIDS.length; i++) {
-    ASTEROIDS[i].box.style.display = 'block';
-  }
+  document.getElementById('score').style.display = 'block';
+  document.getElementById('health').style.display = 'block';
+
+  // for (let i = 0; i < ASTEROIDS.length; i++) {
+  //   ASTEROIDS[i].box.style.display = 'block';
+  // }
   // FRAME.elem.style.backgroundRepeat = 'repeat';
   // FRAME.elem.style.backgroundSize = '50%';
 }
@@ -57,7 +85,12 @@ function showTitleScreen() {
     ASTEROIDS[i].box.style.display = 'none';
   }
 
-  FRAME.elem.style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
+  document.getElementById('score').style.display = 'none';
+  document.getElementById('health').style.display = 'none';
+
+  document.getElementById('start').innerHTML = 'new&thinsp;game';
+
+  document.getElementById('gameFrame').style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
   // FRAME.elem.style.backgroundRepeat = 'repeat';
   // FRAME.elem.style.backgroundSize = '50%';
 }
@@ -74,12 +107,13 @@ function showTitleScreen() {
  */
 function movePlayer(dx, dy, dr) {
   // save original position
-  let originalX = parseFloat(document.getElementById('ship').style.left);
-  let originalY = parseFloat(document.getElementById('ship').style.top);
+  PLAYER.direction = dr;
+  PLAYER.x += dx;
+  PLAYER.y += dy;
 
   // calculate new position
-  document.getElementById('ship').style.left = `calc(${originalX}px + ${dx}%)`;
-  document.getElementById('ship').style.top = `calc(${originalY}px + ${dy}%)`;
+  document.getElementById('ship').style.left = `${PLAYER.x}%`;
+  document.getElementById('ship').style.top = `${PLAYER.y}%`;
 
 
   // update sprite direction if needed
@@ -94,47 +128,79 @@ function movePlayer(dx, dy, dr) {
   // GAME_SCREEN.debug_output.innerHTML = `x: ${document.getElementById('ship').style.left} | y: ${document.getElementById('ship').style.top} | direction: ${dr} | animation: ${PLAYER.spriteImgNumber} | count: ${PLAYER.pageCount}`;
 }
 
-function moveAsteroid(asteroid, dx, dy, dr) {
-  // save original position
-  let originalX = parseFloat(asteroid.style.left);
-  let originalY = parseFloat(asteroid.style.top);
+function moveAsteroid(index, dx, dy, dr) {
+  ASTEROIDS[index].x += dx;
+  ASTEROIDS[index].y += dy;
 
-  // calculate new position
-  asteroid.style.left = `calc(${originalX}px + ${dx}%)`;
-  asteroid.style.top = `calc(${originalY}px + ${dy}%)`;
+  let elem = document.getElementsByClassName('asteroid')[index];
+  elem.style.left = `${ASTEROIDS[index].x}%`;
+  elem.style.top = `${ASTEROIDS[index].y}%`;
+}
+function moveProjectile(index, dx, dy, dr) {
+  PROJECTILES[index].x += dx;
+  PROJECTILES[index].y += dy;
 
-
-  // update sprite direction if needed
-  // if (dr != 0 && dr != PLAYER.spriteDirection) {
-  //     PLAYER.spriteDirection = dr;
-  //     document.getElementById('ship').style.transform = `scaleX(${dr})`;
-  // }
-
-  // animatePlayer();
-
-  // output in debugger box
-  // GAME_SCREEN.debug_output.innerHTML = `x: ${document.getElementById('ship').style.left} | y: ${document.getElementById('ship').style.top} | direction: ${dr} | animation: ${PLAYER.spriteImgNumber} | count: ${PLAYER.pageCount}`;
+  let elem = document.getElementsByClassName('projectile')[index];
+  elem.style.left = `${PROJECTILES[index].x}%`;
+  elem.style.top = `${PROJECTILES[index].y}%`;
 }
 
+let asteroidTime = 80;
 let asteroidTimer = 0;
+let shootingTimer = 0;
+let difficultyTimer = 0;
 
+let ASTEROID_MIN = 20;
+let ASTEROID_MULT = 40;
+let ASTEROID_SPEED = 0.5;
+
+let stopLoop = false;
 function gameLoop() {
+  if (difficultyTimer > 500) {
+    ASTEROID_MIN = 15;
+    ASTEROID_MULT = 35;
+    ASTEROID_SPEED = 0.6;
+  } else if (difficultyTimer > 1000) {
+    ASTEROID_MIN = 15;
+    ASTEROID_MULT = 30;
+    ASTEROID_SPEED = 0.7;
+  } else if (difficultyTimer > 1500) {
+    ASTEROID_MIN = 10
+    ASTEROID_MULT = 30;
+    ASTEROID_SPEED = 0.8;
+  } else if (difficultyTimer > 2000) {
+    ASTEROID_MIN = 5;
+    ASTEROID_MULT = 25;
+    ASTEROID_SPEED = 1;
+  } else if (difficultyTimer > 2500) {
+    ASTEROID_MIN = 5;
+    ASTEROID_MULT = 20;
+    ASTEROID_SPEED = 1.1;
+  } else if (difficultyTimer > 3000) {
+    ASTEROID_MIN = 5;
+    ASTEROID_MULT = 20;
+    ASTEROID_SPEED = 1.2;
+  }
+
+  document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`;
+  console.log(difficultyTimer)
+
   let moveX = 0;
   let moveY = 0;
   let moveDir = 0;
 
-  if (KEY_EVENTS.left && parseFloat(document.getElementById('ship').style.left) > 5) {
+  if (KEY_EVENTS.left && PLAYER.x > 4) {
     moveX += -1;
     moveDir += -1;
   }
-  if (KEY_EVENTS.right && parseFloat(document.getElementById('ship').style.left) < 745) {
+  if (KEY_EVENTS.right && PLAYER.x < 20) {
     moveX += 1;
     moveDir += 1;
   }
-  if (KEY_EVENTS.up && parseFloat(document.getElementById('ship').style.top) > 10) {
+  if (KEY_EVENTS.up && PLAYER.y > 10) {
     moveY += -1;
   }
-  if (KEY_EVENTS.down && parseFloat(document.getElementById('ship').style.top) < 340) {
+  if (KEY_EVENTS.down && PLAYER.y < 75) {
     moveY += 1;
   }
 
@@ -147,39 +213,103 @@ function gameLoop() {
     movePlayer(moveX * PLAYER.speed, moveY * PLAYER.speed, moveDir);
   }
 
-  if (asteroidTimer > 8) {
+  if (asteroidTimer > asteroidTime) {
+    asteroidTime = ASTEROID_MIN+Math.floor(Math.random()*ASTEROID_MULT);
     asteroidTimer = 0;
     for (let i = 0; i < ASTEROIDS.length; i++) {
       if (!ASTEROIDS[i].isActive) {
         ASTEROIDS[i].isActive = true;
+        ASTEROIDS[i].y = 5+Math.floor(Math.random()*69);
+        ASTEROIDS[i].x = 105;
         break;
       }
     }
   }
 
+  if (shootingTimer > 40 && KEY_EVENTS.space) {
+    shootingTimer = 0;
+    shoot();
+  }
+
   for (let i = 0; i < ASTEROIDS.length; i++) {
     if (ASTEROIDS[i].isActive) {
-      document.getElementsByClassName('asteroid')[i].style.display = 'block';
-      moveAsteroid(document.getElementsByClassName('asteroid')[i], -1, 0, 0);
+      if (ASTEROIDS[i].x < -5) {
+        ASTEROIDS[i].isActive = false;
+      } else {
+        document.getElementsByClassName('asteroid')[i].style.display = 'block';
+        moveAsteroid(i, -1*ASTEROID_SPEED, 0, 0);
+      }
     } else {
       document.getElementsByClassName('asteroid')[i].style.display = 'none';
     }
     
-    if (isColliding(PLAYER.box, document.getElementsByClassName('asteroid')[i], -20)) {
+    if (ASTEROIDS[i].isActive && isColliding(document.getElementById('ship'), document.getElementsByClassName('asteroid')[i], -20)) {
       ASTEROIDS[i].isActive = false;
       PLAYER.lives--;
+      if (PLAYER.lives == 2) {
+        document.getElementById('health').innerHTML = `
+          Shield status: DAMAGED
+        `
+      }
+      if (PLAYER.lives == 1) {
+        document.getElementById('health').innerHTML = `
+          Shield status: CRITICAL
+        `
+      }
       if (PLAYER.lives == 0) {
+        PLAYER.lives = 3;
+        stopLoop = true;
         gameOver();
       }
     }
   }
 
+  for (let i = 0; i < PROJECTILES.length; i++) {
+    if (PROJECTILES[i].isActive) {
+      if (ASTEROIDS[i].x > 105) {
+        ASTEROIDS[i].isActive = false;
+      } else {
+        document.getElementsByClassName('projectile')[i].style.display = 'block';
+        moveProjectile(i, 1, 0, 0);
+      }
+    } else {
+      document.getElementsByClassName('projectile')[i].style.display = 'none';
+    }
+    
+    for (let j=0; j<ASTEROIDS.length; j++) {
+      if (PROJECTILES[i].isActive && ASTEROIDS[j].isActive && isColliding(document.getElementsByClassName('asteroid')[j], document.getElementsByClassName('projectile')[i], 0)) {
+        PROJECTILES[i].isActive = false;
+        ASTEROIDS[j].isActive = false;
+      }
+    }
+  }
+
   asteroidTimer++;
+  shootingTimer++;
+  difficultyTimer++;
   
-  setTimeout(gameLoop, 1000 / GAME_CONFIG.gameSpeed); // async recursion
+  if (!stopLoop) {
+    setTimeout(gameLoop, 1000 / GAME_CONFIG.gameSpeed); // async recursion
+  } else {
+    stopLoop = false;
+  }
+}
+
+function shoot() {
+  for (let i = 0; i < PROJECTILES.length; i++) {
+    if (!PROJECTILES[i].isActive) {
+      PROJECTILES[i].isActive = true;
+      PROJECTILES[i].y = PLAYER.y+2;
+      PROJECTILES[i].x = PLAYER.x+10;
+      break;
+    }
+  }
 }
 
 function gameOver() {
+  asteroidTimer = 0;
+  shootingTimer = 0;
+  difficultyTimer = 0;
   showTitleScreen();
   console.log('game over')
 }
@@ -249,6 +379,8 @@ function openFullscreen() {
   elem.style.top = '0';
   elem.style.left = '0';
   elem.style.border = 'none';
+  document.getElementById('gameTitle').style.fontSize = "40px";
+  document.getElementById('start').style.fontSize = "50px";
   let header = document.getElementById('header');
   header.style.top = '-16vh';
   let audio = document.getElementById('audio');
@@ -271,6 +403,8 @@ function closeFullscreen() {
   elem.style.height = '65vh';
   elem.style.zIndex = '0';
   elem.style.border = '2px solid var(--color-accent4)';
+  document.getElementById('gameTitle').style.fontSize = "30px";
+  document.getElementById('start').style.fontSize = "40px";
   let audio = document.getElementById('audio');
   audio.style.fontSize = '30px';
   let header = document.getElementById('header');
