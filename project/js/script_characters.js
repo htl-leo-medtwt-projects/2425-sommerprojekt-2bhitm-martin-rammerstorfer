@@ -119,17 +119,20 @@ function resetSearch() {
   }
 }
 
+let currentChar = charactersArr[0];
+
 function popUp(elem, n) {
   let outp = '';
 
-  let c = charactersArr.filter(c => checkFilter(c))[n];
+  currentChar = charactersArr.filter(c => checkFilter(c))[n];
+  let c = currentChar;
   outp += `
     <div class="img_container">
       <img id="characterImg" src="img/characters/${c.images[0].path}" alt="">
-      <p id="characterImgCaption" class="img_caption">
+      <div id="characterImgCaption" class="img_caption">
         <a id="img_link" href="media.html?selected=${c.images[0].media.abbreviation}">${c.images[0].media === media.TC ? media.TOS.abbreviation : c.images[0].media.abbreviation}</a>
-        <br>${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}
-      </p>
+        <p>${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[0].year}</p>
+      </div>
       ${
         c.images.length > 1 ? `
           <div class="btn_image" id="btn_left" onclick="cycleLeft()">&#x1f890;</div>
@@ -190,23 +193,25 @@ let captions = [];
 let index = 0;
 
 function cycleLeft() {
+  let c = currentChar;
   index += sources.length - 1;
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
   document.getElementById('characterImgCaption').innerHTML = `
     <a id="img_link" href="media.html?selected=${c.images[index].media.abbreviation}">${c.images[index].media.abbreviation === media.TC ? media.TOS.abbreviation : c.images[index].media.abbreviation}</a>
-    <br>${captions[index]}
+    <p>${captions[index]}</p>
   `;
   // clearInterval(interval);
   // interval = setInterval(cycleLeft, time);
 }
 function cycleRight() {
+  let c = currentChar;
   index++;
   index %= sources.length;
   document.getElementById('characterImg').src = `img/characters/${sources[index]}`;
   document.getElementById('characterImgCaption').innerHTML = `
-    <a id="img_link" href="media.html?selected=${c.media[index].abbreviation}">${c.media[index] === media.TC ? media.TOS.abbreviation : c.media[index].abbreviation}</a>
-    <br>${captions[index]}
+    <a id="img_link" href="media.html?selected=${c.images[index].media.abbreviation}">${c.images[index].media === media.TC ? media.TOS.abbreviation : c.images[index].media.abbreviation}</a>
+    <p>${captions[index]}</p>
   `;
   // clearInterval(interval);
   // interval = setInterval(cycleRight, time);

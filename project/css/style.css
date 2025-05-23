@@ -545,17 +545,17 @@ input {
   left: 18px;
   transition: left var(--transition-duration) var(--transition-timing);
 }
-#btn_left:hover {
+/* #btn_left:hover {
   left: 14px;
-}
+} */
 
 #btn_right {
   right: 18px;
   transition: right var(--transition-duration) var(--transition-timing);
 }
-#btn_right:hover {
+/* #btn_right:hover {
   right: 14px;
-}
+} */
 
 .instruction {
   font-family: federation;
