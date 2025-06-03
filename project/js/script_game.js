@@ -13,7 +13,7 @@ let PLAYER = {
   x: 5,
   y: 40,
   speed: 0.4,
-  lives: 3
+  lives: 4
 };
 
 let PROJECTILES = [];
@@ -35,13 +35,15 @@ for (let i = 0; i < 6; i++) {
   });
 }
 
+let ASTEROIDS = [];
+
 function startGame() {
-  let ASTEROIDS = [];
-  for (let i = 0; i < 12; i++) {
+  ASTEROIDS = [];
+  for (let i = 0; i < 20; i++) {
     let outp = '';
     outp += `
       <div class="asteroid" id="asteroid${i}">
-        <img class="asteroidImg" id="asteroidImg${i}" src="img/game/asteroid-${i+1}.png" alt="*"/>
+        <img class="asteroidImg" id="asteroidImg${i}" src="img/game/asteroid-${(i%12+1)}.png" alt="*"/>
       </div>
     `;
     FRAME.elem.innerHTML += outp;
@@ -50,13 +52,21 @@ function startGame() {
       spriteImg: document.getElementById(`asteroidImg${i}`),
       x: 105,
       y: 5,
+      scale: 1,
+      speedMult: 1,
       isActive: false
     });
   }
 
-  document.getElementById('health').innerHTML = `
-    Shield status: NORMAL
-  `
+  
+  ASTEROID_MIN = 10;
+  ASTEROID_MULT = 10;
+  ASTEROID_SPEED = 0.5;
+  ASTEROID_SPEED_MULTI_KULTI = 0.25;
+
+  document.getElementById('healthbar').style.width = "96%";
+  document.getElementById('healthbar').style.backgroundColor = "chartreuse";
+  
   showGameScreen();
   gameLoop();
 }
@@ -135,6 +145,7 @@ function moveAsteroid(index, dx, dy, dr) {
   let elem = document.getElementsByClassName('asteroid')[index];
   elem.style.left = `${ASTEROIDS[index].x}%`;
   elem.style.top = `${ASTEROIDS[index].y}%`;
+  elem.style.scale = `${ASTEROIDS[index].scale}`;
 }
 function moveProjectile(index, dx, dy, dr) {
   PROJECTILES[index].x += dx;
@@ -150,36 +161,43 @@ let asteroidTimer = 0;
 let shootingTimer = 0;
 let difficultyTimer = 0;
 
-let ASTEROID_MIN = 20;
-let ASTEROID_MULT = 40;
+let ASTEROID_MIN = 10;
+let ASTEROID_MULT = 10;
 let ASTEROID_SPEED = 0.5;
+let ASTEROID_SPEED_MULTI_KULTI = 0.25;
 
 let stopLoop = false;
 function gameLoop() {
   if (difficultyTimer > 500) {
-    ASTEROID_MIN = 15;
-    ASTEROID_MULT = 35;
+    ASTEROID_MIN = 8;
+    ASTEROID_MULT = 8;
     ASTEROID_SPEED = 0.6;
+    ASTEROID_SPEED_MULTI_KULTI = 0.3;
   } else if (difficultyTimer > 1000) {
-    ASTEROID_MIN = 15;
-    ASTEROID_MULT = 30;
-    ASTEROID_SPEED = 0.7;
+    ASTEROID_MIN = 8;
+    ASTEROID_MULT = 7;
+    ASTEROID_SPEED = 0.65;
+    ASTEROID_SPEED_MULTI_KULTI = 0.4;
   } else if (difficultyTimer > 1500) {
-    ASTEROID_MIN = 10
-    ASTEROID_MULT = 30;
-    ASTEROID_SPEED = 0.8;
+    ASTEROID_MIN = 7;
+    ASTEROID_MULT = 7;
+    ASTEROID_SPEED = 0.75;
+    ASTEROID_SPEED_MULTI_KULTI = 0.5;
   } else if (difficultyTimer > 2000) {
     ASTEROID_MIN = 5;
-    ASTEROID_MULT = 25;
-    ASTEROID_SPEED = 1;
+    ASTEROID_MULT = 6;
+    ASTEROID_SPEED = 0.9;
+    ASTEROID_SPEED_MULTI_KULTI = 0.6;
   } else if (difficultyTimer > 2500) {
-    ASTEROID_MIN = 5;
-    ASTEROID_MULT = 20;
+    ASTEROID_MIN = 4;
+    ASTEROID_MULT = 4;
     ASTEROID_SPEED = 1.1;
+    ASTEROID_SPEED_MULTI_KULTI = 0.7;
   } else if (difficultyTimer > 3000) {
-    ASTEROID_MIN = 5;
-    ASTEROID_MULT = 20;
-    ASTEROID_SPEED = 1.2;
+    ASTEROID_MIN = 3;
+    ASTEROID_MULT = 3;
+    ASTEROID_SPEED = 1.3;
+    ASTEROID_SPEED_MULTI_KULTI = 0.9;
   }
 
   document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`;
@@ -189,15 +207,15 @@ function gameLoop() {
   let moveY = 0;
   let moveDir = 0;
 
-  if (KEY_EVENTS.left && PLAYER.x > 4) {
+  if (KEY_EVENTS.left && PLAYER.x > 5) {
     moveX += -1;
     moveDir += -1;
   }
-  if (KEY_EVENTS.right && PLAYER.x < 20) {
+  if (KEY_EVENTS.right && PLAYER.x < 75) {
     moveX += 1;
     moveDir += 1;
   }
-  if (KEY_EVENTS.up && PLAYER.y > 10) {
+  if (KEY_EVENTS.up && PLAYER.y > 20) {
     moveY += -1;
   }
   if (KEY_EVENTS.down && PLAYER.y < 75) {
@@ -219,8 +237,10 @@ function gameLoop() {
     for (let i = 0; i < ASTEROIDS.length; i++) {
       if (!ASTEROIDS[i].isActive) {
         ASTEROIDS[i].isActive = true;
-        ASTEROIDS[i].y = 5+Math.floor(Math.random()*69);
+        ASTEROIDS[i].y = 8+Math.floor(Math.random()*72);
         ASTEROIDS[i].x = 105;
+        ASTEROIDS[i].scale = Math.random()*0.4+0.8;
+        ASTEROIDS[i].speedMult = Math.random()*ASTEROID_SPEED_MULTI_KULTI+(1-ASTEROID_SPEED_MULTI_KULTI/2);
         break;
       }
     }
@@ -237,7 +257,7 @@ function gameLoop() {
         ASTEROIDS[i].isActive = false;
       } else {
         document.getElementsByClassName('asteroid')[i].style.display = 'block';
-        moveAsteroid(i, -1*ASTEROID_SPEED, 0, 0);
+        moveAsteroid(i, -1*ASTEROID_SPEED*ASTEROIDS[i].speedMult, 0, 0);
       }
     } else {
       document.getElementsByClassName('asteroid')[i].style.display = 'none';
@@ -246,18 +266,20 @@ function gameLoop() {
     if (ASTEROIDS[i].isActive && isColliding(document.getElementById('ship'), document.getElementsByClassName('asteroid')[i], -20)) {
       ASTEROIDS[i].isActive = false;
       PLAYER.lives--;
+      if (PLAYER.lives == 3) {
+        document.getElementById('healthbar').style.width = "64%";
+        document.getElementById('healthbar').style.backgroundColor = "yellow";
+      }
       if (PLAYER.lives == 2) {
-        document.getElementById('health').innerHTML = `
-          Shield status: DAMAGED
-        `
+        document.getElementById('healthbar').style.width = "32%";
+        document.getElementById('healthbar').style.backgroundColor = "orange";
       }
       if (PLAYER.lives == 1) {
-        document.getElementById('health').innerHTML = `
-          Shield status: CRITICAL
-        `
+        document.getElementById('healthbar').style.width = "3%";
+        document.getElementById('healthbar').style.backgroundColor = "red";
       }
       if (PLAYER.lives == 0) {
-        PLAYER.lives = 3;
+        PLAYER.lives = 4;
         stopLoop = true;
         gameOver();
       }
@@ -266,8 +288,8 @@ function gameLoop() {
 
   for (let i = 0; i < PROJECTILES.length; i++) {
     if (PROJECTILES[i].isActive) {
-      if (ASTEROIDS[i].x > 105) {
-        ASTEROIDS[i].isActive = false;
+      if (PROJECTILES[i].x > 105) {
+        PROJECTILES[i].isActive = false;
       } else {
         document.getElementsByClassName('projectile')[i].style.display = 'block';
         moveProjectile(i, 1, 0, 0);
@@ -328,9 +350,6 @@ function isColliding(div1, div2, tolerance = 0) {
 
   return !(d1Rect.right + tolerance < d2Rect.left || d1Rect.left - tolerance > d2Rect.right || d1Rect.bottom + tolerance < d2Rect.top || d1Rect.top - tolerance > d2Rect.bottom);
 };
-
-
-
 
 // function toggleAudio() {
 //   audio = !audio;
