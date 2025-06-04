@@ -821,6 +821,7 @@ input {
   display: none;
   overflow: hidden;
   z-index: 4;
+  transition: filter 0.2s ease-out;
   /* background-color: green; */
   
   /* position: absolute;
@@ -866,6 +867,17 @@ input {
   display: none;
 }
 
+#stanima {
+  position: absolute;
+  bottom: 4%;
+  font-family: federation;
+  right: 2%;
+  width: 98%;
+  font-size: 22px;
+  text-align: right;
+  display: none;
+}
+
 #health {
   position: absolute;
   top: 4%;
@@ -873,6 +885,7 @@ input {
   left: 2%;
   width: 20%;
   height: 4%;
+  border-radius: 2px;
   /* font-size: 22px; */
   text-align: left;
   display: none;

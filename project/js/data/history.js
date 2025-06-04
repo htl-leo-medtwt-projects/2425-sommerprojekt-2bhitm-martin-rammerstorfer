@@ -3,7 +3,7 @@ let timeline = [
     year: 1964,
     date: "March 11",
     description: "Roddenberry comes up with Star Trek",
-    description_long: "Gene Roddenberry pitches the idea of a science fiction show set in the far future to NBC. More on Wikipedia: <a href=\"https://en.wikipedia.org/wiki/Star_Trek#History\">Star Trek History</a>.",
+    description_long: "Gene Roddenberry pitches the idea of a science fiction show set in the far future to NBC. More on Wikipedia: <a href=\"https://en.wikipedia.org/wiki/Star_Trek#History\" target='_blank'>Star Trek History</a>",
     images: [
       "img/history/roddenberry.jpg"
     ],

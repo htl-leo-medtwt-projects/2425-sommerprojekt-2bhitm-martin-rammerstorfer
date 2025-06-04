@@ -150,6 +150,7 @@ function popUp(elem, n) {
       <p><b>Home planet:</b> ${c.homePlanet}</p>
       <p><b>First appearance:</b> <a href="media.html?selected=${c.images[index].media.abbreviation}">${extractTitle(c.images[index].media === media.TC ? media.TOS.name : c.images[index].media.name)}</a></p>
       <p><b>Actor${c.actors.length === 1 ? '' : 's'}:</b> ${getActors(c)}</p>
+
       ${c.audio === undefined ? '' : `
         <audio controls>
           <source src="audio/characters/${c.audio}" type="audio/mpeg">

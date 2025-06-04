@@ -13,7 +13,8 @@ let PLAYER = {
   x: 5,
   y: 40,
   speed: 0.4,
-  lives: 4
+  lives: 4,
+  staminaTime: 4
 };
 
 let PROJECTILES = [];
@@ -78,6 +79,7 @@ function showGameScreen() {
   document.getElementById('ship').style.display = 'block';
 
   document.getElementById('score').style.display = 'block';
+  document.getElementById('stanima').style.display = 'block';
   document.getElementById('health').style.display = 'block';
 
   // for (let i = 0; i < ASTEROIDS.length; i++) {
@@ -96,6 +98,7 @@ function showTitleScreen() {
   }
 
   document.getElementById('score').style.display = 'none';
+  document.getElementById('stanima').style.display = 'none';
   document.getElementById('health').style.display = 'none';
 
   document.getElementById('start').innerHTML = 'new&thinsp;game';
@@ -159,48 +162,49 @@ function moveProjectile(index, dx, dy, dr) {
 let asteroidTime = 80;
 let asteroidTimer = 0;
 let shootingTimer = 0;
+let shiftTimer = 0;
 let difficultyTimer = 0;
 
 let ASTEROID_MIN = 10;
-let ASTEROID_MULT = 10;
+let ASTEROID_MULT = 8;
 let ASTEROID_SPEED = 0.5;
 let ASTEROID_SPEED_MULTI_KULTI = 0.25;
 
 let stopLoop = false;
 function gameLoop() {
-  if (difficultyTimer > 500) {
+  if (difficultyTimer > 250) {
     ASTEROID_MIN = 8;
-    ASTEROID_MULT = 8;
-    ASTEROID_SPEED = 0.6;
-    ASTEROID_SPEED_MULTI_KULTI = 0.3;
-  } else if (difficultyTimer > 1000) {
-    ASTEROID_MIN = 8;
-    ASTEROID_MULT = 7;
-    ASTEROID_SPEED = 0.65;
-    ASTEROID_SPEED_MULTI_KULTI = 0.4;
-  } else if (difficultyTimer > 1500) {
-    ASTEROID_MIN = 7;
-    ASTEROID_MULT = 7;
-    ASTEROID_SPEED = 0.75;
-    ASTEROID_SPEED_MULTI_KULTI = 0.5;
-  } else if (difficultyTimer > 2000) {
-    ASTEROID_MIN = 5;
     ASTEROID_MULT = 6;
-    ASTEROID_SPEED = 0.9;
-    ASTEROID_SPEED_MULTI_KULTI = 0.6;
-  } else if (difficultyTimer > 2500) {
-    ASTEROID_MIN = 4;
+    ASTEROID_SPEED = 0.7;
+    ASTEROID_SPEED_MULTI_KULTI = 0.3;
+  } else if (difficultyTimer > 500) {
+    ASTEROID_MIN = 6;
     ASTEROID_MULT = 4;
-    ASTEROID_SPEED = 1.1;
-    ASTEROID_SPEED_MULTI_KULTI = 0.7;
-  } else if (difficultyTimer > 3000) {
-    ASTEROID_MIN = 3;
+    ASTEROID_SPEED = 0.75;
+    ASTEROID_SPEED_MULTI_KULTI = 0.4;
+  } else if (difficultyTimer > 750) {
+    ASTEROID_MIN = 5;
+    ASTEROID_MULT = 4;
+    ASTEROID_SPEED = 0.8;
+    ASTEROID_SPEED_MULTI_KULTI = 0.5;
+  } else if (difficultyTimer > 1000) {
+    ASTEROID_MIN = 4;
     ASTEROID_MULT = 3;
-    ASTEROID_SPEED = 1.3;
-    ASTEROID_SPEED_MULTI_KULTI = 0.9;
+    ASTEROID_SPEED = 1;
+    ASTEROID_SPEED_MULTI_KULTI = 0.6;
+  } else if (difficultyTimer > 1250) {
+    ASTEROID_MIN = 3;
+    ASTEROID_MULT = 2;
+    ASTEROID_SPEED = 1.2;
+    ASTEROID_SPEED_MULTI_KULTI = 0.7;
+  } else if (difficultyTimer > 1500) {
+    ASTEROID_MIN = 2;
+    ASTEROID_MULT = 1;
+    ASTEROID_SPEED = 1.5;
+    ASTEROID_SPEED_MULTI_KULTI = 0.9
   }
 
-  document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`;
+  document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`+ difficultyTimer;
   console.log(difficultyTimer)
 
   let moveX = 0;
@@ -215,10 +219,10 @@ function gameLoop() {
     moveX += 1;
     moveDir += 1;
   }
-  if (KEY_EVENTS.up && PLAYER.y > 20) {
+  if (KEY_EVENTS.up && PLAYER.y > 15) {
     moveY += -1;
   }
-  if (KEY_EVENTS.down && PLAYER.y < 75) {
+  if (KEY_EVENTS.down && PLAYER.y < 76) {
     moveY += 1;
   }
 
@@ -227,8 +231,27 @@ function gameLoop() {
     moveY *= Math.sqrt(2)/2;
   }
 
+  let percentile = Math.floor( Math.max(0, PLAYER.staminaTime) / 4 * 100 );
+  let sprintSpeed = (KEY_EVENTS.shift && percentile > 0 ? ( 1.6 ) : 1);
+
+  console.log(sprintSpeed);
+  
+  if (sprintSpeed == 1.6) {
+    let shadowX = (moveX == 0 ? 0 : (moveX > 0 ? -5 : 5));
+    let shadowY = (moveY == 0 ? 0 : (moveY > 0 ? -5 : 5));
+    if (moveX != 0 ) {
+      shadowY *= Math.sqrt(2)/2;
+    }
+    if (moveY != 0) {
+      shadowX *= Math.sqrt(2)/2;
+    }
+    document.getElementById('ship').style.filter = `drop-shadow(${shadowX}px ${shadowY}px 0 var(--color-accent3)) drop-shadow(${shadowX*2}px ${shadowY*2}px 0 #1f3b76)`;
+  } else {
+    document.getElementById('ship').style.filter = '';
+  }
+
   if (moveX != 0 || moveY != 0) {
-    movePlayer(moveX * PLAYER.speed, moveY * PLAYER.speed, moveDir);
+    movePlayer(moveX * PLAYER.speed * sprintSpeed, moveY * PLAYER.speed * sprintSpeed, moveDir);
   }
 
   if (asteroidTimer > asteroidTime) {
@@ -237,7 +260,7 @@ function gameLoop() {
     for (let i = 0; i < ASTEROIDS.length; i++) {
       if (!ASTEROIDS[i].isActive) {
         ASTEROIDS[i].isActive = true;
-        ASTEROIDS[i].y = 8+Math.floor(Math.random()*72);
+        ASTEROIDS[i].y = Math.random() > 0.2 ? 9+Math.floor(Math.random()*72) : Math.random() > 0.5 ? 9+Math.floor(Math.random()*5) : 76+Math.floor(Math.random()*5);
         ASTEROIDS[i].x = 105;
         ASTEROIDS[i].scale = Math.random()*0.4+0.8;
         ASTEROIDS[i].speedMult = Math.random()*ASTEROID_SPEED_MULTI_KULTI+(1-ASTEROID_SPEED_MULTI_KULTI/2);
@@ -309,6 +332,20 @@ function gameLoop() {
   asteroidTimer++;
   shootingTimer++;
   difficultyTimer++;
+
+  if (KEY_EVENTS.shift && (moveX != 0 || moveY != 0)) {
+    shiftTimer = 0;
+  } else {
+    shiftTimer += 1000 / GAME_CONFIG.gameSpeed;
+  }
+
+  if (KEY_EVENTS.shift && percentile > 0 && (moveX != 0 || moveY != 0)) {
+    PLAYER.staminaTime -= 1 / GAME_CONFIG.gameSpeed;
+  } else if (shiftTimer >= 1000 && percentile < 100) {
+    PLAYER.staminaTime += 1 / GAME_CONFIG.gameSpeed / 4;
+  }
+
+  document.getElementById('stanima').innerHTML = `stamina ${ Math.floor(percentile/10)*10 }%`;
   
   if (!stopLoop) {
     setTimeout(gameLoop, 1000 / GAME_CONFIG.gameSpeed); // async recursion
@@ -332,6 +369,7 @@ function gameOver() {
   asteroidTimer = 0;
   shootingTimer = 0;
   difficultyTimer = 0;
+  shiftTimer = 0;
   showTitleScreen();
   console.log('game over')
 }
