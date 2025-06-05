@@ -1,3 +1,34 @@
+let SOUNDS = {
+  shoot: new Audio('./audio/game/laser.mp3'),
+  damage: new Audio('./audio/game/damage.mp3')
+};
+SOUNDS.shoot.playbackRate = 3;
+let audio = false;
+function toggleAudio() {
+  audio = !audio;
+  muteSounds(!audio);
+  let audioBtn = document.getElementById('audio');
+  audioBtn.innerHTML = audio ? '&#x1f50a;' : '&#x1f508;';
+  // playSound(SOUNDS.selection);
+}
+function muteSounds(mute=true) {
+  SOUNDS.shoot.muted = mute;
+  SOUNDS.damage.muted = mute;
+}
+muteSounds();
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
+}
+function stopSound(sound) {
+  sound.currentTime = 0;
+  sound.pause();
+}
+
+if (localStorage['score'] === undefined) {
+  localStorage['score'] = 0;
+}
+
 let GAME_CONFIG = {
   gameSpeed: 32
 };
@@ -7,6 +38,13 @@ let FRAME = {
   titleScreen: document.getElementById('titleScreen')
 };
 
+let EXPLOSION = {
+  spriteImg: document.getElementById('explosionImg'),
+  isActive: false,
+  x: 0,
+  y: 0
+}
+
 let PLAYER = {
   box: document.getElementById('ship'),
   spriteImg: document.getElementById('shipImg'),
@@ -14,7 +52,8 @@ let PLAYER = {
   y: 40,
   speed: 0.4,
   lives: 4,
-  staminaTime: 4
+  staminaTime: 4,
+  score: 0
 };
 
 let PROJECTILES = [];
@@ -90,6 +129,7 @@ function showGameScreen() {
 }
 
 function showTitleScreen() {
+  document.getElementById('endScreen').style.display = 'none';
   document.getElementById('titleScreen').style.display = 'block';
 
   document.getElementById('ship').style.display = 'none';
@@ -100,8 +140,28 @@ function showTitleScreen() {
   document.getElementById('score').style.display = 'none';
   document.getElementById('stanima').style.display = 'none';
   document.getElementById('health').style.display = 'none';
+  if (localStorage['score'] != '0') {
+    document.getElementById('score').innerHTML = `highscore: ${JSON.parse(localStorage['score'] == null)}`;
+  }
 
   document.getElementById('start').innerHTML = 'new&thinsp;game';
+
+  document.getElementById('gameFrame').style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
+  // FRAME.elem.style.backgroundRepeat = 'repeat';
+  // FRAME.elem.style.backgroundSize = '50%';
+}
+
+function showEndScreen() {
+  document.getElementById('endScreen').style.display = 'block';
+
+  document.getElementById('ship').style.display = 'none';
+  for (let i = 0; i < ASTEROIDS.length; i++) {
+    ASTEROIDS[i].box.style.display = 'none';
+  }
+
+  document.getElementById('score').style.display = 'none';
+  document.getElementById('stanima').style.display = 'none';
+  document.getElementById('health').style.display = 'none';
 
   document.getElementById('gameFrame').style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
   // FRAME.elem.style.backgroundRepeat = 'repeat';
@@ -175,12 +235,12 @@ function gameLoop() {
   if (difficultyTimer > 250) {
     ASTEROID_MIN = 8;
     ASTEROID_MULT = 6;
-    ASTEROID_SPEED = 0.7;
+    ASTEROID_SPEED = 0.6;
     ASTEROID_SPEED_MULTI_KULTI = 0.3;
   } else if (difficultyTimer > 500) {
     ASTEROID_MIN = 6;
     ASTEROID_MULT = 4;
-    ASTEROID_SPEED = 0.75;
+    ASTEROID_SPEED = 0.7;
     ASTEROID_SPEED_MULTI_KULTI = 0.4;
   } else if (difficultyTimer > 750) {
     ASTEROID_MIN = 5;
@@ -204,8 +264,7 @@ function gameLoop() {
     ASTEROID_SPEED_MULTI_KULTI = 0.9
   }
 
-  document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`+ difficultyTimer;
-  console.log(difficultyTimer)
+  document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`;
 
   let moveX = 0;
   let moveY = 0;
@@ -233,8 +292,6 @@ function gameLoop() {
 
   let percentile = Math.floor( Math.max(0, PLAYER.staminaTime) / 4 * 100 );
   let sprintSpeed = (KEY_EVENTS.shift && percentile > 0 ? ( 1.6 ) : 1);
-
-  console.log(sprintSpeed);
   
   if (sprintSpeed == 1.6) {
     let shadowX = (moveX == 0 ? 0 : (moveX > 0 ? -5 : 5));
@@ -274,6 +331,13 @@ function gameLoop() {
     shoot();
   }
 
+  if (EXPLOSION.isActive) {
+    document.getElementById('explosionImg').src = './img/game/explosion.gif';
+    document.getElementById('explosion').style.left = `${EXPLOSION.x}%`;
+    document.getElementById('explosion').style.top = `${EXPLOSION.y}%`;
+    EXPLOSION.isActive = false;
+  }
+
   for (let i = 0; i < ASTEROIDS.length; i++) {
     if (ASTEROIDS[i].isActive) {
       if (ASTEROIDS[i].x < -5) {
@@ -288,7 +352,14 @@ function gameLoop() {
     
     if (ASTEROIDS[i].isActive && isColliding(document.getElementById('ship'), document.getElementsByClassName('asteroid')[i], -20)) {
       ASTEROIDS[i].isActive = false;
+      EXPLOSION.isActive = true;
+      EXPLOSION.x = ASTEROIDS[i].x;
+      EXPLOSION.y = ASTEROIDS[i].y;
+      setTimeout(()=>{
+        document.getElementById('explosionImg').src = '';
+      }, 800);
       PLAYER.lives--;
+      playSound(SOUNDS.damage);
       if (PLAYER.lives == 3) {
         document.getElementById('healthbar').style.width = "64%";
         document.getElementById('healthbar').style.backgroundColor = "yellow";
@@ -304,6 +375,12 @@ function gameLoop() {
       if (PLAYER.lives == 0) {
         PLAYER.lives = 4;
         stopLoop = true;
+        PLAYER.score = Math.floor(difficultyTimer/50);
+        if (PLAYER.score > JSON.parse(localStorage['score'])) {
+          localStorage['score'] = JSON.stringify(PLAYER.score);
+        } else {
+          localStorage['score'] = JSON.stringify(PLAYER.score);
+        }
         gameOver();
       }
     }
@@ -360,6 +437,7 @@ function shoot() {
       PROJECTILES[i].isActive = true;
       PROJECTILES[i].y = PLAYER.y+2;
       PROJECTILES[i].x = PLAYER.x+10;
+      playSound(SOUNDS.shoot);
       break;
     }
   }
@@ -370,8 +448,11 @@ function gameOver() {
   shootingTimer = 0;
   difficultyTimer = 0;
   shiftTimer = 0;
-  showTitleScreen();
+  showEndScreen();
   console.log('game over')
+  document.getElementById('explosionImg').src = '';
+  document.getElementById('score')
+  EXPLOSION.isActive = false;
 }
 
 
@@ -388,29 +469,6 @@ function isColliding(div1, div2, tolerance = 0) {
 
   return !(d1Rect.right + tolerance < d2Rect.left || d1Rect.left - tolerance > d2Rect.right || d1Rect.bottom + tolerance < d2Rect.top || d1Rect.top - tolerance > d2Rect.bottom);
 };
-
-// function toggleAudio() {
-//   audio = !audio;
-//   if (audio) music.play();
-//   else music.pause();
-//   document.getElementById('btn_mute').src = (audio ? '&#x1f507;' : '&#x1f50a;');
-// }
-
-let SOUNDS = {
-  // test: ???
-}
-let audio = false;
-function toggleAudio() {
-  audio = !audio;
-  muteSounds(!audio);
-  let audioBtn = document.getElementById('audio');
-  audioBtn.innerHTML = audio ? '&#x1f50a;' : '&#x1f508;';
-  // playSound(SOUNDS.selection);
-}
-function muteSounds(mute=true) {
-  // SOUNDS.test.muted = mute;
-  
-}
 
 // import BigText from 'big-text.js';
 

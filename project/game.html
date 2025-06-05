@@ -26,23 +26,33 @@
     </nav>
   </header>
 
-  <main>
-    <div id="gameContainer">
-      <div id="gameFrame">
-        <div id="titleScreen">
-          <h1 id="gameTitle">ASTEROID SHOOTER</h1>
-          <div id="start" onclick="startGame();">start</div>
+  <main id="main">
+    <section id="gameSection">
+      <div id="gameContainer">
+        <div id="gameFrame">
+          <div id="titleScreen">
+            <h1 id="gameTitle">ASTEROID SHOOTER</h1>
+            <div id="start" onclick="startGame();">start</div>
+            <div id="highScore"></div>
+          </div>
+          <div id="endScreen">
+            <h2 id="gameTitle">GAME OVER</h2>
+            <p id="currScore"></p>
+            <div id="restart" onclick="startGame();">retry</div>
+            <div id="backToTitle" onclick="startGame();">return&thinsp;to&thinsp;title&thinsp;screen</div>
+          </div>
+          <div id="ship">
+            <img id="shipImg" src="img/game/enterprise_1.png" alt="Enterprise"/>
+          </div>
+          <div id="explosion"><img id="explosionImg"></div>
+          <div id="score">0 LIGHTYEARS</div>
+          <div id="stanima">stamina: 100%</div>
+          <div id="health"><div id="healthbar"></div></div>
         </div>
-        <div id="ship">
-          <img id="shipImg" src="img/game/enterprise_1.png" alt="Enterprise"/>
-        </div>
-        <div id="score">0 LIGHTYEARS</div>
-        <div id="stanima">stamina: 100%</div>
-        <div id="health"><div id="healthbar"></div></div>
+        <div id="audio" onclick="toggleAudio();">&#x1f508;</div>
+        <div id="fullscreen" onclick="openFullscreen();">&#x26f6;</div>
       </div>
-      <div id="audio" onclick="toggleAudio();">&#x1f508;</div>
-      <div id="fullscreen" onclick="openFullscreen();">&#x26f6;</div>
-    </div>
+    </section>
   </main>
 
 </body>

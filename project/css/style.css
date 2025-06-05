@@ -158,18 +158,28 @@ header > nav a:hover {
 }
 
 main {
-  background-color: var(--color-bg);
-  transition: background-color var(--transition-duration) var(--transition-timing);
+  background-color: #0000;
   color: var(--color-text);
-  box-shadow: 0 0 6px black, 1px 1px 0 black;
   width: var(--width);
-  border-radius: 2px;
   margin: auto;
-  padding-top: 40px;
-  padding-bottom: 40px;
   overflow: hidden;
   position: relative;
   z-index: 10;
+}
+
+main > section {
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-duration) var(--transition-timing);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 3px;
+  box-shadow: 0 0 6px black, 1px 1px 0 black;
+}
+#main_index {
+  box-shadow: 0 0 6px black, 1px 1px 0 black;
 }
 
 main > #explore {
@@ -798,6 +808,11 @@ input {
   position: relative;
   z-index: 15;
 }
+#endScreen {
+  position: relative;
+  z-index: 15;
+  display: none;
+}
 #gameFrame #start {
   font-family: startrek;
   font-size: 40px;
@@ -809,6 +824,34 @@ input {
   transition: color var(--transition-duration) linear;
 }
 #gameFrame #start:hover {
+  color: var(--color-accent1);
+}
+
+#gameFrame #restart {
+  font-family: startrek;
+  font-size: 40px;
+  position: relative;
+  margin-top: 20%;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  transition: color var(--transition-duration) linear;
+}
+#gameFrame #restart:hover {
+  color: var(--color-accent1);
+}
+
+#gameFrame #backToTitle {
+  font-family: startrek;
+  font-size: 40px;
+  position: relative;
+  margin-top: 10%;
+  text-align: center;
+  cursor: pointer;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  transition: color var(--transition-duration) linear;
+}
+#gameFrame #backToTitle:hover {
   color: var(--color-accent1);
 }
 
@@ -898,8 +941,22 @@ input {
   top: 20%;
   left: 2%;
   background-color: chartreuse;
+  border: 1px solid gray;
   /* border: 2px solid black; */
   transition: width var(--transition-duration) var(--transition-timing), background-color var(--transition-duration) var(--transition-timing);
+}
+#explosion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4%;
+}
+#explosionImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
 }
 
 @keyframes fadeIn {
@@ -920,8 +977,8 @@ input {
   }
 }
 
-/* @media screen and (max-width: 1100px) /* screen width < 1100px {
-  .grid { grid-template-columns: 42% 42%; }
+@media screen and (max-width: 1100px) /* screen width < 1100px */ {
+  /* .grid { grid-template-columns: 42% 42%; }
   .speedrun .table-container {
     overflow-x: scroll;
   }
@@ -941,18 +998,64 @@ input {
   }
   #decoration-text-25, #decoration-text-70 {
     display: none;
-  }
+  } */
 }
 
-@media screen and (max-width: 800px) /* screen width < 800px {
+
+#intro > #intro_container a {
+  display: none;
+}
+
+@media screen and (max-width: 800px) /* screen width < 800px */ {
+  /* * {
+    overflow-x: hidden;
+  } */
+  :root {
+    --width: 95vw;
+  }
+  main > #explore > a > div {
+    background-size: cover;
+    text-align: center;
+  }
+  main > #explore > a > div:hover {
+    background-size: cover;
+  }
+  #intro {
+    padding-top: 65vh;
+    width: 95vw;
+    margin-bottom: 5vh;
+  }
+  main {
+    /* width: 100vw; */
+  }
+  #main {
+    padding-top: 50vh;
+  }
+  #main section {
+    border-radius: 5px;
+  }
+
+  #enterprise, #planet, #planet2 {
+    display: none;
+  }
+  body {
+    margin-top: 0vh;
+    position: relative;
+    padding: 0;
+  }
   header {
     display: block;
     position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    transition: background-color var(--transition-duration) var(--transition-timing);
   }
   header .logo img {
-    height: 50vh;
     min-height: 60px;
     margin-bottom: 5px;
+
   }
   header nav {
     gap: 0;
@@ -960,23 +1063,32 @@ input {
     flex-direction: column;
     width: 100%;
     margin-top: 12vh;
+    background-color: var(--color-bg);
+    transition: background-color var(--transition-duration) var(--transition-timing);
   }
   body {
-    margin-top: 40vh;
+    /* margin-top: 40vh; */
   }
   header nav a {
     font-size: 24px;
     background-color: var(--color-bg);
     width: 100%;
     text-align: center;
-    transition: background-color var(--transition-duration) var(--transition-timing);
-    /* transition: background-color 0.4s, color 0.4s, border 0.4s;
-    padding: 6px;
-    border-radius: 0 0 2px 2px;
+    transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
+    /* transition: background-color 0.4s, color 0.4s, border 0.4s; */
+    padding: 8px;
+    margin-top: -1px;
   }
   header nav a:hover {
     background-color: var(--color-bg2);
-
+  }
+  #intro > #intro_container a {
+    display: none;
+  }
+  
+  #top_btn {
+    bottom: 5vh;
+    right: 5vw;
   }
   /* #active {
     border-top: 2px solid transparent;
@@ -1027,5 +1139,5 @@ input {
     font-size: 55px;
     width: 55px;
     height: 55px;
-  }
-} */
+  }*/
+}
