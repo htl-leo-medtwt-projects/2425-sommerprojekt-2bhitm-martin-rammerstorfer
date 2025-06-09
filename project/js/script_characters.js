@@ -66,10 +66,11 @@ function getShips(c) {
   return outp;
 }
 
+let charactersArrFiltered;
 function load() {
   let outp = '';
 
-  let charactersArrFiltered = charactersArr.filter(c => checkFilter(c));
+  charactersArrFiltered = charactersArr.filter(c => checkFilter(c));
 
   if (charactersArrFiltered.length === 0) {
     outp += `<p id="none_found">No matching characters found</p>`;
@@ -88,21 +89,8 @@ function load() {
     `;
   }
   document.getElementById('characters_container').innerHTML = outp;
-  
-  for (let i = 0; i < charactersArrFiltered.length; i++) {
-    let elem = document.getElementsByClassName('character')[i];
-    switch (i % 3) {
-      case 0:
-        setAnimation(elem, '140vw', 0.6);
-        break;
-      case 1:
-        setAnimation(elem, '120vw', 0.8);
-        break;
-      case 2:
-        setAnimation(elem, '100vw', 1);
-        break;
-    }
-  }
+
+  setScrollingAnimations();
 }
 load();
 
@@ -171,8 +159,6 @@ function popUp(elem, n) {
     captions.push(`${c.lastName === '' ? c.firstNames : c.lastName} in ${c.images[i].year}`);
   }
   index = 0;
-  // clearInterval(interval);
-  // interval = setInterval(cycleRight, time);
 }
 
 function closePopUp() {
@@ -182,7 +168,6 @@ function closePopUp() {
   sources = [];
   captions = [];
   index = 0;
-  // clearInterval(interval);
 }
 
 function extractTitle(str) {
@@ -196,7 +181,6 @@ function extractTitle(str) {
 let time = 4000;
 let sources = [];
 let captions = [];
-// let interval = setInterval(()=>{}, time);
 let index = 0;
 
 function cycleLeft() {
@@ -208,8 +192,6 @@ function cycleLeft() {
     <a id="img_link" href="media.html?selected=${c.images[index].media.abbreviation}">${c.images[index].media.abbreviation === media.TC ? media.TOS.abbreviation : c.images[index].media.abbreviation}</a>
     <p>${captions[index]}</p>
   `;
-  // clearInterval(interval);
-  // interval = setInterval(cycleLeft, time);
 }
 function cycleRight() {
   let c = currentChar;
@@ -220,8 +202,6 @@ function cycleRight() {
     <a id="img_link" href="media.html?selected=${c.images[index].media.abbreviation}">${c.images[index].media === media.TC ? media.TOS.abbreviation : c.images[index].media.abbreviation}</a>
     <p>${captions[index]}</p>
   `;
-  // clearInterval(interval);
-  // interval = setInterval(cycleRight, time);
 }
 
 document.addEventListener('keyup', (key) => {
@@ -229,3 +209,43 @@ document.addEventListener('keyup', (key) => {
   else if (key.code === 'ArrowRight') cycleRight();
   else if (key.code === 'Escape') closePopUp();
 });
+
+window.addEventListener("resize", ()=>{
+  setScrollingAnimations();
+});
+
+function setScrollingAnimations() {
+  if (window.innerWidth <= 600) {
+    for (let i = 0; i < charactersArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('character')[i];
+      setAnimation(elem, '140vw', 0.6);
+    }
+  } else if (window.innerWidth <= 1000) {
+    for (let i = 0; i < charactersArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('character')[i];
+      switch (i % 2) {
+        case 0:
+          setAnimation(elem, '140vw', 0.6);
+          break;
+        case 1:
+          setAnimation(elem, '120vw', 0.8);
+          break;
+      }
+    }
+  } else {
+    for (let i = 0; i < charactersArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('character')[i];
+      switch (i % 3) {
+        case 0:
+          setAnimation(elem, '140vw', 0.6);
+          break;
+        case 1:
+          setAnimation(elem, '120vw', 0.8);
+          break;
+        case 2:
+          setAnimation(elem, '100vw', 1);
+          break;
+      }
+    }
+  }
+}

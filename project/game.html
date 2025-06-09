@@ -32,14 +32,20 @@
         <div id="gameFrame">
           <div id="titleScreen">
             <h1 id="gameTitle">ASTEROID SHOOTER</h1>
+            <p id="highScore"></p>
             <div id="start" onclick="startGame();">start</div>
-            <div id="highScore"></div>
+            <div id="gameInstructions">
+              <p>WASD: move</p>
+              <p>Space: shoot</p>
+              <p>Shift: accelerate</p>
+            </div>
           </div>
           <div id="endScreen">
             <h2 id="gameTitle">GAME OVER</h2>
             <p id="currScore"></p>
+            <p id="highScoreEnd"></p>
             <div id="restart" onclick="startGame();">retry</div>
-            <div id="backToTitle" onclick="startGame();">return&thinsp;to&thinsp;title&thinsp;screen</div>
+            <div id="backToTitle" onclick="showTitleScreen();">back&thinsp;to&thinsp;title&thinsp;screen</div>
           </div>
           <div id="ship">
             <img id="shipImg" src="img/game/enterprise_1.png" alt="Enterprise"/>

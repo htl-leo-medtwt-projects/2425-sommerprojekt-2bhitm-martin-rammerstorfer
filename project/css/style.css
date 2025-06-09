@@ -97,9 +97,12 @@ header > nav {
 header > nav a {
   font-family: startrek;
   text-transform: UPPERCASE;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--color-text);
   transition: color var(--transition-duration) var(--transition-timing);
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 header > nav a:hover {
@@ -165,6 +168,7 @@ main {
   overflow: hidden;
   position: relative;
   z-index: 10;
+  overflow: visible;
 }
 
 main > section {
@@ -482,10 +486,10 @@ input {
   text-decoration: underline;
 }
 .popup_character > #popup_content {
-  height: 60vh;
+  min-height: 60vh;
 }
 .popup_media > #popup_content {
-
+  
 }
 #popup_content > .img_container {
   width: 40%;
@@ -766,6 +770,7 @@ input {
     -2px -1px 0 black;
   transition: scale 0.3s ease;
   color: white;
+  z-index: 80;
 }
 
 #audio {
@@ -777,6 +782,7 @@ input {
   filter: grayscale(1);
   transition: scale 0.3s ease;
   color: white;
+  z-index: 80;
 }
 
 #fullscreen:hover {
@@ -790,28 +796,46 @@ input {
 #gameFrame #gameTitle {
   font-family: federation;
   font-size: 30px;
-  position: relative;
-  padding-top: 10%;
+  position: absolute;
+  top: 18%;
+  width: 100%;
   height: 10%;
   text-align: center;
   text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+
+#gameFrame h2 {
+  font-family: startrek;
+  font-size: 48px;
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  text-transform: UPPERCASE;
+  color: white;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+  text-align: center;
 }
 
 #titleScreen {
   display: block;
   position: relative;
   z-index: 15;
+  width: 100%;
+  height: 100%;
 }
 #endScreen {
   position: relative;
   z-index: 15;
   display: none;
+  width: 100%;
+  height: 100%;
 }
 #gameFrame #start {
   font-family: startrek;
   font-size: 40px;
-  position: relative;
-  margin-top: 10%;
+  position: absolute;
+  top: 50%;
+  width: 100%;
   text-align: center;
   cursor: pointer;
   text-shadow: var(--text-shadow), var(--drop-shadow);
@@ -821,11 +845,50 @@ input {
   color: var(--color-accent1);
 }
 
+#gameInstructions {
+  font-family: federation;
+  text-align: right;
+  position: absolute;
+  font-size: 18px;
+  bottom: 4%;
+  right: 4%;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+
+#highScore {
+  font-family: federation;
+  font-size: 22px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+#currScore {
+  font-family: federation;
+  font-size: 22px;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+#highScoreEnd {
+  font-family: federation;
+  font-size: 22px;
+  position: absolute;
+  top: 38%;
+  width: 100%;
+  text-align: center;
+  text-shadow: var(--text-shadow), var(--drop-shadow);
+}
+
 #gameFrame #restart {
   font-family: startrek;
   font-size: 40px;
-  position: relative;
-  margin-top: 20%;
+  position: absolute;
+  top: 50%;
+  width: 100%;
   text-align: center;
   cursor: pointer;
   text-shadow: var(--text-shadow), var(--drop-shadow);
@@ -838,8 +901,9 @@ input {
 #gameFrame #backToTitle {
   font-family: startrek;
   font-size: 40px;
-  position: relative;
-  margin-top: 10%;
+  position: absolute;
+  top: 62%;
+  width: 100%;
   text-align: center;
   cursor: pointer;
   text-shadow: var(--text-shadow), var(--drop-shadow);
@@ -852,7 +916,7 @@ input {
 #gameFrame #ship {
   position: absolute;
   top: 40%;
-  left: 5%;
+  left: 8%;
   width: 14%;
   height: auto;
   display: none;
@@ -960,6 +1024,15 @@ input {
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes popUp {
   0% {
     transform: scale(0.2);
@@ -969,36 +1042,67 @@ input {
   }
 }
 
-@media screen and (max-width: 1100px) /* screen width < 1100px */ {
-  /* .grid { grid-template-columns: 42% 42%; }
-  .speedrun .table-container {
-    overflow-x: scroll;
+@keyframes disappear {
+  0% {
   }
-  .speedrun table {
-    text-wrap: nowrap;
+  100% {
+    transform: scale(0);
   }
-  .setting {
-    font-size: 50px;
-    width: 50px;
-    height: 50px;
-  }
-  .grid-item, .grid h3 {
-    max-width: 280px;
-  }
-  #decoration-text-50 {
-    display: flex;
-  }
-  #decoration-text-25, #decoration-text-70 {
-    display: none;
-  } */
 }
 
+@media screen and (max-width: 1000px) /* screen width < 1000px */ {
+  #characters_container {
+    /* width: 95%; */
+    /* padding: 10px; */
+  }
+  .character {
+    width: 45%;
+  }
+  #media_container {
+    /* padding: 10px; */
+  }
+  .mediaElement {
+    width: 45%;
+    /* padding: 10px; */
+  }
+
+  #popup {
+
+  }
+  #popup_content {
+    width: 85vw;
+    /* padding: 20px; */
+    top: 15vh;
+    right: 7.5vw;
+    /* display: block; */
+  }
+  .popup_character .img_container {
+    /* display: none; */
+  }
+  .popup_character > #popup_content {
+    /* height: auto; */
+  }
+  #popup_content > .img_container {
+    /* width: 100%; */
+  }
+  .popup_character #popup_content > .info_container h3 {
+    /* max-width: 85%; */
+  }
+  #popup_content > .info_container {
+    /* width: 100%; */
+  }
+  #popup_close {
+    color: var(--color-text);
+    top: 16vh;
+    right: 10vw;
+  }
+}
 
 #intro > #intro_container a {
   display: none;
 }
 
-@media screen and (max-width: 800px) /* screen width < 800px */ {
+@media screen and (max-width: 600px) /* screen width < 600px */ {
   :root {
     --width: 95vw;
   }
@@ -1065,6 +1169,7 @@ input {
     transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
     padding: 8px;
     margin-top: -1px;
+    display: block;
   }
   header nav a:hover {
     background-color: var(--color-bg2);
@@ -1124,28 +1229,13 @@ input {
     right: 12vw;
   }
   
-  #fullpage {}
+  #fullpage {
+  }
 
   .section {
     display: flex;
     flex-wrap: nowrap;
-
-    /* background-color: var(--color-bg2); */
-    /* transition: background-color var(--transition-duration) var(--transition-timing); */
-    /* color: var(--color-text); */
-    /* width: var(--width); */
-    /* border-radius: 2px; */
-    /* margin: auto; */
     margin-top: 15vh;
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
-    /* padding-top: 0px; */
-    /* padding-bottom: 40px; */
-    /* padding-left: 4vw; */
-    /* padding-right: 4vw; */
-    /* overflow: hidden; */
-    /* position: relative; */
-    /* z-index: 10; */
     width: 100vw;
   }
 
@@ -1155,11 +1245,8 @@ input {
     transition: background-color var(--transition-duration) var(--transition-timing), color var(--transition-duration) var(--transition-timing);
     color: var(--color-text);
     box-shadow: 0 0 6px black, 1px 1px 0 black;
-    /* width: var(--width); */
     border-radius: 2px;
     margin: auto;
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
     padding-top: 30px;
     padding-bottom: 10px;
     padding-left: 4vw;
@@ -1202,32 +1289,7 @@ input {
     font-size: 18px;
   }
   .historyMedia {
-    /* display: flex; */
-    /* flex-wrap: nowrap; */
-    /* justify-content: center; */
     display: none;
-  }
-  .historyMedia > img {
-    /* margin: 6px; */
-    /* max-width: 100%; */
-    /* max-height: 50vh; */
-    /* object-fit: cover; */
-    /* object-position: top; */
-    /* padding: 10px; */
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
-    /* user-select: none; */
-  }
-  .historyMedia > video {
-    /* margin: 10px; */
-    /* max-width: 100%; */
-    /* max-height: 50vh; */
-    /* object-fit: cover; */
-    /* object-position: top; */
-    /* padding: 10px; */
-    /* user-select: none; */
-    /* object-fit: cover; */
-    /* object-position: center; */
   }
 
   .section h3 {

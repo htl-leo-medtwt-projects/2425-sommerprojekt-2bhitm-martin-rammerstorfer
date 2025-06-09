@@ -343,7 +343,8 @@ let charactersArr = [
         media: media.SNW,
         actor: "Martin Quinn"
       }
-    ]
+    ],
+    audio: 'scotty.mp3'
   },
   {
     id: 4,

@@ -48,9 +48,10 @@ function checkFilter(m) {
   return filter === 'all' || m.type === filter;
 }
 
+let mediaArrFiltered;
 function load() {
   let outp = '';
-  let mediaArrFiltered = mediaArr.filter(m => checkFilter(m));
+  mediaArrFiltered = mediaArr.filter(m => checkFilter(m));
   
   let sortBy = document.getElementById('sort').value;
   switch (sortBy) {
@@ -105,20 +106,7 @@ function load() {
   }
   document.getElementById('media_container').innerHTML = outp;
   
-  for (let i = 0; i < mediaArrFiltered.length; i++) {
-    let elem = document.getElementsByClassName('mediaElement')[i];
-    switch (i % 3) {
-      case 0:
-        setAnimation(elem, '300%', 0.6);
-        break;
-      case 1:
-        setAnimation(elem, '300%', 0.8);
-        break;
-      case 2:
-        setAnimation(elem, '300%', 1);
-        break;
-    }
-  }
+  setScrollingAnimations();
 }
 load();
 
@@ -180,3 +168,43 @@ for (let i = 0; i < mediaArr.length; i++) {
 document.addEventListener('keyup', (key) => {
   if (key.code === 'Escape') closePopUp();
 });
+
+window.addEventListener("resize", ()=>{
+  setScrollingAnimations();
+});
+
+function setScrollingAnimations() {
+  if (window.innerWidth <= 600) {
+    for (let i = 0; i < mediaArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('mediaElement')[i];
+      setAnimation(elem, '300%', 0.6);
+    }
+  } else if (window.innerWidth <= 1000) {
+    for (let i = 0; i < mediaArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('mediaElement')[i];
+      switch (i % 2) {
+        case 0:
+          setAnimation(elem, '300%', 0.6);
+          break;
+        case 1:
+          setAnimation(elem, '300%', 0.8);
+          break;
+      }
+    }
+  } else {
+    for (let i = 0; i < mediaArrFiltered.length; i++) {
+      let elem = document.getElementsByClassName('mediaElement')[i];
+      switch (i % 3) {
+        case 0:
+          setAnimation(elem, '300%', 0.6);
+          break;
+        case 1:
+          setAnimation(elem, '300%', 0.8);
+          break;
+        case 2:
+          setAnimation(elem, '300%', 1);
+          break;
+      }
+    }
+  }
+}

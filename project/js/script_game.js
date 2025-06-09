@@ -1,7 +1,11 @@
 let SOUNDS = {
   shoot: new Audio('./audio/game/laser.mp3'),
-  damage: new Audio('./audio/game/damage.mp3')
+  damage: new Audio('./audio/game/damage.mp3'),
+  on: new Audio('./audio/game/on.mp3'),
+  off: new Audio('./audio/game/off.mp3'),
+  music: new Audio('./audio/game/music.mp3')
 };
+SOUNDS.music.loop = true;
 SOUNDS.shoot.playbackRate = 3;
 let audio = false;
 function toggleAudio() {
@@ -9,11 +13,17 @@ function toggleAudio() {
   muteSounds(!audio);
   let audioBtn = document.getElementById('audio');
   audioBtn.innerHTML = audio ? '&#x1f50a;' : '&#x1f508;';
+  if (audio) {
+    playSound(SOUNDS.on);
+  }
   // playSound(SOUNDS.selection);
 }
 function muteSounds(mute=true) {
   SOUNDS.shoot.muted = mute;
   SOUNDS.damage.muted = mute;
+  SOUNDS.on.muted = mute;
+  SOUNDS.off.muted = mute;
+  SOUNDS.music.muted = mute;
 }
 muteSounds();
 function playSound(sound) {
@@ -25,8 +35,12 @@ function stopSound(sound) {
   sound.pause();
 }
 
-if (localStorage['score'] === undefined) {
-  localStorage['score'] = 0;
+if (localStorage.getItem('score') === null) {
+  localStorage.setItem('score', 0);
+}
+
+if (localStorage.getItem('score') != 0) {
+  document.getElementById('highScore').innerHTML = `${'Highscore: ' + localStorage.getItem('score')}`;
 }
 
 let GAME_CONFIG = {
@@ -48,7 +62,7 @@ let EXPLOSION = {
 let PLAYER = {
   box: document.getElementById('ship'),
   spriteImg: document.getElementById('shipImg'),
-  x: 5,
+  x: 8,
   y: 40,
   speed: 0.4,
   lives: 4,
@@ -69,7 +83,7 @@ for (let i = 0; i < 6; i++) {
   PROJECTILES.push({
     box: document.getElementById(`projectile${i}`),
     spriteImg: document.getElementById(`projectileImg${i}`),
-    x: 5,
+    x: 8,
     y: 40,
     isActive: false
   });
@@ -78,6 +92,7 @@ for (let i = 0; i < 6; i++) {
 let ASTEROIDS = [];
 
 function startGame() {
+  stopSound(SOUNDS.music);
   ASTEROIDS = [];
   for (let i = 0; i < 20; i++) {
     let outp = '';
@@ -98,6 +113,21 @@ function startGame() {
     });
   }
 
+  PROJECTILES = [];
+  for (let i = 0; i < 6; i++) {
+    PROJECTILES.push({
+      box: document.getElementById(`projectile${i}`),
+      spriteImg: document.getElementById(`projectileImg${i}`),
+      x: 8,
+      y: 40,
+      isActive: false
+    });
+  }
+
+  PLAYER.staminaTime = 4;
+  PLAYER.x = 8;
+  PLAYER.y = 40;
+  movePlayer(0, 0, 0);
   
   ASTEROID_MIN = 10;
   ASTEROID_MULT = 10;
@@ -109,11 +139,14 @@ function startGame() {
   
   showGameScreen();
   gameLoop();
+
+  playSound(SOUNDS.music);
 }
 
 function showGameScreen() {
   FRAME.elem.style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
   document.getElementById('titleScreen').style.display = 'none';
+  document.getElementById('endScreen').style.display = 'none';
 
   document.getElementById('ship').style.display = 'block';
 
@@ -134,19 +167,22 @@ function showTitleScreen() {
 
   document.getElementById('ship').style.display = 'none';
   for (let i = 0; i < ASTEROIDS.length; i++) {
-    ASTEROIDS[i].box.style.display = 'none';
+    document.getElementsByClassName('asteroid')[i].style.display = 'none';
+  }
+  for (let i = 0; i < PROJECTILES.length; i++) {
+    document.getElementsByClassName('projectile')[i].style.display = 'none';
   }
 
   document.getElementById('score').style.display = 'none';
   document.getElementById('stanima').style.display = 'none';
   document.getElementById('health').style.display = 'none';
-  if (localStorage['score'] != '0') {
-    document.getElementById('score').innerHTML = `highscore: ${JSON.parse(localStorage['score'] == null)}`;
+  if (localStorage.getItem('score') != 0) {
+    document.getElementById('highScore').innerHTML = `${'Highscore: ' + localStorage.getItem('score')}`;
   }
 
-  document.getElementById('start').innerHTML = 'new&thinsp;game';
+  document.getElementById('start').innerHTML = 'start';
 
-  document.getElementById('gameFrame').style.backgroundImage = 'url(./img/game/empty_space_2.jpg)';
+  document.getElementById('gameFrame').style.backgroundImage = 'url(./img/viewscreen2.jpg)';
   // FRAME.elem.style.backgroundRepeat = 'repeat';
   // FRAME.elem.style.backgroundSize = '50%';
 }
@@ -155,9 +191,17 @@ function showEndScreen() {
   document.getElementById('endScreen').style.display = 'block';
 
   document.getElementById('ship').style.display = 'none';
-  for (let i = 0; i < ASTEROIDS.length; i++) {
-    ASTEROIDS[i].box.style.display = 'none';
+  
+  document.getElementById('currScore').innerHTML = `${'Score: ' + PLAYER.score}`;
+  if (localStorage.getItem('score') != 0) {
+    document.getElementById('highScoreEnd').innerHTML = `${'Highscore: ' + localStorage.getItem('score')}`;
   }
+  // for (let i = 0; i < ASTEROIDS.length; i++) {
+  //   document.getElementsByClassName('asteroid')[i].style.animation = 'disappear 0.5s ease-in forwards 1';
+  //   setTimeout(()=>{
+  //     document.getElementsByClassName('asteroid')[i].style.display = 'none';
+  //   }, 500);
+  // }
 
   document.getElementById('score').style.display = 'none';
   document.getElementById('stanima').style.display = 'none';
@@ -187,18 +231,6 @@ function movePlayer(dx, dy, dr) {
   // calculate new position
   document.getElementById('ship').style.left = `${PLAYER.x}%`;
   document.getElementById('ship').style.top = `${PLAYER.y}%`;
-
-
-  // update sprite direction if needed
-  // if (dr != 0 && dr != PLAYER.spriteDirection) {
-  //     PLAYER.spriteDirection = dr;
-  //     document.getElementById('ship').style.transform = `scaleX(${dr})`;
-  // }
-
-  // animatePlayer();
-
-  // output in debugger box
-  // GAME_SCREEN.debug_output.innerHTML = `x: ${document.getElementById('ship').style.left} | y: ${document.getElementById('ship').style.top} | direction: ${dr} | animation: ${PLAYER.spriteImgNumber} | count: ${PLAYER.pageCount}`;
 }
 
 function moveAsteroid(index, dx, dy, dr) {
@@ -233,35 +265,52 @@ let ASTEROID_SPEED_MULTI_KULTI = 0.25;
 let stopLoop = false;
 function gameLoop() {
   if (difficultyTimer > 250) {
-    ASTEROID_MIN = 8;
+    ASTEROID_MIN = 9;
     ASTEROID_MULT = 6;
     ASTEROID_SPEED = 0.6;
     ASTEROID_SPEED_MULTI_KULTI = 0.3;
-  } else if (difficultyTimer > 500) {
+  }
+  if (difficultyTimer > 500) {
+    ASTEROID_MIN = 7;
+    ASTEROID_MULT = 5;
+    ASTEROID_SPEED = 0.65;
+    ASTEROID_SPEED_MULTI_KULTI = 0.3;
+  }
+  if (difficultyTimer > 750) {
     ASTEROID_MIN = 6;
     ASTEROID_MULT = 4;
     ASTEROID_SPEED = 0.7;
-    ASTEROID_SPEED_MULTI_KULTI = 0.4;
-  } else if (difficultyTimer > 750) {
+    ASTEROID_SPEED_MULTI_KULTI = 0.35;
+  }
+  if (difficultyTimer > 1000) {
     ASTEROID_MIN = 5;
-    ASTEROID_MULT = 4;
-    ASTEROID_SPEED = 0.8;
-    ASTEROID_SPEED_MULTI_KULTI = 0.5;
-  } else if (difficultyTimer > 1000) {
-    ASTEROID_MIN = 4;
     ASTEROID_MULT = 3;
-    ASTEROID_SPEED = 1;
-    ASTEROID_SPEED_MULTI_KULTI = 0.6;
-  } else if (difficultyTimer > 1250) {
+    ASTEROID_SPEED = 0.75;
+    ASTEROID_SPEED_MULTI_KULTI = 0.4;
+  }
+  if (difficultyTimer > 1500) {
+    ASTEROID_MIN = 4;
+    ASTEROID_MULT = 2;
+    ASTEROID_SPEED = 0.8;
+    ASTEROID_SPEED_MULTI_KULTI = 0.4;
+  }
+  if (difficultyTimer > 2000) {
+    ASTEROID_MIN = 4;
+    ASTEROID_MULT = 2;
+    ASTEROID_SPEED = 0.8;
+    ASTEROID_SPEED_MULTI_KULTI = 0.45;
+  }
+  if (difficultyTimer > 2500) {
     ASTEROID_MIN = 3;
     ASTEROID_MULT = 2;
-    ASTEROID_SPEED = 1.2;
-    ASTEROID_SPEED_MULTI_KULTI = 0.7;
-  } else if (difficultyTimer > 1500) {
-    ASTEROID_MIN = 2;
-    ASTEROID_MULT = 1;
-    ASTEROID_SPEED = 1.5;
-    ASTEROID_SPEED_MULTI_KULTI = 0.9
+    ASTEROID_SPEED = 0.85;
+    ASTEROID_SPEED_MULTI_KULTI = 0.5;
+  }
+  if (difficultyTimer > 3000) {
+    ASTEROID_MIN = 3;
+    ASTEROID_MULT = 2;
+    ASTEROID_SPEED = 0.9;
+    ASTEROID_SPEED_MULTI_KULTI = 0.55;
   }
 
   document.getElementById('score').innerHTML = `${Math.floor(difficultyTimer/50)} LIGHTYEAR${Math.floor(difficultyTimer/50) == 1 ? '' : 'S'}`;
@@ -347,7 +396,11 @@ function gameLoop() {
         moveAsteroid(i, -1*ASTEROID_SPEED*ASTEROIDS[i].speedMult, 0, 0);
       }
     } else {
-      document.getElementsByClassName('asteroid')[i].style.display = 'none';
+      // document.getElementsByClassName('asteroid')[i].style.animation = 'disappear 0.5s ease-in forwards 1';
+      // setTimeout(()=>{
+        document.getElementsByClassName('asteroid')[i].style.display = 'none';
+      //   document.getElementsByClassName('asteroid')[i].style.animation = '';
+      // }, 500);
     }
     
     if (ASTEROIDS[i].isActive && isColliding(document.getElementById('ship'), document.getElementsByClassName('asteroid')[i], -20)) {
@@ -356,7 +409,7 @@ function gameLoop() {
       EXPLOSION.x = ASTEROIDS[i].x;
       EXPLOSION.y = ASTEROIDS[i].y;
       setTimeout(()=>{
-        document.getElementById('explosionImg').src = '';
+        document.getElementById('explosionImg').src = ''; 
       }, 800);
       PLAYER.lives--;
       playSound(SOUNDS.damage);
@@ -376,10 +429,8 @@ function gameLoop() {
         PLAYER.lives = 4;
         stopLoop = true;
         PLAYER.score = Math.floor(difficultyTimer/50);
-        if (PLAYER.score > JSON.parse(localStorage['score'])) {
-          localStorage['score'] = JSON.stringify(PLAYER.score);
-        } else {
-          localStorage['score'] = JSON.stringify(PLAYER.score);
+        if (PLAYER.score > localStorage.getItem('score')) {
+          localStorage.setItem('score', PLAYER.score);
         }
         gameOver();
       }
@@ -422,7 +473,7 @@ function gameLoop() {
     PLAYER.staminaTime += 1 / GAME_CONFIG.gameSpeed / 4;
   }
 
-  document.getElementById('stanima').innerHTML = `stamina ${ Math.floor(percentile/10)*10 }%`;
+  document.getElementById('stanima').innerHTML = `${ Math.floor(percentile/10)*10 }% stamina`;
   
   if (!stopLoop) {
     setTimeout(gameLoop, 1000 / GAME_CONFIG.gameSpeed); // async recursion
@@ -444,14 +495,13 @@ function shoot() {
 }
 
 function gameOver() {
+  stopSound(SOUNDS.music);
   asteroidTimer = 0;
   shootingTimer = 0;
   difficultyTimer = 0;
   shiftTimer = 0;
   showEndScreen();
-  console.log('game over')
   document.getElementById('explosionImg').src = '';
-  document.getElementById('score')
   EXPLOSION.isActive = false;
 }
 
@@ -510,6 +560,7 @@ function openFullscreen() {
   btn.style.textShadow = '';
   btn.style.filter = `drop-shadow(0 2px 0 black) drop-shadow(0 -2px 0 black) drop-shadow(-2px 0 black) drop-shadow(2px 0 black)`;
   fullscreen = true;
+  playSound(SOUNDS.on);
 }
 function closeFullscreen() {
   let elem = document.getElementById('gameContainer');
@@ -550,4 +601,7 @@ function closeFullscreen() {
     -2px -1px 0 black`;
   btn.style.filter = '';
   fullscreen = false;
+  if (audio) {
+    playSound(SOUNDS.off);
+  }
 }
